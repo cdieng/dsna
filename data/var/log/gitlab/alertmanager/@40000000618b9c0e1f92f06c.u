@@ -1,0 +1,1 @@
+2021-09-12_17:05:32.51366 level=info ts=2021-09-12T17:05:32.513Z caller=main.go:524 msg="Received SIGTERM, exiting gracefully..."

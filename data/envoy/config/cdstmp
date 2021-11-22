@@ -1,0 +1,38 @@
+resources:
+- "@type": type.googleapis.com/envoy.config.cluster.v3.Cluster
+  name: service-grafana
+  type: STRICT_DNS
+  load_assignment:
+    cluster_name: service-grafana
+    endpoints:
+    - lb_endpoints:
+      - endpoint:
+          address:
+            socket_address:
+              address: grafana
+              port_value: 3000
+ 
+  name: service-prometheus
+  type: STRICT_DNS
+  load_assignment:
+    cluster_name: service-prometheus
+    endpoints:
+    - lb_endpoints:
+      - endpoint:
+          address:
+            socket_address:
+              address: prometheus
+              port_value: 9090
+
+  name: service-gitlab
+  type: STRICT_DNS
+  load_assignment:
+    cluster_name: service-gitlab
+    endpoints:
+    - lb_endpoints:
+      - endpoint:
+          address:
+            socket_address:
+              address: gitlab
+              port_value: 80
+

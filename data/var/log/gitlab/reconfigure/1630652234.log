@@ -1,0 +1,99 @@
+# Logfile created on 2021-09-03 06:57:14 +0000 by logger.rb/v1.4.2
+[2021-09-03T06:57:15+00:00] INFO: Started Chef Infra Zero at chefzero://localhost:1 with repository at /opt/gitlab/embedded
+  One version per cookbook
+
+[2021-09-03T06:57:15+00:00] INFO: *** Chef Infra Client 15.14.0 ***
+[2021-09-03T06:57:15+00:00] INFO: Platform: x86_64-linux
+[2021-09-03T06:57:15+00:00] INFO: Chef-client pid: 29
+[2021-09-03T06:57:17+00:00] INFO: Setting the run_list to ["recipe[gitlab-ee]"] from CLI options
+[2021-09-03T06:57:17+00:00] INFO: Run List is [recipe[gitlab-ee]]
+[2021-09-03T06:57:17+00:00] INFO: Run List expands to [gitlab-ee]
+[2021-09-03T06:57:17+00:00] INFO: Starting Chef Infra Client Run for gitlab.cloud.lfpw.dsna.fr
+[2021-09-03T06:57:17+00:00] INFO: Running start handlers
+[2021-09-03T06:57:17+00:00] INFO: Start handlers complete.
+[2021-09-03T06:57:19+00:00] INFO: Loading cookbooks [gitlab-ee@0.0.1, package@0.1.0, gitlab@0.0.1, consul@0.1.0, patroni@0.1.0, pgbouncer@0.1.0, runit@5.1.3, logrotate@0.1.0, postgresql@0.1.0, redis@0.1.0, monitoring@0.1.0, registry@0.1.0, mattermost@0.1.0, gitaly@0.1.0, praefect@0.1.0, gitlab-kas@0.1.0, gitlab-pages@0.1.0, letsencrypt@0.1.0, nginx@0.1.0, acme@4.1.1, crond@0.1.0]
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/geo-logcursor.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/libraries/gitlab-ee.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/attributes/default.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/libraries/sentinel_helper.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/metadata.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/config.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/libraries/sentinel.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/default.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/libraries/gitlab_geo_helper.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/libraries/geo_postgresql.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/geo-logcursor_disable.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/geo-postgresql.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/geo-secondary.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/geo-secondary_disable.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/geo-postgresql_disable.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/geo_database_migrations.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/sentinel.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/recipes/sentinel_disable.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/resources/sentinel_service.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/gitlab-geo-psql-rc.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sentinel.conf.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/mount_point_check.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-geo-logcursor-log-run.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-geo-postgresql-log-run.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-geo-logcursor-run.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-geo-logcursor-log-config.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-geo-postgresql-run.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-geo-postgresql-log-config.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-sentinel-log-config.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-geo-postgresql-t.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-sentinel-log-run.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/gitlab-ee/templates/default/sv-sentinel-run.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/patroni/attributes/default.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/patroni/recipes/disable.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/patroni/templates/default/sv-patroni-log-config.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/patroni/libraries/patroni_helper.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/README.md in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/patroni/templates/default/sv-patroni-log-run.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/patroni/recipes/enable.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/patroni/templates/default/sv-patroni-run.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/libraries/pgbouncer_helper.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/patroni/metadata.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/patroni/templates/default/patroni.yaml.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/metadata.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/recipes/enable.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/resources/pgbouncer_user.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/recipes/disable.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/templates/default/databases.ini.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/attributes/default.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/recipes/user.rb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/templates/default/pg_auth.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/templates/default/pgbouncer.ini.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/templates/default/sv-pgbouncer-log-config.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/templates/default/sv-pgbouncer-log-run.erb in the cache.
+[2021-09-03T06:57:19+00:00] INFO: Storing updated cookbooks/pgbouncer/templates/default/sv-pgbouncer-run.erb in the cache.
+[2021-09-03T06:57:22+00:00] INFO: directory[/etc/gitlab] mode changed to 775
+[2021-09-03T06:57:22+00:00] INFO: Skipped selecting an init system because it was explicitly disabled
+[2021-09-03T06:57:23+00:00] INFO: directory[Create /var/opt/gitlab] mode changed to 755
+[2021-09-03T06:57:24+00:00] WARN: only_if block for templatesymlink[Create a gitlab_pages_secret and create a symlink to Rails root] returned a string, did you mean to run a command?
+[2021-09-03T06:57:24+00:00] WARN: only_if block for templatesymlink[Create a gitlab_kas_secret and create a symlink to Rails root] returned a string, did you mean to run a command?
+[2021-09-03T06:57:25+00:00] INFO: link[/opt/gitlab/service/logrotate] created
+[2021-09-03T06:57:25+00:00] INFO: link[/opt/gitlab/service/redis] created
+[2021-09-03T06:57:26+00:00] INFO: link[/opt/gitlab/service/gitaly] created
+[2021-09-03T06:57:27+00:00] INFO: link[/opt/gitlab/service/postgresql] created
+[2021-09-03T06:57:27+00:00] INFO: file[/opt/gitlab/service/postgresql/supervise/status] owner changed to 996
+[2021-09-03T06:57:27+00:00] INFO: file[/opt/gitlab/service/postgresql/supervise/status] group changed to 996
+[2021-09-03T06:57:27+00:00] INFO: file[/opt/gitlab/service/postgresql/supervise/status] updated atime and mtime to 2021-09-03 06:57:27 +0000
+[2021-09-03T06:57:27+00:00] INFO: file[/opt/gitlab/service/postgresql/log/supervise/status] owner changed to 996
+[2021-09-03T06:57:27+00:00] INFO: file[/opt/gitlab/service/postgresql/log/supervise/status] group changed to 996
+[2021-09-03T06:57:27+00:00] INFO: file[/opt/gitlab/service/postgresql/log/supervise/status] updated atime and mtime to 2021-09-03 06:57:27 +0000
+[2021-09-03T06:57:27+00:00] INFO: link[/opt/gitlab/service/puma] created
+[2021-09-03T06:57:27+00:00] INFO: link[/opt/gitlab/service/sidekiq] created
+[2021-09-03T06:57:28+00:00] INFO: link[/opt/gitlab/service/gitlab-workhorse] created
+[2021-09-03T06:57:28+00:00] INFO: link[/opt/gitlab/service/nginx] created
+[2021-09-03T06:57:29+00:00] INFO: link[/opt/gitlab/service/gitlab-exporter] created
+[2021-09-03T06:57:29+00:00] INFO: link[/opt/gitlab/service/redis-exporter] created
+[2021-09-03T06:57:29+00:00] INFO: link[/opt/gitlab/service/prometheus] created
+[2021-09-03T06:57:30+00:00] INFO: link[/opt/gitlab/service/alertmanager] created
+[2021-09-03T06:57:30+00:00] INFO: link[/opt/gitlab/service/postgres-exporter] created
+[2021-09-03T06:57:30+00:00] INFO: ruby_block[populate Grafana configuration options] called
+[2021-09-03T06:57:30+00:00] INFO: link[/opt/gitlab/service/grafana] created
+[2021-09-03T06:57:30+00:00] INFO: Chef Infra Client Run complete in 13.586876212 seconds
+[2021-09-03T06:57:30+00:00] INFO: Running report handlers
+[2021-09-03T06:57:30+00:00] INFO: Report handlers complete
+[2021-09-03T06:57:30+00:00] WARN: This release of Chef Infra Client became end of life (EOL) on May 1st 2021. Please update to a supported release to receive new features, bug fixes, and security updates.

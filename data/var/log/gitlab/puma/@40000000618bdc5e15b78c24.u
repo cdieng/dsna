@@ -1,0 +1,15 @@
+2021-11-10_10:15:55.88894 {"timestamp":"2021-11-10T10:15:55.500Z","pid":847,"message":"Puma starting in cluster mode..."}
+2021-11-10_10:15:55.88900 {"timestamp":"2021-11-10T10:15:55.500Z","pid":847,"message":"* Puma version: 5.3.2 (ruby 2.7.2-p137) (\"Sweetnighter\")"}
+2021-11-10_10:15:55.88901 {"timestamp":"2021-11-10T10:15:55.500Z","pid":847,"message":"*  Min threads: 4"}
+2021-11-10_10:15:55.88901 {"timestamp":"2021-11-10T10:15:55.500Z","pid":847,"message":"*  Max threads: 4"}
+2021-11-10_10:15:55.88901 {"timestamp":"2021-11-10T10:15:55.500Z","pid":847,"message":"*  Environment: production"}
+2021-11-10_10:15:55.88901 {"timestamp":"2021-11-10T10:15:55.500Z","pid":847,"message":"*   Master PID: 847"}
+2021-11-10_10:15:55.88901 {"timestamp":"2021-11-10T10:15:55.500Z","pid":847,"message":"*      Workers: 16"}
+2021-11-10_10:15:55.88902 {"timestamp":"2021-11-10T10:15:55.500Z","pid":847,"message":"*     Restarts: (✔) hot (✖) phased"}
+2021-11-10_10:15:55.88902 {"timestamp":"2021-11-10T10:15:55.500Z","pid":847,"message":"* Preloading application"}
+2021-11-10_10:17:09.51653 {"timestamp":"2021-11-10T10:17:09.516Z","pid":847,"message":"* Listening on unix:///var/opt/gitlab/gitlab-rails/sockets/gitlab.socket"}
+2021-11-10_10:17:09.51676 {"timestamp":"2021-11-10T10:17:09.516Z","pid":847,"message":"* Listening on http://127.0.0.1:8080"}
+2021-11-10_10:17:09.51686 {"timestamp":"2021-11-10T10:17:09.516Z","pid":847,"message":"! WARNING: Detected 1 Thread(s) started in app boot:"}
+2021-11-10_10:17:09.51698 {"timestamp":"2021-11-10T10:17:09.516Z","pid":847,"message":"! #\u003cThread:0x00007fc7704be760 /opt/gitlab/embedded/lib/ruby/gems/2.7.0/gems/rack-timeout-0.5.2/lib/rack/timeout/support/scheduler.rb:73 sleep\u003e - /opt/gitlab/embedded/lib/ruby/gems/2.7.0/gems/rack-timeout-0.5.2/lib/rack/timeout/support/scheduler.rb:91:in `sleep'"}
+2021-11-10_10:17:09.51711 {"timestamp":"2021-11-10T10:17:09.517Z","pid":847,"message":"Use Ctrl-C to stop"}
+2021-11-10_10:40:14.89954 Received TERM from runit, sending to process group (-PID)

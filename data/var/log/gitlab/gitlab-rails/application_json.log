@@ -1,0 +1,29 @@
+{"severity":"INFO","time":"2021-11-22T00:21:24.536Z","correlation_id":"bda9c67e516a05dae21bbdb37393d525","message":"Checking state of dynamic postgres partitions"}
+{"severity":"INFO","time":"2021-11-22T01:00:25.211Z","correlation_id":"3718703fc06fc2ea8363388960517397","message":"Refreshing trending projects"}
+{"severity":"INFO","time":"2021-11-22T01:00:25.212Z","correlation_id":"a5288f06940eb3abe5ec861cb4db6d78","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-11-22T02:00:16.492Z","correlation_id":"d32af4b8692f77eee418b024521126d1","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-11-22T03:00:17.408Z","correlation_id":"e79ca0f4de2785fb0db4f0973a210972","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-11-22T04:00:27.725Z","correlation_id":"66f0409ea3beb0d217453c3c63d53e6d","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-11-22T05:00:37.593Z","correlation_id":"18c5f2b91c8dfebd5535a1bf16c36357","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"DEBUG","time":"2021-11-22T05:46:11.156Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:47:10.466Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:48:10.490Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:49:10.461Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:50:10.494Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:51:10.477Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:52:10.512Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:53:10.500Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:54:10.484Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:55:10.453Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:56:10.445Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:57:10.463Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:58:10.504Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T05:59:10.449Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-22T06:00:10.441Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"INFO","time":"2021-11-22T06:00:12.770Z","correlation_id":"b7132002c08ec8b9a0ac1eca30406772","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"DEBUG","time":"2021-11-22T06:01:10.477Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"INFO","time":"2021-11-22T06:21:18.040Z","correlation_id":"f9210bdd2fae910cb37649cbeb55eb3d","message":"Checking state of dynamic postgres partitions"}
+{"severity":"INFO","time":"2021-11-22T07:00:23.111Z","correlation_id":"469ca82351eec7b17521416ff5ca3234","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-11-22T08:00:11.343Z","correlation_id":"83816950935a5cfdf837fc3ad2a3fd28","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-11-22T09:00:05.767Z","correlation_id":"a6011facdae8d1efb973d98e865ba0b1","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-11-22T10:00:37.187Z","correlation_id":"06f93fa7b56f41f11c69347549db5b20","message":"StuckCiJobsWorker: Cleaning stuck builds"}

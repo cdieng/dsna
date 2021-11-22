@@ -1,0 +1,19 @@
+log writing failed. can't be called from trap context
+ERROR: The hook master_graceful_shutdown failed with exception (ThreadError) "can't be called from trap context".
+bundler: failed to load command: puma (/opt/gitlab/embedded/bin/puma)
+Gitlab::Cluster::LifecycleEvents::FatalError: can't be called from trap context
+  /opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/cluster/lifecycle_events.rb:157:in `rescue in block in call'
+  /opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/cluster/lifecycle_events.rb:151:in `block in call'
+  /opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/cluster/lifecycle_events.rb:150:in `each'
+  /opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/cluster/lifecycle_events.rb:150:in `call'
+  /opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/cluster/lifecycle_events.rb:128:in `do_before_graceful_shutdown'
+  /opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/cluster/mixins/puma_cluster.rb:15:in `stop_workers'
+  /opt/gitlab/embedded/lib/ruby/gems/2.7.0/gems/puma-5.3.2/lib/puma/cluster.rb:319:in `block in setup_signals'
+  /opt/gitlab/embedded/lib/ruby/gems/2.7.0/gems/puma-5.3.2/lib/puma/cluster.rb:429:in `select'
+  /opt/gitlab/embedded/lib/ruby/gems/2.7.0/gems/puma-5.3.2/lib/puma/cluster.rb:429:in `run'
+  /opt/gitlab/embedded/lib/ruby/gems/2.7.0/gems/puma-5.3.2/lib/puma/launcher.rb:181:in `run'
+  /opt/gitlab/embedded/lib/ruby/gems/2.7.0/gems/puma-5.3.2/lib/puma/cli.rb:80:in `run'
+  /opt/gitlab/embedded/lib/ruby/gems/2.7.0/gems/puma-5.3.2/bin/puma:10:in `<top (required)>'
+  /opt/gitlab/embedded/bin/puma:23:in `load'
+  /opt/gitlab/embedded/bin/puma:23:in `<top (required)>'
+=== puma startup: 2021-11-10 09:54:46 +0000 ===

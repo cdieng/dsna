@@ -1,0 +1,767 @@
+static_resources:
+  listeners:
+  - address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 10000
+    listener_filters:
+    - name: "envoy.filters.listener.tls_inspector"
+    filter_chains:
+    - filter_chain_match:
+        server_names:
+        - httpd.cloud.lfpw.dsna.fr
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/httpd"
+                route:
+                  prefix_rewrite: "/"
+                  cluster: service-httpd
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+
+
+    - filter_chain_match:
+        server_names:
+        - console-openshift-console.apps.poc.cloud.lfpw.dsna.fr
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_ws_to_ws
+          upgrade_configs:
+          - upgrade_type: websocket
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  host_rewrite_literal: console-openshift-console.apps.poc.cloud.lfpw.dsna.fr
+                  cluster: service-ocp
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+
+    - filter_chain_match:
+        server_names:
+        - oauth-openshift.apps.poc.cloud.lfpw.dsna.fr
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          stat_prefix: ingress_ws_to_ws
+          upgrade_configs:
+          - upgrade_type: websocket
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: service-ocp1
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+
+
+    - filter_chain_match:
+        server_names:
+        - downloads-openshift-console.apps.poc.cloud.lfpw.dsna.fr
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          stat_prefix: ingress_ws_to_ws
+          upgrade_configs:
+          - upgrade_type: websocket
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: service-downloadocp
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+# Ajout pour acces externe API Kube
+    - filter_chain_match:
+       server_names:
+        - api.apps.poc.cloud.lfpw.dsna.fr
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          stat_prefix: ingress_ws_to_ws
+          upgrade_configs:
+          - upgrade_type: websocket
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: service-apikub
+                  auto_host_rewrite: true
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+
+# Ajout pour acces services syspeo
+    - filter_chain_match:
+       server_names:
+        - "demo-syspeo.apps.poc.cloud.lfpw.dsna.fr"
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          stat_prefix: ingress_ws_to_ws
+          upgrade_configs:
+          - upgrade_type: websocket
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: service-demosyspeo
+                  auto_host_rewrite: true
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+# Ajout pour acces grafana openshift
+    - filter_chain_match:
+       server_names:
+        - "grafana-openshift-monitoring.apps.poc.cloud.lfpw.dsna.fr"
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          stat_prefix: ingress_ws_to_ws
+          upgrade_configs:
+          - upgrade_type: websocket
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: service-grafanaapps
+                  auto_host_rewrite: true
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+
+# Ajout pour acces kibana openshift 
+    - filter_chain_match:
+       server_names:
+        - "kibana-openshift-logging.apps.poc.cloud.lfpw.dsna.fr"
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          stat_prefix: ingress_ws_to_ws
+          upgrade_configs:
+          - upgrade_type: websocket
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: service-kibanaapps
+                  auto_host_rewrite: true
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+
+    - filter_chain_match:
+        server_names:
+        - gitlab.cloud.lfpw.dsna.fr
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  host_rewrite_literal: gitlab.cloud.lfpw.dsna.fr
+                  cluster: service-gitlab
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+
+    - filter_chain_match:
+        server_names:
+        - grafana.cloud.lfpw.dsna.fr
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  host_rewrite_literal: grafana.cloud.lfpw.dsna.fr
+                  cluster: service-grafana
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+   
+    - filter_chain_match:
+        server_names:
+        - ipa.cloud.lfpw.dsna.fr
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_http
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  host_rewrite_literal: ipa.cloud.lfpw.dsna.fr
+                  cluster: service-ipa
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+ 
+    - filter_chain_match:
+        server_names:
+        - gateone.cloud.lfpw.dsna.fr
+      filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          codec_type: AUTO
+          stat_prefix: ingress_wss_to_wss
+          upgrade_configs:
+          - upgrade_type: websocket
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: app
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  host_rewrite_literal: gateone.cloud.lfpw.dsna.fr
+                  cluster: service-gateone
+          http_filters:
+          - name: envoy.filters.http.router
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+          common_tls_context:
+            tls_certificates:
+            - certificate_chain:
+                filename: certs/fullchain.pem
+              private_key:
+                filename: certs/privkey.pem
+
+    
+  clusters:
+  - name: service-grafana
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-grafana
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: grafana
+                port_value: 3000
+
+
+
+  - name: service-gitlab
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-gitlab
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: gitlab
+                port_value: 80
+
+
+  - name: service-prometheus
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-prometheus
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: prometheus.cloud.lfpw.dsna.fr
+                port_value: 9090
+
+
+  - name: proxy-httpd1
+    connect_timeout: 30s
+    type: STATIC
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: proxy-httpd1
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 200.40.2.224
+                port_value: 80
+            health_check_config:
+              port_value: 80
+          health_status: HEALTHY
+
+  - name: proxy-httpd2
+    connect_timeout: 30s
+    type: STATIC
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: proxy-httpd2
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 200.40.2.133
+                port_value: 80
+            health_check_config:
+              port_value: 80
+          health_status: HEALTHY
+
+  - name: service-httpd
+    connect_timeout: 30s
+    type: STATIC
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-httpd
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 200.40.2.224
+                port_value: 80
+            health_check_config:
+              port_value: 80
+          health_status: HEALTHY
+
+        - endpoint:
+            address:
+              socket_address:
+                address: 200.40.2.133
+                port_value: 80
+            health_check_config:
+              port_value: 80
+          health_status: HEALTHY
+
+  
+  - name: service-gateone
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-gateone
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: gateone.cloud.lfpw.dsna.fr
+                port_value: 9443
+    transport_socket:
+      name: envoy.transport_sockets.tls
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+        sni: gateone.cloud.lfpw.dsna.fr
+
+  - name: service-ocp
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-ocp
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address: 
+              socket_address:
+                address: console-openshift-console.apps.poc.cloud.lfpw.dsna.fr
+                port_value: 443
+    transport_socket:
+      name: envoy.transport_sockets.tls
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+        sni: console-openshift-console.apps.poc.cloud.lfpw.dsna.fr
+
+  - name: service-ocp1
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-ocp1
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: oauth-openshift.apps.poc.cloud.lfpw.dsna.fr
+                port_value: 443
+    transport_socket:
+      name: envoy.transport_sockets.tls
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+        sni: oauth-openshift.apps.poc.cloud.lfpw.dsna.fr
+
+# Ajout PMB
+  - name: service-downloadocp
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-downloadocp
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 200.40.31.250
+                port_value: 443
+    transport_socket:
+      name: envoy.transport_sockets.tls
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+        sni: downloads-openshift-console.apps.poc.cloud.lfpw.dsna.fr
+
+# Ajout pour acces externe API
+  - name: service-apikub
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-apikub
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: api.poc.cloud.lfpw.dsna.fr
+                port_value: 6443
+#    transport_socket:
+#      name: envoy.transport_sockets.tls
+#      typed_config:
+#        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+#        sni: api.poc.cloud.lfpw.dsna.fr
+
+# Ajout pour acces service demo syspeo
+  - name: service-demosyspeo
+    type: STATIC 
+    # Comment out the following line to test on v6 networks
+    # dns_lookup_family: V4_ONLY
+    # lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-demosyspeo
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 200.40.31.250
+                port_value: 80
+#    transport_socket:
+#      name: envoy.transport_sockets.tls
+#      typed_config:
+#        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+#        sni: demo-syspeo.poc.cloud.lfpw.dsna.fr
+
+# Ajout pour acces service grafana openshift
+  - name: service-grafanaapps
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-grafanaapps
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: grafana-openshift-monitoring.apps.poc.cloud.lfpw.dsna.fr
+                port_value: 443
+    transport_socket:
+      name: envoy.transport_sockets.tls
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+        sni: grafana-openshift-monitoring.apps.poc.cloud.lfpw.dsna.fr
+
+# Ajout pour acces service kibana openshift
+  - name: service-kibanaapps
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-kibanaapps
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: kibana-openshift-logging.apps.poc.cloud.lfpw.dsna.fr
+                port_value: 443
+    transport_socket:
+      name: envoy.transport_sockets.tls
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+        sni: kibana-openshift-logging.apps.poc.cloud.lfpw.dsna.fr
+
+  - name: service-ipa
+    type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: service-ipa
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: freeipa
+                port_value: 443
+    transport_socket:
+      name: envoy.transport_sockets.tls
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+        sni: hyp03.cloud.lfpw.dsna.fr
+
+
+    health_checks:
+      - timeout: 2s
+        interval: 120s
+        unhealthy_threshold: 3
+        healthy_threshold: 1
+        http_health_check:
+          path: "/healthy"
+        event_log_path: "/var/log/health_check"
+        always_log_health_check_failures: true
+
+

@@ -1,0 +1,44 @@
+2021-09-19_14:44:19.96335 LOG:  starting PostgreSQL 12.6 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-09-19_14:44:19.96372 LOG:  listening on Unix socket "/var/opt/gitlab/postgresql/.s.PGSQL.5432"
+2021-09-19_14:44:19.97301 LOG:  database system was shut down at 2021-09-19 14:44:17 GMT
+2021-09-19_14:44:19.97533 LOG:  database system is ready to accept connections
+2021-09-19_14:44:23.83803 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-09-19_14:44:23.83811 FATAL:  Peer authentication failed for user "gitlab"
+2021-09-19_14:44:23.83812 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-09-19_14:44:23.94230 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-09-19_14:44:23.94232 FATAL:  Peer authentication failed for user "gitlab"
+2021-09-19_14:44:23.94232 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-09-19_14:44:24.03769 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-09-19_14:44:24.03771 FATAL:  Peer authentication failed for user "gitlab"
+2021-09-19_14:44:24.03771 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-09-19_14:44:24.37228 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-09-19_14:44:24.37230 FATAL:  Peer authentication failed for user "gitlab"
+2021-09-19_14:44:24.37231 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-09-19_14:44:24.56562 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-09-19_14:44:24.56565 FATAL:  Peer authentication failed for user "gitlab"
+2021-09-19_14:44:24.56565 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-09-19_16:03:29.02317 received TERM from runit, sending INT instead to force quit connections
+2021-09-19_16:03:29.02414 LOG:  received fast shutdown request
+2021-09-19_16:03:29.02445 LOG:  aborting any active transactions
+2021-09-19_16:03:29.02451 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02452 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02453 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02454 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02455 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02456 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02457 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02458 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02458 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02851 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02852 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02853 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02853 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02853 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02854 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02855 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02856 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02857 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02994 FATAL:  terminating connection due to administrator command
+2021-09-19_16:03:29.02995 LOG:  background worker "logical replication launcher" (PID 677) exited with exit code 1
+2021-09-19_16:03:29.03003 LOG:  shutting down
+2021-09-19_16:03:29.03605 LOG:  database system is shut down

@@ -1,0 +1,38 @@
+2021-09-12_07:00:01.46276 level=info ts=2021-09-12T07:00:01.462Z caller=compact.go:507 component=tsdb msg="write block" mint=1631419200661 maxt=1631426400000 ulid=01FFCCWGEKS1TTAD1K5RWFFZC9 duration=355.189157ms
+2021-09-12_07:00:01.49568 level=info ts=2021-09-12T07:00:01.495Z caller=head.go:847 component=tsdb msg="Head GC completed" duration=29.327584ms
+2021-09-12_07:00:01.50093 level=info ts=2021-09-12T07:00:01.500Z caller=checkpoint.go:95 component=tsdb msg="Creating checkpoint" from_segment=380 to_segment=381 mint=1631426400000
+2021-09-12_07:00:02.63432 level=info ts=2021-09-12T07:00:02.634Z caller=head.go:944 component=tsdb msg="WAL checkpoint complete" first=380 last=381 duration=1.133567283s
+2021-09-12_09:00:01.46403 level=info ts=2021-09-12T09:00:01.463Z caller=compact.go:507 component=tsdb msg="write block" mint=1631426400661 maxt=1631433600000 ulid=01FFCKR7PEJ702X7KGS1H8K4JM duration=361.790322ms
+2021-09-12_09:00:01.49298 level=info ts=2021-09-12T09:00:01.492Z caller=head.go:847 component=tsdb msg="Head GC completed" duration=25.437408ms
+2021-09-12_11:00:01.46822 level=info ts=2021-09-12T11:00:01.468Z caller=compact.go:507 component=tsdb msg="write block" mint=1631433600661 maxt=1631440800000 ulid=01FFCTKYYGYYAE10XKFXFS4DYM duration=364.116334ms
+2021-09-12_11:00:01.49262 level=info ts=2021-09-12T11:00:01.492Z caller=head.go:847 component=tsdb msg="Head GC completed" duration=21.242194ms
+2021-09-12_11:00:01.49685 level=info ts=2021-09-12T11:00:01.496Z caller=checkpoint.go:95 component=tsdb msg="Creating checkpoint" from_segment=382 to_segment=383 mint=1631440800000
+2021-09-12_11:00:02.62742 level=info ts=2021-09-12T11:00:02.627Z caller=head.go:944 component=tsdb msg="WAL checkpoint complete" first=382 last=383 duration=1.130647184s
+2021-09-12_11:00:03.44400 level=info ts=2021-09-12T11:00:03.443Z caller=compact.go:448 component=tsdb msg="compact blocks" count=3 mint=1631404800661 maxt=1631426400000 ulid=01FFCTM0E4KKYHJH7EB5FBZZTN sources="[01FFBZ51YH4XNEE2G6V52TZNQR 01FFC60S6KPKEYB1QN667XZ148 01FFCCWGEKS1TTAD1K5RWFFZC9]" duration=815.263136ms
+2021-09-12_11:00:03.44877 level=info ts=2021-09-12T11:00:03.448Z caller=db.go:1212 component=tsdb msg="Deleting obsolete block" block=01FFBZ51YH4XNEE2G6V52TZNQR
+2021-09-12_11:00:03.45052 level=info ts=2021-09-12T11:00:03.450Z caller=db.go:1212 component=tsdb msg="Deleting obsolete block" block=01FFCCWGEKS1TTAD1K5RWFFZC9
+2021-09-12_11:00:03.45219 level=info ts=2021-09-12T11:00:03.452Z caller=db.go:1212 component=tsdb msg="Deleting obsolete block" block=01FFC60S6KPKEYB1QN667XZ148
+2021-09-12_13:00:01.45645 level=info ts=2021-09-12T13:00:01.456Z caller=compact.go:507 component=tsdb msg="write block" mint=1631440800661 maxt=1631448000000 ulid=01FFD1FP6NA6W3K5PTCYT1P0K9 duration=347.26599ms
+2021-09-12_13:00:01.47857 level=info ts=2021-09-12T13:00:01.478Z caller=head.go:847 component=tsdb msg="Head GC completed" duration=18.875787ms
+2021-09-12_15:00:01.44467 level=info ts=2021-09-12T15:00:01.444Z caller=compact.go:507 component=tsdb msg="write block" mint=1631448000661 maxt=1631455200000 ulid=01FFD8BDEMSSTTHDY4B6YBQ9Y1 duration=336.035752ms
+2021-09-12_15:00:01.46636 level=info ts=2021-09-12T15:00:01.466Z caller=head.go:847 component=tsdb msg="Head GC completed" duration=18.414488ms
+2021-09-12_15:00:01.47079 level=info ts=2021-09-12T15:00:01.470Z caller=checkpoint.go:95 component=tsdb msg="Creating checkpoint" from_segment=384 to_segment=385 mint=1631455200000
+2021-09-12_15:00:02.63283 level=info ts=2021-09-12T15:00:02.632Z caller=head.go:944 component=tsdb msg="WAL checkpoint complete" first=384 last=385 duration=1.162132657s
+2021-09-12_17:00:01.47471 level=info ts=2021-09-12T17:00:01.474Z caller=compact.go:507 component=tsdb msg="write block" mint=1631455200661 maxt=1631462400000 ulid=01FFDF74PFR6AQ3ET6V869B7WE duration=371.456976ms
+2021-09-12_17:00:01.49990 level=info ts=2021-09-12T17:00:01.499Z caller=head.go:847 component=tsdb msg="Head GC completed" duration=21.925326ms
+2021-09-12_17:00:02.31775 level=info ts=2021-09-12T17:00:02.317Z caller=compact.go:448 component=tsdb msg="compact blocks" count=3 mint=1631426400661 maxt=1631448000000 ulid=01FFDF75319NBPE50GPNB6K9S9 sources="[01FFCKR7PEJ702X7KGS1H8K4JM 01FFCTKYYGYYAE10XKFXFS4DYM 01FFD1FP6NA6W3K5PTCYT1P0K9]" duration=811.809574ms
+2021-09-12_17:00:02.32258 level=info ts=2021-09-12T17:00:02.322Z caller=db.go:1212 component=tsdb msg="Deleting obsolete block" block=01FFCTKYYGYYAE10XKFXFS4DYM
+2021-09-12_17:00:02.32422 level=info ts=2021-09-12T17:00:02.324Z caller=db.go:1212 component=tsdb msg="Deleting obsolete block" block=01FFD1FP6NA6W3K5PTCYT1P0K9
+2021-09-12_17:00:02.32615 level=info ts=2021-09-12T17:00:02.326Z caller=db.go:1212 component=tsdb msg="Deleting obsolete block" block=01FFCKR7PEJ702X7KGS1H8K4JM
+2021-09-12_17:05:37.58616 level=warn ts=2021-09-12T17:05:37.586Z caller=main.go:629 msg="Received SIGTERM, exiting gracefully..."
+2021-09-12_17:05:37.58620 level=info ts=2021-09-12T17:05:37.586Z caller=main.go:652 msg="Stopping scrape discovery manager..."
+2021-09-12_17:05:37.58620 level=info ts=2021-09-12T17:05:37.586Z caller=main.go:666 msg="Stopping notify discovery manager..."
+2021-09-12_17:05:37.58621 level=info ts=2021-09-12T17:05:37.586Z caller=main.go:688 msg="Stopping scrape manager..."
+2021-09-12_17:05:37.58639 level=info ts=2021-09-12T17:05:37.586Z caller=main.go:662 msg="Notify discovery manager stopped"
+2021-09-12_17:05:37.58640 level=info ts=2021-09-12T17:05:37.586Z caller=main.go:648 msg="Scrape discovery manager stopped"
+2021-09-12_17:05:37.58669 level=info ts=2021-09-12T17:05:37.586Z caller=manager.go:924 component="rule manager" msg="Stopping rule manager..."
+2021-09-12_17:05:37.58676 level=info ts=2021-09-12T17:05:37.586Z caller=manager.go:934 component="rule manager" msg="Rule manager stopped"
+2021-09-12_17:05:37.58680 level=info ts=2021-09-12T17:05:37.586Z caller=main.go:682 msg="Scrape manager stopped"
+2021-09-12_17:05:37.59123 level=info ts=2021-09-12T17:05:37.591Z caller=notifier.go:601 component=notifier msg="Stopping notification manager..."
+2021-09-12_17:05:37.59125 level=info ts=2021-09-12T17:05:37.591Z caller=main.go:856 msg="Notifier manager stopped"
+2021-09-12_17:05:37.59137 level=info ts=2021-09-12T17:05:37.591Z caller=main.go:868 msg="See you next time!"

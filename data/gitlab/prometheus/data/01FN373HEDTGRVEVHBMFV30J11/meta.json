@@ -1,0 +1,17 @@
+{
+	"ulid": "01FN373HEDTGRVEVHBMFV30J11",
+	"minTime": 1637553600661,
+	"maxTime": 1637560800000,
+	"stats": {
+		"numSamples": 9050818,
+		"numSeries": 18921,
+		"numChunks": 75460
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01FN373HEDTGRVEVHBMFV30J11"
+		]
+	},
+	"version": 1
+}

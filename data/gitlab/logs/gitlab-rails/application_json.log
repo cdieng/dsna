@@ -1,0 +1,43 @@
+{"severity":"INFO","time":"2021-09-27T00:21:28.875Z","correlation_id":"30c337c49465d640f3befeb816aae639","message":"Checking state of dynamic postgres partitions"}
+{"severity":"INFO","time":"2021-09-27T01:00:21.085Z","correlation_id":"9c50407c5e017a19822e064d04988534","message":"Refreshing trending projects"}
+{"severity":"INFO","time":"2021-09-27T01:00:21.751Z","correlation_id":"897db84e5e055129bc9d85e33e65a5df","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-09-27T02:00:10.846Z","correlation_id":"771e367a1be92155eddc1bf3e3d3324b","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-09-27T03:00:10.926Z","correlation_id":"d134d5dd64196c433bb2b88b1b65d552","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-09-27T04:00:02.981Z","correlation_id":"9e3f4f657671c031d2fd4ad50ff660a8","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-09-27T05:00:23.253Z","correlation_id":"b4c5d78d0565c9fd950d33894fd2577e","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-09-27T06:00:30.274Z","correlation_id":"af0e98aa3ca0af219545209d5d8857e4","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-09-27T06:21:30.076Z","correlation_id":"490c3df52f7fbe10ec0954efbf5a4c30","message":"Checking state of dynamic postgres partitions"}
+{"severity":"INFO","time":"2021-09-27T07:00:20.123Z","correlation_id":"f1981dcd36d6ef9727bdc3504711569a","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-09-27T08:00:24.405Z","correlation_id":"9b6424f10d4b832eb811984e83dd72d7","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"INFO","time":"2021-09-27T09:00:27.016Z","correlation_id":"79e92cbf3868356f4cc632cd4e7e145d","message":"StuckCiJobsWorker: Cleaning stuck builds"}
+{"severity":"WARN","time":"2021-09-27T09:27:05.582Z","correlation_id":null,"message":"Gitlab::Metrics::Samplers::PumaSampler: labels must have the same signature, stopping"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:05.928Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"INFO","time":"2021-11-10T09:54:07.721Z","correlation_id":null,"message":"Checking state of dynamic postgres partitions"}
+{"severity":"INFO","time":"2021-11-10T09:54:07.721Z","correlation_id":null,"message":"Checking state of dynamic postgres partitions"}
+{"severity":"INFO","time":"2021-11-10T09:54:07.721Z","correlation_id":null,"message":"Checking state of dynamic postgres partitions"}
+{"severity":"INFO","time":"2021-11-10T09:54:07.796Z","correlation_id":null,"method":"with_lock_retries","class":"Gitlab::Database::Partitioning::PartitionCreator","message":"Lock timeout is set","current_iteration":1,"lock_timeout_in_ms":100}
+{"severity":"INFO","time":"2021-11-10T09:54:07.823Z","correlation_id":null,"method":"with_lock_retries","class":"Gitlab::Database::Partitioning::PartitionCreator","message":"Lock timeout is set","current_iteration":1,"lock_timeout_in_ms":100}
+{"severity":"INFO","time":"2021-11-10T09:54:08.080Z","correlation_id":null,"message":"Created partition audit_events_202204 for table audit_events"}
+{"severity":"INFO","time":"2021-11-10T09:54:08.110Z","correlation_id":null,"message":"Created partition audit_events_202205 for table audit_events"}
+{"severity":"INFO","time":"2021-11-10T09:54:08.111Z","correlation_id":null,"method":"with_lock_retries","class":"Gitlab::Database::Partitioning::PartitionCreator","message":"Migration finished","current_iteration":1,"lock_timeout_in_ms":100}
+{"severity":"INFO","time":"2021-11-10T09:54:08.150Z","correlation_id":null,"message":"Created partition web_hook_logs_202204 for table web_hook_logs"}
+{"severity":"INFO","time":"2021-11-10T09:54:08.156Z","correlation_id":null,"message":"Created partition web_hook_logs_202205 for table web_hook_logs"}
+{"severity":"INFO","time":"2021-11-10T09:54:08.156Z","correlation_id":null,"method":"with_lock_retries","class":"Gitlab::Database::Partitioning::PartitionCreator","message":"Migration finished","current_iteration":1,"lock_timeout_in_ms":100}
+{"severity":"DEBUG","time":"2021-11-10T09:54:47.278Z","correlation_id":null,"message":"ActiveRecord connection disconnected"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:47.878Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:47.926Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:47.940Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:47.962Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:47.990Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:47.999Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.000Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.024Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.047Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.055Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.076Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.077Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.080Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.107Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.127Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"DEBUG","time":"2021-11-10T09:54:48.159Z","correlation_id":null,"message":"ActiveRecord connection established"}
+{"severity":"INFO","time":"2021-11-10T10:00:36.050Z","correlation_id":"8a9e24e6f3d2000214918833a12bb6fd","message":"StuckCiJobsWorker: Cleaning stuck builds"}

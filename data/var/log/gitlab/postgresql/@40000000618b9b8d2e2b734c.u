@@ -1,0 +1,25 @@
+2021-09-12_17:05:37.16311 received TERM from runit, sending INT instead to force quit connections
+2021-09-12_17:05:37.16420 LOG:  received fast shutdown request
+2021-09-12_17:05:37.16489 LOG:  aborting any active transactions
+2021-09-12_17:05:37.16496 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16497 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16497 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16498 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16665 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16667 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16667 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16667 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16667 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16668 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16668 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16668 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16669 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16669 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16669 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16670 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16670 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16885 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16887 FATAL:  terminating connection due to administrator command
+2021-09-12_17:05:37.16887 LOG:  background worker "logical replication launcher" (PID 410) exited with exit code 1
+2021-09-12_17:05:37.17065 LOG:  shutting down
+2021-09-12_17:05:37.17661 LOG:  database system is shut down

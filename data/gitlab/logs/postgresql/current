@@ -1,0 +1,46 @@
+2021-09-27_09:27:03.66110 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66119 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66119 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66119 LOG:  received smart shutdown request
+2021-09-27_09:27:03.66120 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66120 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66120 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66120 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66120 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66121 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66121 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66121 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66121 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66121 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66121 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66122 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66122 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66122 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66123 FATAL:  terminating connection due to administrator command
+2021-09-27_09:27:03.66123 received TERM from runit, sending INT instead to force quit connections
+2021-09-27_09:27:03.66123 LOG:  received fast shutdown request
+2021-09-27_09:27:03.66123 LOG:  background worker "logical replication launcher" (PID 427) exited with exit code 1
+2021-09-27_09:27:03.66123 LOG:  shutting down
+2021-09-27_09:27:03.79418 LOG:  database system is shut down
+2021-11-10_09:53:17.19625 LOG:  starting PostgreSQL 12.6 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-11-10_09:53:17.22746 LOG:  listening on Unix socket "/var/opt/gitlab/postgresql/.s.PGSQL.5432"
+2021-11-10_09:53:17.22747 LOG:  database system was shut down at 2021-09-27 09:27:03 GMT
+2021-11-10_09:53:17.36876 LOG:  database system is ready to accept connections
+2021-11-10_10:03:10.49371 received TERM from runit, sending INT instead to force quit connections
+2021-11-10_10:03:10.49475 LOG:  received fast shutdown request
+2021-11-10_10:03:10.49531 LOG:  aborting any active transactions
+2021-11-10_10:03:10.49539 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49540 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49541 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49541 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49543 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49543 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49544 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49545 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49545 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49546 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49547 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49710 FATAL:  terminating connection due to administrator command
+2021-11-10_10:03:10.49842 LOG:  background worker "logical replication launcher" (PID 403) exited with exit code 1
+2021-11-10_10:03:10.49950 LOG:  shutting down
+2021-11-10_10:03:10.50482 LOG:  database system is shut down

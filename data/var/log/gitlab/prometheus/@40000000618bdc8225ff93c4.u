@@ -1,0 +1,80 @@
+2021-11-10_10:16:31.72310 level=info ts=2021-11-10T10:16:31.062Z caller=main.go:366 msg="No time or size retention was set so using the default time retention" duration=15d
+2021-11-10_10:16:31.72316 level=info ts=2021-11-10T10:16:31.062Z caller=main.go:404 msg="Starting Prometheus" version="(version=2.25.0, branch=master, revision=)"
+2021-11-10_10:16:31.72317 level=info ts=2021-11-10T10:16:31.062Z caller=main.go:409 build_context="(go=go1.16.4, user=GitLab-Omnibus, date=)"
+2021-11-10_10:16:31.72317 level=info ts=2021-11-10T10:16:31.062Z caller=main.go:410 host_details="(Linux 4.18.0-305.3.1.el8.x86_64 #1 SMP Tue Jun 1 16:14:33 UTC 2021 x86_64 gitlab.cloud.lfpw.dsna.fr (none))"
+2021-11-10_10:16:31.72317 level=info ts=2021-11-10T10:16:31.062Z caller=main.go:411 fd_limits="(soft=50000, hard=50000)"
+2021-11-10_10:16:31.72317 level=info ts=2021-11-10T10:16:31.062Z caller=main.go:412 vm_limits="(soft=unlimited, hard=unlimited)"
+2021-11-10_10:16:31.72318 level=info ts=2021-11-10T10:16:31.065Z caller=web.go:532 component=web msg="Start listening for connections" address=localhost:9090
+2021-11-10_10:16:31.72318 level=info ts=2021-11-10T10:16:31.065Z caller=main.go:779 msg="Starting TSDB ..."
+2021-11-10_10:16:31.72318 level=info ts=2021-11-10T10:16:31.069Z caller=tls_config.go:191 component=web msg="TLS is disabled." http2=false
+2021-11-10_10:16:31.72319 level=info ts=2021-11-10T10:16:31.072Z caller=head.go:668 component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+2021-11-10_10:16:31.72319 level=info ts=2021-11-10T10:16:31.072Z caller=head.go:682 component=tsdb msg="On-disk memory mappable chunks replay completed" duration=3.337µs
+2021-11-10_10:16:31.72319 level=info ts=2021-11-10T10:16:31.072Z caller=head.go:688 component=tsdb msg="Replaying WAL, this may take a while"
+2021-11-10_10:16:31.72319 level=info ts=2021-11-10T10:16:31.073Z caller=head.go:740 component=tsdb msg="WAL segment loaded" segment=0 maxSegment=0
+2021-11-10_10:16:31.72320 level=info ts=2021-11-10T10:16:31.073Z caller=head.go:745 component=tsdb msg="WAL replay completed" checkpoint_replay_duration=22.773µs wal_replay_duration=400.295µs total_replay_duration=448.916µs
+2021-11-10_10:16:31.72320 level=info ts=2021-11-10T10:16:31.075Z caller=main.go:799 fs_type=XFS_SUPER_MAGIC
+2021-11-10_10:16:31.72320 level=info ts=2021-11-10T10:16:31.075Z caller=main.go:802 msg="TSDB started"
+2021-11-10_10:16:31.72320 level=info ts=2021-11-10T10:16:31.075Z caller=main.go:928 msg="Loading configuration file" filename=/var/opt/gitlab/prometheus/prometheus.yml
+2021-11-10_10:16:31.72321 level=error ts=2021-11-10T10:16:31.077Z caller=manager.go:314 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=kubernetes
+2021-11-10_10:16:31.72321 level=error ts=2021-11-10T10:16:31.077Z caller=manager.go:314 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=kubernetes
+2021-11-10_10:16:31.72322 level=error ts=2021-11-10T10:16:31.077Z caller=manager.go:314 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=kubernetes
+2021-11-10_10:16:31.72323 level=info ts=2021-11-10T10:16:31.077Z caller=main.go:959 msg="Completed loading of configuration file" filename=/var/opt/gitlab/prometheus/prometheus.yml totalDuration=2.118105ms remote_storage=2.695µs web_handler=652ns query_engine=1.162µs scrape=145.521µs scrape_sd=428.088µs notify=33.763µs notify_sd=26.48µs rules=45.094µs
+2021-11-10_10:16:31.72323 level=info ts=2021-11-10T10:16:31.077Z caller=main.go:751 msg="Server is ready to receive web requests."
+2021-11-10_10:16:36.07832 level=error ts=2021-11-10T10:16:36.078Z caller=manager.go:188 component="scrape manager" msg="error creating new scrape pool" err="error creating HTTP client: unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" scrape_pool=kubernetes-pods
+2021-11-10_10:16:36.07845 level=error ts=2021-11-10T10:16:36.078Z caller=manager.go:188 component="scrape manager" msg="error creating new scrape pool" err="error creating HTTP client: unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" scrape_pool=kubernetes-nodes
+2021-11-10_10:16:36.07858 level=error ts=2021-11-10T10:16:36.078Z caller=manager.go:188 component="scrape manager" msg="error creating new scrape pool" err="error creating HTTP client: unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" scrape_pool=kubernetes-cadvisor
+2021-11-10_10:18:18.78314 level=warn ts=2021-11-10T10:18:18.783Z caller=main.go:629 msg="Received SIGTERM, exiting gracefully..."
+2021-11-10_10:18:18.78317 level=info ts=2021-11-10T10:18:18.783Z caller=main.go:652 msg="Stopping scrape discovery manager..."
+2021-11-10_10:18:18.78317 level=info ts=2021-11-10T10:18:18.783Z caller=main.go:666 msg="Stopping notify discovery manager..."
+2021-11-10_10:18:18.78319 level=info ts=2021-11-10T10:18:18.783Z caller=main.go:688 msg="Stopping scrape manager..."
+2021-11-10_10:18:18.78323 level=info ts=2021-11-10T10:18:18.783Z caller=main.go:648 msg="Scrape discovery manager stopped"
+2021-11-10_10:18:18.78326 level=info ts=2021-11-10T10:18:18.783Z caller=main.go:662 msg="Notify discovery manager stopped"
+2021-11-10_10:18:18.78366 level=info ts=2021-11-10T10:18:18.783Z caller=manager.go:924 component="rule manager" msg="Stopping rule manager..."
+2021-11-10_10:18:18.78367 level=info ts=2021-11-10T10:18:18.783Z caller=manager.go:934 component="rule manager" msg="Rule manager stopped"
+2021-11-10_10:18:18.78367 level=info ts=2021-11-10T10:18:18.783Z caller=main.go:682 msg="Scrape manager stopped"
+2021-11-10_10:18:18.78462 level=info ts=2021-11-10T10:18:18.784Z caller=notifier.go:601 component=notifier msg="Stopping notification manager..."
+2021-11-10_10:18:18.78464 level=info ts=2021-11-10T10:18:18.784Z caller=main.go:856 msg="Notifier manager stopped"
+2021-11-10_10:18:18.78472 level=info ts=2021-11-10T10:18:18.784Z caller=main.go:868 msg="See you next time!"
+2021-11-10_10:18:18.83096 level=info ts=2021-11-10T10:18:18.830Z caller=main.go:366 msg="No time or size retention was set so using the default time retention" duration=15d
+2021-11-10_10:18:18.83102 level=info ts=2021-11-10T10:18:18.830Z caller=main.go:404 msg="Starting Prometheus" version="(version=2.25.0, branch=master, revision=)"
+2021-11-10_10:18:18.83105 level=info ts=2021-11-10T10:18:18.831Z caller=main.go:409 build_context="(go=go1.16.4, user=GitLab-Omnibus, date=)"
+2021-11-10_10:18:18.83109 level=info ts=2021-11-10T10:18:18.831Z caller=main.go:410 host_details="(Linux 4.18.0-305.3.1.el8.x86_64 #1 SMP Tue Jun 1 16:14:33 UTC 2021 x86_64 gitlab.cloud.lfpw.dsna.fr (none))"
+2021-11-10_10:18:18.83113 level=info ts=2021-11-10T10:18:18.831Z caller=main.go:411 fd_limits="(soft=50000, hard=50000)"
+2021-11-10_10:18:18.83117 level=info ts=2021-11-10T10:18:18.831Z caller=main.go:412 vm_limits="(soft=unlimited, hard=unlimited)"
+2021-11-10_10:18:18.83426 level=info ts=2021-11-10T10:18:18.834Z caller=web.go:532 component=web msg="Start listening for connections" address=localhost:9090
+2021-11-10_10:18:18.83703 level=info ts=2021-11-10T10:18:18.835Z caller=main.go:779 msg="Starting TSDB ..."
+2021-11-10_10:18:18.83704 level=info ts=2021-11-10T10:18:18.836Z caller=tls_config.go:191 component=web msg="TLS is disabled." http2=false
+2021-11-10_10:18:18.84182 level=info ts=2021-11-10T10:18:18.841Z caller=head.go:668 component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+2021-11-10_10:18:18.84186 level=info ts=2021-11-10T10:18:18.841Z caller=head.go:682 component=tsdb msg="On-disk memory mappable chunks replay completed" duration=3.907µs
+2021-11-10_10:18:18.84186 level=info ts=2021-11-10T10:18:18.841Z caller=head.go:688 component=tsdb msg="Replaying WAL, this may take a while"
+2021-11-10_10:18:18.93382 level=info ts=2021-11-10T10:18:18.933Z caller=head.go:740 component=tsdb msg="WAL segment loaded" segment=0 maxSegment=1
+2021-11-10_10:18:18.93439 level=info ts=2021-11-10T10:18:18.934Z caller=head.go:740 component=tsdb msg="WAL segment loaded" segment=1 maxSegment=1
+2021-11-10_10:18:18.93440 level=info ts=2021-11-10T10:18:18.934Z caller=head.go:745 component=tsdb msg="WAL replay completed" checkpoint_replay_duration=38.442µs wal_replay_duration=93.086729ms total_replay_duration=93.156658ms
+2021-11-10_10:18:18.94845 level=info ts=2021-11-10T10:18:18.948Z caller=main.go:799 fs_type=XFS_SUPER_MAGIC
+2021-11-10_10:18:18.94847 level=info ts=2021-11-10T10:18:18.948Z caller=main.go:802 msg="TSDB started"
+2021-11-10_10:18:18.94850 level=info ts=2021-11-10T10:18:18.948Z caller=main.go:928 msg="Loading configuration file" filename=/var/opt/gitlab/prometheus/prometheus.yml
+2021-11-10_10:18:18.95033 level=error ts=2021-11-10T10:18:18.950Z caller=manager.go:314 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=kubernetes
+2021-11-10_10:18:18.95038 level=error ts=2021-11-10T10:18:18.950Z caller=manager.go:314 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=kubernetes
+2021-11-10_10:18:18.95047 level=error ts=2021-11-10T10:18:18.950Z caller=manager.go:314 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=kubernetes
+2021-11-10_10:18:18.96114 level=info ts=2021-11-10T10:18:18.961Z caller=main.go:959 msg="Completed loading of configuration file" filename=/var/opt/gitlab/prometheus/prometheus.yml totalDuration=12.557359ms remote_storage=2.555µs web_handler=9.307µs query_engine=1.413µs scrape=190.525µs scrape_sd=449.999µs notify=38.462µs notify_sd=27.591µs rules=10.348524ms
+2021-11-10_10:18:18.96116 level=info ts=2021-11-10T10:18:18.961Z caller=main.go:751 msg="Server is ready to receive web requests."
+2021-11-10_10:18:21.23888 level=info ts=2021-11-10T10:18:21.238Z caller=main.go:928 msg="Loading configuration file" filename=/var/opt/gitlab/prometheus/prometheus.yml
+2021-11-10_10:18:21.24081 level=error ts=2021-11-10T10:18:21.240Z caller=manager.go:314 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=kubernetes
+2021-11-10_10:18:21.24086 level=error ts=2021-11-10T10:18:21.240Z caller=manager.go:314 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=kubernetes
+2021-11-10_10:18:21.24093 level=error ts=2021-11-10T10:18:21.240Z caller=manager.go:314 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=kubernetes
+2021-11-10_10:18:21.26053 level=info ts=2021-11-10T10:18:21.260Z caller=main.go:959 msg="Completed loading of configuration file" filename=/var/opt/gitlab/prometheus/prometheus.yml totalDuration=21.69081ms remote_storage=2.785µs web_handler=631ns query_engine=1.874µs scrape=198.429µs scrape_sd=415.935µs notify=14.196µs notify_sd=14.166µs rules=19.311217ms
+2021-11-10_10:18:23.96148 level=error ts=2021-11-10T10:18:23.961Z caller=manager.go:188 component="scrape manager" msg="error creating new scrape pool" err="error creating HTTP client: unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" scrape_pool=kubernetes-nodes
+2021-11-10_10:18:23.96162 level=error ts=2021-11-10T10:18:23.961Z caller=manager.go:188 component="scrape manager" msg="error creating new scrape pool" err="error creating HTTP client: unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" scrape_pool=kubernetes-cadvisor
+2021-11-10_10:18:23.96170 level=error ts=2021-11-10T10:18:23.961Z caller=manager.go:188 component="scrape manager" msg="error creating new scrape pool" err="error creating HTTP client: unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" scrape_pool=kubernetes-pods
+2021-11-10_10:40:14.47539 level=warn ts=2021-11-10T10:40:14.475Z caller=main.go:629 msg="Received SIGTERM, exiting gracefully..."
+2021-11-10_10:40:14.47544 level=info ts=2021-11-10T10:40:14.475Z caller=main.go:652 msg="Stopping scrape discovery manager..."
+2021-11-10_10:40:14.47544 level=info ts=2021-11-10T10:40:14.475Z caller=main.go:666 msg="Stopping notify discovery manager..."
+2021-11-10_10:40:14.47544 level=info ts=2021-11-10T10:40:14.475Z caller=main.go:688 msg="Stopping scrape manager..."
+2021-11-10_10:40:14.47552 level=info ts=2021-11-10T10:40:14.475Z caller=main.go:648 msg="Scrape discovery manager stopped"
+2021-11-10_10:40:14.47553 level=info ts=2021-11-10T10:40:14.475Z caller=main.go:662 msg="Notify discovery manager stopped"
+2021-11-10_10:40:14.47590 level=info ts=2021-11-10T10:40:14.475Z caller=manager.go:924 component="rule manager" msg="Stopping rule manager..."
+2021-11-10_10:40:14.47594 level=info ts=2021-11-10T10:40:14.475Z caller=main.go:682 msg="Scrape manager stopped"
+2021-11-10_10:40:14.47595 level=info ts=2021-11-10T10:40:14.475Z caller=manager.go:934 component="rule manager" msg="Rule manager stopped"
+2021-11-10_10:40:14.47651 level=info ts=2021-11-10T10:40:14.476Z caller=notifier.go:601 component=notifier msg="Stopping notification manager..."
+2021-11-10_10:40:14.47653 level=info ts=2021-11-10T10:40:14.476Z caller=main.go:856 msg="Notifier manager stopped"
+2021-11-10_10:40:14.47666 level=info ts=2021-11-10T10:40:14.476Z caller=main.go:868 msg="See you next time!"

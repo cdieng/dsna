@@ -1,0 +1,43 @@
+2021-09-27T00:21:28.869Z: Checking state of dynamic postgres partitions
+2021-09-27T01:00:21.044Z: Refreshing trending projects
+2021-09-27T01:00:21.750Z: StuckCiJobsWorker: Cleaning stuck builds
+2021-09-27T02:00:10.846Z: StuckCiJobsWorker: Cleaning stuck builds
+2021-09-27T03:00:10.923Z: StuckCiJobsWorker: Cleaning stuck builds
+2021-09-27T04:00:02.969Z: StuckCiJobsWorker: Cleaning stuck builds
+2021-09-27T05:00:23.251Z: StuckCiJobsWorker: Cleaning stuck builds
+2021-09-27T06:00:30.274Z: StuckCiJobsWorker: Cleaning stuck builds
+2021-09-27T06:21:30.069Z: Checking state of dynamic postgres partitions
+2021-09-27T07:00:20.073Z: StuckCiJobsWorker: Cleaning stuck builds
+2021-09-27T08:00:24.317Z: StuckCiJobsWorker: Cleaning stuck builds
+2021-09-27T09:00:26.992Z: StuckCiJobsWorker: Cleaning stuck builds
+2021-09-27T09:27:05.582Z: Gitlab::Metrics::Samplers::PumaSampler: labels must have the same signature, stopping
+2021-11-10T09:54:05.921Z: ActiveRecord connection established
+2021-11-10T09:54:07.721Z: Checking state of dynamic postgres partitions
+2021-11-10T09:54:07.721Z: Checking state of dynamic postgres partitions
+2021-11-10T09:54:07.721Z: Checking state of dynamic postgres partitions
+2021-11-10T09:54:07.796Z: {:method=>"with_lock_retries", :class=>"Gitlab::Database::Partitioning::PartitionCreator", :message=>"Lock timeout is set", :current_iteration=>1, :lock_timeout_in_ms=>100}
+2021-11-10T09:54:07.823Z: {:method=>"with_lock_retries", :class=>"Gitlab::Database::Partitioning::PartitionCreator", :message=>"Lock timeout is set", :current_iteration=>1, :lock_timeout_in_ms=>100}
+2021-11-10T09:54:08.080Z: Created partition audit_events_202204 for table audit_events
+2021-11-10T09:54:08.110Z: Created partition audit_events_202205 for table audit_events
+2021-11-10T09:54:08.110Z: {:method=>"with_lock_retries", :class=>"Gitlab::Database::Partitioning::PartitionCreator", :message=>"Migration finished", :current_iteration=>1, :lock_timeout_in_ms=>100}
+2021-11-10T09:54:08.150Z: Created partition web_hook_logs_202204 for table web_hook_logs
+2021-11-10T09:54:08.156Z: Created partition web_hook_logs_202205 for table web_hook_logs
+2021-11-10T09:54:08.156Z: {:method=>"with_lock_retries", :class=>"Gitlab::Database::Partitioning::PartitionCreator", :message=>"Migration finished", :current_iteration=>1, :lock_timeout_in_ms=>100}
+2021-11-10T09:54:47.278Z: ActiveRecord connection disconnected
+2021-11-10T09:54:47.878Z: ActiveRecord connection established
+2021-11-10T09:54:47.926Z: ActiveRecord connection established
+2021-11-10T09:54:47.938Z: ActiveRecord connection established
+2021-11-10T09:54:47.962Z: ActiveRecord connection established
+2021-11-10T09:54:47.989Z: ActiveRecord connection established
+2021-11-10T09:54:47.999Z: ActiveRecord connection established
+2021-11-10T09:54:47.999Z: ActiveRecord connection established
+2021-11-10T09:54:48.024Z: ActiveRecord connection established
+2021-11-10T09:54:48.047Z: ActiveRecord connection established
+2021-11-10T09:54:48.054Z: ActiveRecord connection established
+2021-11-10T09:54:48.076Z: ActiveRecord connection established
+2021-11-10T09:54:48.076Z: ActiveRecord connection established
+2021-11-10T09:54:48.079Z: ActiveRecord connection established
+2021-11-10T09:54:48.107Z: ActiveRecord connection established
+2021-11-10T09:54:48.127Z: ActiveRecord connection established
+2021-11-10T09:54:48.158Z: ActiveRecord connection established
+2021-11-10T10:00:35.982Z: StuckCiJobsWorker: Cleaning stuck builds

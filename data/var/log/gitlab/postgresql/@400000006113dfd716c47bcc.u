@@ -1,0 +1,42 @@
+2021-08-11_14:23:49.10717 LOG:  starting PostgreSQL 12.6 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-08-11_14:23:49.10749 LOG:  listening on Unix socket "/var/opt/gitlab/postgresql/.s.PGSQL.5432"
+2021-08-11_14:23:49.11720 LOG:  database system was shut down at 2021-08-11 14:23:47 GMT
+2021-08-11_14:23:49.11983 LOG:  database system is ready to accept connections
+2021-08-11_14:23:52.44764 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-08-11_14:23:52.44771 FATAL:  Peer authentication failed for user "gitlab"
+2021-08-11_14:23:52.44772 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-08-11_14:23:52.55626 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-08-11_14:23:52.55629 FATAL:  Peer authentication failed for user "gitlab"
+2021-08-11_14:23:52.55630 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-08-11_14:23:52.66965 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-08-11_14:23:52.66968 FATAL:  Peer authentication failed for user "gitlab"
+2021-08-11_14:23:52.66968 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-08-11_14:23:52.99439 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-08-11_14:23:52.99442 FATAL:  Peer authentication failed for user "gitlab"
+2021-08-11_14:23:52.99442 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-08-11_14:23:53.18870 LOG:  no match in usermap "gitlab" for user "gitlab" authenticated as "root"
+2021-08-11_14:23:53.18872 FATAL:  Peer authentication failed for user "gitlab"
+2021-08-11_14:23:53.18872 DETAIL:  Connection matched pg_hba.conf line 70: "local   all         all                               peer map=gitlab"
+2021-08-11_14:30:25.92758 received TERM from runit, sending INT instead to force quit connections
+2021-08-11_14:30:25.92865 LOG:  received fast shutdown request
+2021-08-11_14:30:25.92924 LOG:  aborting any active transactions
+2021-08-11_14:30:25.93216 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93218 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93218 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93218 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93219 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93219 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93219 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93220 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93220 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93220 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93221 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93221 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93221 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93221 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93222 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93222 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93239 FATAL:  terminating connection due to administrator command
+2021-08-11_14:30:25.93354 LOG:  background worker "logical replication launcher" (PID 675) exited with exit code 1
+2021-08-11_14:30:25.93487 LOG:  shutting down
+2021-08-11_14:30:25.94158 LOG:  database system is shut down

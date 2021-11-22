@@ -1,0 +1,13 @@
+resources:
+- "@type": type.googleapis.com/envoy.config.cluster.v3.Cluster
+  name: service-grafana
+  type: STRICT_DNS
+  load_assignment:
+    cluster_name: service-grafana
+    endpoints:
+    - lb_endpoints:
+      - endpoint:
+          address:
+            socket_address:
+              address: grafana
+              port_value: 3000

@@ -1,0 +1,39 @@
+2021-09-27_09:27:03.24355 t=2021-09-27T09:27:02+0000 lvl=info msg="Shutdown started" logger=server reason="System signal: terminated"
+2021-11-10_09:53:20.03956 t=2021-11-10T09:53:20+0000 lvl=info msg="Starting Grafana" logger=server version=7.5.5 commit=b5190ee547 branch=HEAD compiled=2021-04-28T10:11:10+0000
+2021-11-10_09:53:20.05188 t=2021-11-10T09:53:20+0000 lvl=info msg="Config loaded from" logger=settings file=/var/opt/gitlab/grafana/conf/defaults.ini
+2021-11-10_09:53:20.05189 t=2021-11-10T09:53:20+0000 lvl=info msg="Config loaded from" logger=settings file=/var/opt/gitlab/grafana/grafana.ini
+2021-11-10_09:53:20.05190 t=2021-11-10T09:53:20+0000 lvl=info msg="Path Home" logger=settings path=/var/opt/gitlab/grafana
+2021-11-10_09:53:20.05190 t=2021-11-10T09:53:20+0000 lvl=info msg="Path Data" logger=settings path=/var/opt/gitlab/grafana/data
+2021-11-10_09:53:20.05191 t=2021-11-10T09:53:20+0000 lvl=info msg="Path Logs" logger=settings path=/var/log/gitlab/grafana
+2021-11-10_09:53:20.05191 t=2021-11-10T09:53:20+0000 lvl=info msg="Path Plugins" logger=settings path=/var/opt/gitlab/grafana/data/plugins
+2021-11-10_09:53:20.05191 t=2021-11-10T09:53:20+0000 lvl=info msg="Path Provisioning" logger=settings path=/var/opt/gitlab/grafana/provisioning
+2021-11-10_09:53:20.05192 t=2021-11-10T09:53:20+0000 lvl=info msg="App mode production" logger=settings
+2021-11-10_09:53:20.05192 t=2021-11-10T09:53:20+0000 lvl=info msg="Connecting to DB" logger=sqlstore dbtype=sqlite3
+2021-11-10_09:53:20.05192 t=2021-11-10T09:53:20+0000 lvl=info msg="Starting DB migrations" logger=migrator
+2021-11-10_09:53:20.31163 t=2021-11-10T09:53:20+0000 lvl=info msg="migrations completed" logger=migrator performed=0 skipped=279 duration=1.161323ms
+2021-11-10_09:53:20.32033 t=2021-11-10T09:53:20+0000 lvl=info msg="Starting plugin search" logger=plugins
+2021-11-10_09:53:21.51825 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518184Z","queryType":"exponential_heatmap_bucket_data"}
+2021-11-10_09:53:21.51827 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518231Z","queryType":"linear_heatmap_bucket_data"}
+2021-11-10_09:53:21.51828 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518244Z","queryType":"random_walk"}
+2021-11-10_09:53:21.51828 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518257Z","queryType":"predictable_pulse"}
+2021-11-10_09:53:21.51828 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518269Z","queryType":"predictable_csv_wave"}
+2021-11-10_09:53:21.51829 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518281Z","queryType":"random_walk_table"}
+2021-11-10_09:53:21.51830 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518293Z","queryType":"slow_query"}
+2021-11-10_09:53:21.51832 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518305Z","queryType":"no_data_points"}
+2021-11-10_09:53:21.51834 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518322Z","queryType":"datapoints_outside_range"}
+2021-11-10_09:53:21.51835 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518338Z","queryType":"manual_entry"}
+2021-11-10_09:53:21.51837 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518353Z","queryType":"csv_metric_values"}
+2021-11-10_09:53:21.51838 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518367Z","queryType":"streaming_client"}
+2021-11-10_09:53:21.51839 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518382Z","queryType":"live"}
+2021-11-10_09:53:21.51841 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518398Z","queryType":"grafana_api"}
+2021-11-10_09:53:21.51842 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518410Z","queryType":"arrow"}
+2021-11-10_09:53:21.51844 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518423Z","queryType":"annotations"}
+2021-11-10_09:53:21.51845 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518437Z","queryType":"table_static"}
+2021-11-10_09:53:21.51846 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518449Z","queryType":"random_walk_with_error"}
+2021-11-10_09:53:21.51847 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518461Z","queryType":"server_error_500"}
+2021-11-10_09:53:21.51848 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518472Z","queryType":"logs"}
+2021-11-10_09:53:21.51850 {"@level":"debug","@message":"datasource: registering query type handler","@timestamp":"2021-11-10T09:53:21.518485Z","queryType":"node_graph"}
+2021-11-10_09:53:21.51851 {"@level":"debug","@message":"datasource: registering query type fallback handler","@timestamp":"2021-11-10T09:53:21.518500Z"}
+2021-11-10_09:53:21.54287 t=2021-11-10T09:53:21+0000 lvl=eror msg="Failed to read plugin provisioning files from directory" logger=provisioning.plugins path=/var/opt/gitlab/grafana/provisioning/plugins error="open /var/opt/gitlab/grafana/provisioning/plugins: no such file or directory"
+2021-11-10_09:53:21.54983 t=2021-11-10T09:53:21+0000 lvl=info msg="HTTP Server Listen" logger=http.server address=127.0.0.1:3000 protocol=http subUrl=/-/grafana socket=
+2021-11-10_10:03:08.80086 t=2021-11-10T10:03:08+0000 lvl=info msg="Shutdown started" logger=server reason="System signal: terminated"
