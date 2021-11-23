@@ -1,0 +1,1 @@
+for a in `oc get vmi -A | awk '{print $1}' | grep -v NAME`; do echo $a; virtctl stop $a;done

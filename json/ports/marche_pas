@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-09-23T09:52:16Z"
+  name: tlpur02sv-1-ssh-svc
+  namespace: ccs
+  resourceVersion: "7047465"
+  uid: 283a5a08-ec67-4b05-9055-92033d8b146c
+spec:
+  clusterIP: 172.30.187.89
+  clusterIPs:
+  - 172.30.187.89
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 30348
+    port: 22000
+    protocol: TCP
+    targetPort: 22000
+  selector:
+    flavor.template.kubevirt.io/custom: "true"
+    kubevirt.io/domain: tlpur02sv-1
+    kubevirt.io/size: large
+    os.template.kubevirt.io/rhel6.10: "true"
+    vm.kubevirt.io/name: tlpur02sv-1
+    workload.template.kubevirt.io/server: "true"
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}

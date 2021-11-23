@@ -1,0 +1,3 @@
+for a in `oc get vmi | grep '\-1 ' | awk '{print $1}'`; do echo $a;virtctl expose vmi $a --port=22000 --name=$a-ssh-service2 --type=NodePort; done
+oc get svc | grep ce2 | awk '{print $1,$5}' | sed -e 's/-1-ssh.*22000:/ /' -e 's/.TCP.*$//' > liste
+./gen_config.pl <liste 

@@ -1,0 +1,1 @@
+virtctl image-upload dv esoppe161r --image-path=/mnt/osd/esoppe161.raw --storage-class=ocs-storagecluster-ceph-rbd --block-volume --insecure --uploadproxy-url=https://cdi-uploadproxy-openshift-cnv.apps.poc.cloud.lfpw.dsna.fr --access-mode ReadWriteMany --size=85899345920

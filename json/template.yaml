@@ -1,0 +1,107 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    app: __name__-1
+    flavor.template.kubevirt.io/custom: "true"
+    os.template.kubevirt.io/rhel6.10: "true"
+    vm.kubevirt.io/template: rhel6-server-large
+    vm.kubevirt.io/template.namespace: openshift
+    vm.kubevirt.io/template.revision: "1"
+    vm.kubevirt.io/template.version: v0.15.0
+    workload.template.kubevirt.io/server: "true"
+  name: __name__-1
+  namespace: ccs
+spec:
+  dataVolumeTemplates:
+  - apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      creationTimestamp: null
+      name: __name__-1
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: __size__
+        storageClassName: ocs-storagecluster-ceph-rbd
+        volumeMode: Block
+      source:
+        pvc:
+          name: __name__
+          namespace: ccs
+  running: true
+  template:
+    metadata:
+      annotations:
+        vm.kubevirt.io/flavor: custom
+        vm.kubevirt.io/os: rhel6
+        vm.kubevirt.io/workload: server
+      creationTimestamp: null
+      labels:
+        flavor.template.kubevirt.io/custom: "true"
+        kubevirt.io/domain: __name__-1
+        kubevirt.io/size: large
+        os.template.kubevirt.io/rhel6.10: "true"
+        vm.kubevirt.io/name: __name__-1
+        workload.template.kubevirt.io/server: "true"
+    spec:
+      domain:
+        cpu:
+          cores: 1
+          sockets: 2
+          threads: 1
+        devices:
+          disks:
+          - bootOrder: 1
+            disk:
+              bus: virtio
+            name: __name__-1
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+          interfaces:
+          - masquerade: {}
+            model: virtio
+            name: default
+          - bridge: {}
+            macAddress: __main__
+            model: virtio
+            name: main
+          - bridge: {}
+            macAddress: __io__
+            model: virtio
+            name: io
+          networkInterfaceMultiqueue: true
+          rng: {}
+          useVirtioTransitional: true
+        machine:
+          type: pc-q35-rhel8.4.0
+        resources:
+          requests:
+            memory: 8Gi
+      evictionStrategy: LiveMigrate
+      hostname: __name__-1
+      networks:
+      - name: default
+        pod: {}
+      - multus:
+          networkName: net-vlan500
+        name: main
+      - multus:
+          networkName: net-vlan501
+        name: io
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - dataVolume:
+          name: __name__-1
+        name: __name__-1
+      - cloudInitNoCloud:
+          userData: |-
+            #cloud-config
+            user: cloud-user
+            password: otqq-rr11-2aiv
+            chpasswd: { expire: False }
+        name: cloudinitdisk

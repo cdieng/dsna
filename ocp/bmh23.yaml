@@ -1,0 +1,15 @@
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: lame23-worker
+  namespace: openshift-machine-api
+spec:
+  bmc:
+    address: redfish-virtualMedia://ilo23.cloud.lfpw.dsna.fr/redfish/v1/Systems/1
+    credentialsName: lame23-worker-bmc-secret
+    disableCertificateVerification: true
+  bootMACAddress: 6E:A0:FB:80:00:50
+  bootMode: UEFI
+  online: true
+  rootDeviceHints:
+    minSizeGigabytes: 20

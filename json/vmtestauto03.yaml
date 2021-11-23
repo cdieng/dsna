@@ -1,0 +1,100 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    app: vmtestauto03-1
+    flavor.template.kubevirt.io/custom: "true"
+    os.template.kubevirt.io/rhel6.10: "true"
+    vm.kubevirt.io/template: rhel6-server-large
+    vm.kubevirt.io/template.namespace: openshift
+    vm.kubevirt.io/template.revision: "1"
+    vm.kubevirt.io/template.version: v0.15.0
+    workload.template.kubevirt.io/server: "true"
+  name: vmtestauto03-1
+  namespace: ccs
+spec:
+  dataVolumeTemplates:
+  - apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      creationTimestamp: null
+      name: vmtestauto03-1
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 128Gi
+        storageClassName: ocs-storagecluster-ceph-rbd
+        volumeMode: Block
+      source:
+        pvc:
+          name: vmtestauto03
+          namespace: ccs
+  running: true
+  template:
+    metadata:
+      annotations:
+        vm.kubevirt.io/flavor: custom
+        vm.kubevirt.io/os: rhel6
+        vm.kubevirt.io/workload: server
+      creationTimestamp: null
+      labels:
+        flavor.template.kubevirt.io/custom: "true"
+        kubevirt.io/domain: vmtestauto03-1
+        kubevirt.io/size: large
+        os.template.kubevirt.io/rhel6.10: "true"
+        vm.kubevirt.io/name: vmtestauto03-1
+        workload.template.kubevirt.io/server: "true"
+    spec:
+      domain:
+        cpu:
+          cores: 4
+          sockets: 2
+          threads: 2
+        devices:
+          disks:
+          - bootOrder: 1
+            disk:
+              bus: virtio
+            name: vmtestauto03-1
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+          interfaces:
+          - masquerade: {}
+            model: virtio
+            name: default
+          - bridge: {}
+            macAddress: 52:54:00:66:5f:22
+            model: virtio
+            name: main
+          networkInterfaceMultiqueue: true
+          rng: {}
+          useVirtioTransitional: true
+        machine:
+          type: pc-q35-rhel8.4.0
+        resources:
+          requests:
+            memory: 16Gi
+      evictionStrategy: LiveMigrate
+      hostname: vmtestauto03-1
+      networks:
+      - name: default
+        pod: {}
+      - multus:
+          networkName: net-vlan500
+        name: main
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - dataVolume:
+          name: vmtestauto03-1
+        name: vmtestauto03-1
+      - cloudInitNoCloud:
+          userData: |-
+            #cloud-config
+            user: cloud-user
+            password: otqq-rr11-2aiv
+            chpasswd: { expire: False }
+        name: cloudinitdisk

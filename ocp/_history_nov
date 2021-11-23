@@ -1,0 +1,1000 @@
+    4  oc get nodes
+    5  ip a
+    6  oc get MachineConfig
+    7  oc get MachineConfig/00-master -o yaml
+    8  oc edit MachineConfig/00-master
+    9  oc get svc -A
+   10  oc edit proxy/cluster
+   11  oc get co 
+   12  vi install-config.yaml
+   13  oc edit proxy/cluster
+   14  vi ccs-net.yaml 
+   15  mv ccs-net.yaml ccs-net-main.yaml 
+   16  oc apply -f ccs-net-main.yaml
+   17  oc get network
+   18  vi ccs-net-main.yaml 
+   19  oc get network/cluster
+   20  vi ccs-net-main.yaml 
+   21  oc get network
+   22  vi ccs-net-main.yaml 
+   23  oc get all
+   24  oc get crd
+   25  vi ccs-net-main.yaml 
+   26  oc get Network
+   27  oc get Network/cluster
+   28  oc get Network/cluster -o yaml
+   29  vi ccs-net-main.yaml 
+   30  oc get crd | grep network
+   31  oc get networks.operator.openshift.io
+   32  oc get networks.operator.openshift.io/cluster -o yaml
+   33  vi ccs-net-main.yaml 
+   34  ls
+   35  vi ccs-add-nets.yaml
+   36  oc apply -f ccs-add-nets.yaml 
+   37  vi ccs-add-nets.yaml
+   38  oc apply -f ccs-add-nets.yaml 
+   39  oc get crd | grep network
+   40  oc get networks.operator.openshift.io/cluster -o yaml
+   41  virtctl console p2cor01sv-1
+   42  oc get svc
+   43  oc get vm
+   44  ssh core@200.40.31.120 -p 31831
+   45  ssh root@200.40.31.120 -p 31831
+   46  oc get nss
+   47  oc get nns
+   48  oc get nns lame17-master.cloud.lfpw.dsna.fr -o yaml
+   49  ssh core@200.40.31.120
+   50  ssh core@200.40.31.120 -p 31010
+   51  ssh root@200.40.31.120 -p 31010
+   52  oc get nodes
+   53  oc adm --help
+   54  oc get po
+   55  oc get po -o wide
+   56  vi ccs-bridge.yaml 
+   57  oc delete -f ccs-bridge-10.yaml
+   58  oc delete -f ccs-bridge-11.yaml
+   59  ls
+   60  oc delete -f ccs-bridge.yaml 
+   61  ssh core@200.40.31.120
+   62  vi ccs-bridge.yaml 
+   63  oc create -f ccs-bridge.yaml
+   64  ssh core@200.40.31.120
+   65  ls
+   66  ssh core@200.40.31.117
+   67  oc get nns
+   68  oc get nns lame17-master.cloud.lfpw.dsna.fr -o yaml
+   69  ls
+   70  vi ccs-bridge-10.yaml
+   71  oc get route -A
+   72  ssh core@200.40.31.117
+   73  ssh core@200.40.31.120
+   74  vi ccs-bridge-10.yaml 
+   75  mv ccs-bridge-10.yaml ccs-net-vlan500.yaml
+   76  cat ccs-net-vlan500.yaml
+   77  oc create -f ccs-net-vlan500.yaml 
+   78  oc get networkattachmentdefinition.k8s.cni.cncf.io
+   79  oc get networkattachmentdefinition.k8s.cni.cncf.io/net-vlan500 -o yaml
+   80  oc get svc
+   81  ssh root@200.40.31.120 -p 31010
+   82  oc annotate namespace ccs k8s.ovn.org/multicast-enabled=true
+   83  oc get route
+   84  oc get route -A
+   85  oc get route -A -o wide
+   86  oc get svc
+   87  virtctl --help
+   88  virtctl expose --help
+   89  oc get svc
+   90  oc get svc ofarc01sv-1-ssh-service -o yaml
+   91  oc get svc v2v-vmware -o yaml
+   92  oc get svc ofarc01sv-1-ssh-service -o yaml
+   93  oc get svc v2v-vmware -o yaml
+   94  oc get svc ofarc01sv-1-ssh-service -o yaml
+   95  ssh core@200.40.31.117
+   96  oc get nodes
+   97  sudo vi /etc/dhcp/dhcpd.conf
+   98  oc get nodes
+   99  oc get po -n openshift-machine-api
+  100  vi install-config.yaml
+  101  oc get bmh
+  102  oc get bmh -n openshift-machine-api
+  103  oc get bmh/lame22-worker -o yaml -n openshift-machine-api > bmh23.yaml
+  104  vi bmh23.yaml 
+  105  vi bmh23-secret:q.yaml 
+  106  vi bmh23.yaml 
+  107  oc get secret -o yaml -n openshift-machine-api 
+  108  oc get svc -n ccs
+  109  oc get svc -n ccs | grep esoppe-purples04-1
+  110  ssh root@200.40.31.120 -p 30011
+  111  oc get svc/esoppe-purples04-1-ssh-service -n ccs -o yaml
+  112  oc get svc -n ccs
+  113  oc get svc/p2ggd01sv-1-ssh-service -n ccs -o yaml
+  114  oc get svc -n ccs
+  115  oc get endpoints -n ccs
+  116  oc get svc/ofarc01sv-1-ssh-service -n ccs -o yaml
+  117  oc get svc/esoppe-purples04-1-ssh-service -n ccs -o yaml
+  118  q
+  119  oc get endpoints -n ccs
+  120  oc get po -n openshift-storage
+  121  oc rsh rook-ceph-tools-7f97f8fdb8-x9zgd
+  122  oc rsh rook-ceph-tools-7f97f8fdb8-x9zgd -n openshift-storage
+  123  oc rsh po/rook-ceph-tools-7f97f8fdb8-x9zgd -n openshift-storage
+  124  oc get po -n openshift-storage
+  125  oc project openshift-storage
+  126  oc rsh rook-ceph-tools-7f97f8fdb8-x9zgd
+  127  oc get po -n openshift-logging
+  128  oc rsh rook-ceph-tools-7f97f8fdb8-x9zgd
+  129  oc get sc 
+  130  oc get route -A
+  131  curl -k https://kibana-openshift-logging.apps.poc.cloud.lfpw.dsna.fr
+  132  oc get po -n openshift-looging
+  133  oc get route -A
+  134  ls
+  135  vi bmh23.yaml
+  136  cat clusterconfigs/auth/kubeadmin-password 
+  137  vi bmh23.yaml
+  138  cp bmh23.yaml bmh23-secret.yaml 
+  139  vi bmh23-secret.yaml 
+  140  oc apply -f bmh23-secret.yaml
+  141  vi bmh23.yaml
+  142  ls
+  143  vi bmh20.yaml
+  144  vi bmh23.yaml
+  145  vi bmh23-secret.yaml 
+  146  oc get secret -A | grep lame23
+  147  oc get secret -A | grep lame
+  148  oc apply -f bmh23-secret.yaml
+  149  vi bmh23.yaml
+  150  oc get bmh -n openshift-machine-api
+  151  oc logs bmh/lame23-worker -n openshift-machine-api
+  152  oc get po -n openshift-machine-api
+  153  oc logs metal3-7dd56ccf4c-slk7g -n openshift-machine-api
+  154  oc logs metal3-7dd56ccf4c-slk7g metal3-ironic-conductor -n openshift-machine-api 
+  155  oc logs metal3-7dd56ccf4c-slk7g metal3-ironic-conductor -n openshift-machine-api 2>&1 | grep lame23
+  156  oc logs metal3-7dd56ccf4c-slk7g metal3-ironic-api -n openshift-machine-api 2>&1 | grep lame23
+  157  oc logs metal3-7dd56ccf4c-slk7g metal3-ironic-inspector -n openshift-machine-api 2>&1 | grep lame23
+  158  oc logs metal3-7dd56ccf4c-slk7g metal3-ironic-inspector -n openshift-machine-api 2>&1 | grep lame23 | more
+  159  oc logs metal3-7dd56ccf4c-slk7g metal3-ironic-api -n openshift-machine-api 2>&1 | grep lame23 | more
+  160  oc logs metal3-7dd56ccf4c-slk7g metal3-baremetal-operator -n openshift-machine-api 2>&1
+  161  vi bmh23.yaml 
+  162  oc logs metal3-7dd56ccf4c-slk7g metal3-ironic-conductor -n openshift-machine-api 2>&1 | grep lame23
+  163  oc apply -f bmh23-secret.yaml
+  164  vi bmh23.yaml 
+  165  oc apply -f bmh23-secret.yaml
+  166  vi bmh23.yaml 
+  167  oc get route -A
+  168  oc get po openshift-logging
+  169  oc get po -n openshift-logging
+  170  oc get po -n openshift-logging -o wide
+  171  oc get deployment
+  172  oc get deployment -n openshift-logging
+  173  oc get deployment -n openshift-logging -o wide
+  174  oc get deployment -n openshift-logging
+  175  oc get po openshift-monitoring
+  176  oc get po -n openshift-monitoring
+  177  oc get po -n openshift-logging
+  178  oc get po -n openshift-monitoring
+  179  oc get po -n openshift-loggi
+  180  oc get route -A
+  181  oc get nodes
+  182  oc get bmh -o openshift-machine-api
+  183  oc get bmh -n openshift-machine-api
+  184  oc get po -n openshift-machine-api
+  185  top
+  186  oc get po -n openshift-machine-api
+  187  top 
+  188  oc get nodes
+  189  oc get po -n openshift-machine-api
+  190  oc logs metal3-7dd56ccf4c-slk7g -n openshift-machine-api
+  191  oc logs metal3-7dd56ccf4c-slk7g metal3-ironic-conductor -n openshift-machine-api
+  192  oc logs metal3-7dd56ccf4c-slk7g metal3-ironic-conductor -n openshift-machine-api 2>&1 | grep lame23
+  193  oc get nodes
+  194  oc drain --help
+  195  oc --help
+  196  oc drain 
+  197  oc adm drain 
+  198  oc get nodes
+  199  oc adm drain lame23-worker.cloud.lfpw.dsna.fr
+  200  oc get nodes
+  201  cat clusterconfigs/auth/kubeadmin-password 
+  202  oc get nodes
+  203  ls
+  204  vi ccs-net-vlan500.yaml
+  205  vi backup-cluster.sh
+  206  chmod +x backup-cluster.sh 
+  207  oc get nodes
+  208  ./backup-cluster.sh 
+  209  ssh core@200.40.31.250
+  210  curl localhost:3000
+  211  echo $HTTP_PROXY
+  212  ssh core@200.40.31.200
+  213  ssh core@200.40.31.250
+  214  ssh core@200.40.31.200
+  215  oc get adm policy 
+  216  oc adm policy 
+  217  oc adm policy scc-review
+  218  oc adm policy scc-review -h
+  219  oc get policy
+  220  oc get policies
+  221  oc get adm
+  222  oc get 
+  223  oc get -h
+  224  oc api-resources
+  225  oc get projects
+  226  ls
+  227  oc get projects
+  228  cat clusterconfigs/auth/kubeadmin-password 
+  229  history
+  230  history | grep kubea
+  231  history | grep export
+  232  cat clusterconfigs/auth/kubeconfig 
+  233  ps
+  234  ps -a | grep ssh
+  235  ps -ax | grep ssh
+  236  kill -9 453108
+  237  cat clusterconfigs/auth/kubeconfig 
+  238  history
+  239  oc get secrets
+  240  oc get secrets --namspace syspeo
+  241  oc get secrets --namespace syspeo
+  242  sour <(oc completion bahs)
+  243  source <(oc completion bash)
+  244  oc adm top nodes
+  245  oc get operators
+  246  oc get pods | grep rook
+  247  oc get pods -A | grep rook
+  248  oc get logs rook-ceph-operator-6d544d5b87-zqt2z -n openshift-storage
+  249  oc  logs rook-ceph-operator-6d544d5b87-zqt2z -n openshift-storage
+  250  ping 200.40.31.200 
+  251  ping 200.40.31.250 
+  252  ssh fedora@200.40.31.250 
+  253  ssh fedora@200.40.31.250 -p 32435
+  254  ssh core@200.40.31.250
+  255  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  256  chmod +x ./kubectl 
+  257  sudo mv ./kubectl /usr/local/bin/kubectl
+  258  source <(kubectl completion bash)
+  259  kubectl version client
+  260  kubectl version --client
+  261  kubectl cluster-info
+  262  kubectl get nodes
+  263  kubectl get nodes lame23-worker.cloud.lfpw.dsna.fr
+  264  kubectl get nodes lame23-worker.cloud.lfpw.dsna.fr -o yaml
+  265  kubectl get vm --namespace syspeo
+  266  kubectl get vm --namespace syspeo -o yaml
+  267  kubectl describe vm
+  268  cat testsyspeo/demopoc/deploiement1.yaml | grep sed
+  269  grep Pass /etc/ssh/sshd_config 
+  270  sudo grep Pass /etc/ssh/sshd_config 
+  271  man sed
+  272  oc exex
+  273  oc exec
+  274  virtctl migrate --namespace syspeo fedora-syspeo
+  275  oc get vmi --namespace syspeo
+  276  ps -ax | grep ssh
+  277  kill 769804
+  278  oc get vmi --namespace syspeo
+  279  virtctl migrate --namespace syspeo fedora-syspeo
+  280  oc get vmi --namespace syspeo
+  281  ps -ax | grep ssh
+  282  kill 769915
+  283  oc get vmi --namespace syspeo
+  284  ssh core@200.40.31.117
+  285  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  286  oc project ccs
+  287  oc get po
+  288  oc rsh virt-launcher-p2cor01sv-1-w2jj8
+  289  oc get vmi
+  290  virtctl migrate p2env01sv-1
+  291  oc get vmi
+  292  oc get po
+  293  oc get po -o wide
+  294  cp ccs-net-vlan500.yaml ccs-net-vlan501.yaml 
+  295  vi ccs-net-vlan501.yaml
+  296  oc create -f ccs-net-vlan501.yaml
+  297  oc get networkattachmentdefinition.k8s.cni.cncf.io
+  298  qemu-img info  /mnt/more/q/ofarc01sv.qcow2
+  299  vi /mnt/more/xml/ofarc01sv.xml
+  300  ssh core@200.40.31.117
+  301  vi /etc/dhcp/dhcpd.conf
+  302  sudo vi /etc/dhcp/dhcpd.conf
+  303  sudo systemctl restart dhcpd
+  304  sudo systemctl status dhcpd
+  305  oc get po -n openshift-storage
+  306  oc get sc -n openshift-storage
+  307  oc describe sc/ocs-storagecluster-ceph-rbd -n openshift-storage
+  308  oc get vm
+  309  oc get crd
+  310  oc get crd | grep flavor
+  311  oc get crd | grep kubevirt
+  312  oc get virtualmachineinstances.kubevirt.io
+  313  cat clusterconfigs/auth/kubeadmin-password 
+  314  vi json/ofarc01sv.yaml
+  315  oc get vm
+  316  oc get vm/testvm -o yaml > json/template2.yaml 
+  317  vi json/template2.yaml 
+  318  diff json/template.yaml json/template2.yaml 
+  319  ls json/
+  320  vi json/template.yaml 
+  321  ll json/
+  322  vi json/ofarc01sv.yaml
+  323  oc apply -f json/ofarc01sv.yaml 
+  324  vi json/ofarc01sv.yaml
+  325  oc apply -f json/ofarc01sv.yaml 
+  326  oc get po
+  327  oc logs virt-launcher-ofarc01sv-1-ckpmz
+  328  vi json/p2fdf01sv.yaml
+  329  oc apply -f json/p2fdf01sv.yaml
+  330  oc get po
+  331  oc logs virt-launcher-p2fdf01sv-1-s795k
+  332  vi json/p2fds01sv.yaml
+  333  oc apply -f json/p2fds01sv.yaml
+  334  oc apply -f json/p2fds02sv.yaml
+  335  oc apply -f json/p2fds03sv.yaml
+  336  oc apply -f json/p2fds04sv.yaml
+  337  oc apply -f json/p2fds05sv.yaml
+  338  oc apply -f json/p2gwy01sv.yaml
+  339  oc apply -f json/p2gwy02sv.yaml
+  340  oc apply -f json/p2ggd01sv.yaml
+  341  oc apply -f json/p2fpm01sv.yaml
+  342  oc apply -f json/p2fpm02sv.yaml
+  343  oc apply -f json/p2fpm03sv.yaml
+  344  oc apply -f json/p2fpm04sv.yaml
+  345  oc apply -f json/p2fdo01sv.yaml
+  346  oc apply -f json/ofrsm01sv.yaml
+  347  oc apply -f json/tlpur02sv.yaml
+  348  ls json/
+  349  oc get vm | wc -l
+  350  od get vm
+  351  oc get vm
+  352  ls json/
+  353  oc apply -f json/p2tsu01sv.yaml
+  354  oc get svc
+  355  oc get svc/p2cor01sv-1-ssh-service -o yaml
+  356  vi json/p2tsu01sv.yaml
+  357  oc get svc
+  358  oc get po
+  359  oc get deployment
+  360  oc get dc
+  361  oc get svc
+  362  oc get po virt-launcher-p2ggd01sv-1-zfzvb -o yaml
+  363  oc get svc
+  364  oc get svc/p2cor01sv-1-ssh-service -o yaml
+  365  oc get svc
+  366  cat clusterconfigs/auth/kubeadmin-password 
+  367  ssh core@200.40.31.117
+  368  ssh core@200.40.31.118
+  369  ssh core@200.40.31.119
+  370  vi install-config.yaml
+  371  ssh core@200.40.31.119
+  372  ssh core@200.40.31.118
+  373  ssh core@200.40.31.117
+  374  oc get pv
+  375  oc get pv | grep prometheus
+  376  oc get pv/pvc-073898aa-263d-4e52-a8c8-beacea06f854 -o yaml
+  377  ssh core@200.40.31.120
+  378  oc get pv 
+  379  ls
+  380  vi monitoring-storage.yaml
+  381  oc apply -f monitoring-storage.yaml
+  382  vi monitoring-storage.yaml
+  383  oc apply -f monitoring-storage.yaml
+  384  vi monitoring-storage.yaml
+  385  oc get cm -n openshift-monitoring
+  386  oc get cm/cluster-monitoring-config -n openshift-monitoring -o wide
+  387  oc get cm/cluster-monitoring-config -n openshift-monitoring -o yaml
+  388  oc get po -n openshift-monitoring
+  389  oc clusterinfo 
+  390  cat clusterconfigs/auth/kubeadmin-password 
+  391  ls
+  392  cat bmh20.yaml 
+  393  cat bmh23.yaml 
+  394  vi bmh23.yaml 
+  395  export KUBECONFIG=clusterconfigs/auth/kubeconfig
+  396  oc get nodes
+  397  ssh core@200.40.31.117
+  398  curl -O -L "https://www.redhat.com/index.html" -x "proxy_user:redhat@localhost:3128" -vvv
+  399  curl -O -L "https://www.redhat.com/index.html" -x "proxy_user:redhat@200.40.31.3:3128" -vvv
+  400  curl -O -L "https://www.redhat.com/index.html" -x "proxy_user:redhat@200.40.31.2:3128" -vvv
+  401  env
+  402  curl -O -L "https://www.redhat.com/index.html" -x "proxy_user:redhat@200.17.164.2:3128" -vvv
+  403  vi cmd-install 
+  404  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  405  cp install-config.yaml clusterconfigs/
+  406  vi install-config.yaml
+  407  ip a
+  408  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  409  podman ps
+  410  l
+  411  ls
+  412  ls rhcos_image_cache/
+  413  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  414  podman run -d --name rhcos_image_cache -v /home/kni/rhcos_image_cache:/var/www/html -p 8080:8080/tcp registry.centos.org/centos/httpd-24-centos7:latest
+  415  podman ps
+  416  podman ps -a
+  417  podman stop rhcos_image_cache
+  418  podman rm -f  rhcos_image_cache
+  419  podman ps
+  420  podman run -d --name rhcos_image_cache -v /home/kni/rhcos_image_cache:/var/www/html -p 8080:8080/tcp registry.centos.org/centos/httpd-24-centos7:latest
+  421  podman ps
+  422  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  423  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  424  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  425  export pullsecret_file=~/pull-secret.txt
+  426  ls
+  427  vi install-config.yaml
+  428  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  429  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  430  ls -l clusterconfigs/
+  431  ls -la clusterconfigs/
+  432  cp install-config.yaml clusterconfigs/
+  433  vi install-config.yaml
+  434  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  435  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  436  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  437  cp install-config.yaml clusterconfigs/
+  438  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  439  virsh list
+  440  sudo virsh list
+  441  sudo virsh console poc-9kc5s-bootstrap
+  442  sudo systemctl status dhcpd
+  443  sudo vi /etc/dhcp/dhcpd.conf
+  444  sudo journalctl -u dhcpd
+  445  sudo virsh list
+  446  sudo virsh destroy poc-9kc5s-bootstrap
+  447  sudo virsh undefine poc-9kc5s-bootstrap
+  448  sudo virsh list
+  449  sudo virsh console poc-88dpv-bootstrap
+  450  ssh root@200.40.31.101
+  451  ssh core@200.40.31.101
+  452  ssh root@200.40.31.117
+  453  vi .ssh/known_hosts 
+  454  ssh root@200.40.31.117
+  455  ssh root@200.40.31.119
+  456  ssh root@200.40.31.117
+  457  ssh core@200.40.31.117
+  458  vi .ssh/known_hosts 
+  459  ssh core@200.40.31.117
+  460  ssh core@200.40.31.118
+  461  ssh core@200.40.31.119
+  462  ssh core@200.40.31.101
+  463  sudo virsh list
+  464  dig a api.poc.cloud.lfpw.dsna.fr
+  465  ssh core@200.40.31.117
+  466  ping 200.40.31.117
+  467  ping 200.40.31.118
+  468  ping 200.40.31.119
+  469  ssh core@200.17.27.3
+  470  ping 200.40.31.117
+  471  ssh core@200.40.31.117
+  472  ping 200.40.31.119
+  473  ssh core@200.40.31.119
+  474  ssh core@200.40.31.117
+  475  ssh core@200.40.31.118
+  476  ssh core@200.40.31.117
+  477  sudo virsh list
+  478  ssh core@200.40.31.117
+  479  ssh core@200.40.31.118
+  480  ssh core@200.40.31.117
+  481  ssh core@200.40.31.119
+  482  ssh core@200.40.31.117
+  483  ssh core@200.17.27.3
+  484  ssh core@200.40.31.119
+  485  ssh core@200.17.27.3
+  486  ssh core@200.40.31.119
+  487  ssh core@200.17.27.3
+  488  ssh core@200.40.31.117
+  489  ssh core@200.40.31.119
+  490  ssh core@200.40.31.117
+  491  ssh core@200.40.31.118
+  492  ssh core@200.40.31.119
+  493  oc get route
+  494  history | grep export
+  495  export KUBECONFIG=clusterconfigs/auth/kubeconfig
+  496  oc get route
+  497  oc get route -A
+  498  cat clusterconfigs/auth/kubeadmin-password 
+  499  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  500  oc get nodes
+  501  oc get po -A
+  502  oc get po -n openshift-machine-api
+  503  oc logs metal3-6d7476d475-4rsqv -n openshift-machine-api
+  504  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 
+  505  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 2&1 | grep ilo
+  506  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 
+  507  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 2>&1
+  508  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 2>&1 | grep ilo
+  509  oc get bmh
+  510  oc get bmh -n openshift-machine-api
+  511  oc get co
+  512  oc get bmh -n openshift-machine-api
+  513  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 2>&1 | grep ilo20
+  514  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 2>&1 | grep ilo21
+  515  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 2>&1 | grep ilo22
+  516  oc get nodes
+  517  oc get bmh -n openshift-machine-api
+  518  oc get nodes
+  519  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 2>&1 | grep ilo22
+  520  oc get csr
+  521  oc get nodes
+  522  oc get bmh -n openshift-machine-api
+  523  oc logs metal3-6d7476d475-4rsqv metal3-ironic-conductor -n openshift-machine-api 
+  524  oc logs metal3-6d7476d475-4rsqv  -n openshift-machine-api 
+  525  oc logs metal3-6d7476d475-4rsqv  metal3-baremetal-operator -n openshift-machine-api 
+  526  oc get ns
+  527  oc get co
+  528  oc get ns
+  529  oc get po -n openshift-console
+  530  oc get route
+  531  oc get route -A
+  532  oc get csr
+  533  oc get nodes
+  534  oc get co
+  535  oc get po -A
+  536  oc get po -A | grep -v Running | grep -v Completed
+  537  oc get route -A
+  538  oc get csr
+  539  oc get nodes
+  540  oc get route -A
+  541  oc get nodes
+  542  ssh core@200.40.31.120
+  543  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  544  oc get po -n openshift-storage
+  545  oc get pods -n openshift-storage -o name -l app=rook-ceph-operator
+  546  oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": false }]'
+  547  oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
+  548  oc project openshift-storage
+  549  oc rsh pod/rook-ceph-operator-75d64766d7-w5jzp
+  550  ls
+  551  ls json/
+  552  ls
+  553  vi monitoring-storage.yaml
+  554  oc get  configs.imageregistry.operator.openshift.io
+  555  oc get  configs.imageregistry.operator.openshift.io/cluster -o yaml
+  556  oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"managementState":"Managed"}}'
+  557  oc get pod -n openshift-image-registry
+  558  oc get  configs.imageregistry.operator.openshift.io/cluster -o yaml
+  559  oc get pod -n openshift-image-registry
+  560  oc get clusteroperator image-registry
+  561  oc get po -A | grep registry
+  562  oc get po -A -o wide | grep registry
+  563  oc get po -A | grep registry
+  564  oc get pod -n openshift-image-registry
+  565  oc get clusteroperator image-registry
+  566  oc get clusteroperator
+  567  oc edit configs.imageregistry.operator.openshift.io
+  568  ls
+  569  exit
+  570  history
+  571  history | grep managementState
+  572  oc get co
+  573  oc get po -n openshift-monitoring
+  574  oc edit configs.imageregistry.operator.openshift.io
+  575  oc get configs.imageregistry.operator.openshift.io
+  576  oc get configs.imageregistry.operator.openshift.io -o yaml > registry.yaml
+  577  cat registry.yaml 
+  578  oc get configs.imageregistry.operator.openshift.io
+  579  oc get configs.imageregistry.operator.openshift.io -o yaml > registry.yaml 
+  580  cat registry.yaml 
+  581  oc edit configs.imageregistry.operator.openshift.io
+  582  oc get clusteroperator image-registry
+  583  oc edit configs.imageregistry.operator.openshift.io
+  584  oc get clusteroperator image-registry
+  585  oc get co
+  586  oc get pod -n openshift-image-registry
+  587  oc logs image-registry-567d888b86-lbmk4 -n openshift-image-registry
+  588  oc get pod -n openshift-image-registry
+  589  oc project openshift-image-registry
+  590  oc get events
+  591  oc get po
+  592  oc logs image-registry-bcc95647f-4nq5c
+  593  oc get co
+  594  oc get events
+  595  oc edit configs.imageregistry/cluster
+  596  oc get pvc -n openshift-storage
+  597  oc get configs.imageregistry
+  598  oc get configs.imageregistry -o yaml
+  599  oc get pvc
+  600  oc describe pvc/image-registry-storage
+  601  oc get pv
+  602  oc describe pvc/image-registry-storage
+  603  oc get sc
+  604  oc get configs.imageregistry -o yaml
+  605  oc get pvc
+  606  oc describe pvc/image-registry-storage
+  607  oc get configs.imageregistry -o yaml
+  608  oc get pv
+  609  oc get pod -n openshift-image-registry
+  610  oc get pod/image-registry-bcc95647f-4nq5c -n openshift-image-registry
+  611  oc get pod/image-registry-bcc95647f-4nq5c -n openshift-image-registry -o yaml
+  612  oc get pvc
+  613  oc describe pvc/image-registry-storage
+  614  oc get pvc
+  615  oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"managementState":"Removed"}}'
+  616  oc project
+  617  oc get po
+  618  oc get pvc
+  619  oc get pv
+  620  oc edit configs.imageregistry.operator.openshift.io
+  621  oc get pv
+  622  oc get po
+  623  oc get pvoc get co
+  624  oc get co
+  625  oc get pod -n openshift-image-registry
+  626  oc get po
+  627  oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"managementState":"Managed"}}'
+  628  oc get po
+  629  oc edit configs.imageregistry.operator.openshift.io
+  630  oc get pvc
+  631  oc get po
+  632  oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"managementState":"Removed"}}'
+  633  oc edit configs.imageregistry.operator.openshift.io
+  634  oc get pvc
+  635  oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"managementState":"Managed"}}'
+  636  oc edit configs.imageregistry.operator.openshift.io
+  637  oc get pvc
+  638  oc get clusteroperator image-registry
+  639  oc get po
+  640  oc get events
+  641  oc get po
+  642  oc get events
+  643  oc get clusteroperator image-registry
+  644  oc get events
+  645  oc get po
+  646  oc logs image-registry-567d888b86-2t457
+  647  oc logs image-registry-567d888b86-2t457 registry
+  648  oc describe image-registry-567d888b86-2t457 
+  649  oc describe po/image-registry-567d888b86-2t457 
+  650  oc get po -n openshift-storage
+  651  oc rsh pod/rook-ceph-operator-75d64766d7-w5jzp
+  652  oc project openshift-storage
+  653  oc rsh pod/rook-ceph-operator-75d64766d7-w5jzp
+  654  oc rsh rook-ceph-operator-6df588c4dc-twz5q
+  655  oc project openshift-image-registry
+  656  oc describe po/image-registry-567d888b86-2t457 
+  657  oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"managementState":"Removed"}}'
+  658  oc get po
+  659  oc edit configs.imageregistry.operator.openshift.io
+  660  oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"managementState":"Managed"}}'
+  661  oc get po
+  662  oc edit configs.imageregistry.operator.openshift.io
+  663  oc get co
+  664  oc get po
+  665  oc get clusteroperator image-registry
+  666  oc get clusteroperator image-registry
+  667  oc get configs.imageregistry.operator.openshift.io -o yaml
+  668  oc get clusteroperator image-registry
+  669  oc get co image-registry
+  670  oc get configs.imageregistry.operator.openshift.io -o yaml
+  671  oc get co image-registry
+  672  oc get pvc
+  673  oc get co image-registry
+  674  oc get clusteroperator image-registry
+  675  oc get po
+  676  oc get clusteroperator image-registry
+  677  ls
+  678  tmux at
+  679  ls
+  680  cd testsyspeo/
+  681  ls
+  682  source <(kubectl completion bash)
+  683  export KUBECONFIG=~/clusterconfigs/auth/kubeconfig 
+  684  oc get nodes
+  685  ls
+  686  cd demopoc/
+  687  ls
+  688  kubectl apply -f syspeo_back.yaml 
+  689  oc create --help
+  690  oc create project syspeo
+  691  kubectl apply -f syspeo_back.yaml 
+  692  kubectl delete -f syspeo_back.yaml 
+  693  kubectl apply -f syspeo_back.yaml 
+  694  ssh core@200.40.31.120
+  695  kubectl delete -f syspeo_back.yaml 
+  696  kubectl apply -f syspeo_back.yaml 
+  697  kubectl apply -f syspeo_front.yaml 
+  698  kubectl get pods -n syspeo
+  699  cat syspeo_front.yaml 
+  700  kubectl get deployment -n syspeo
+  701  oc create sa syspeotest
+  702  oc get scc
+  703  oc create sa syspeotest -n syspeo
+  704  oc get sa
+  705  oc get sa -n syspeo
+  706  oc delete sa syspeotest
+  707  oc patch scc anyuid --type=merge -p '{"users":["system:serviceaccount:syspeo:syspeotest"]}'
+  708  kubectl delete -f syspeo_front.yaml 
+  709  kubectl apply -f syspeo_front.yaml 
+  710  ls
+  711  cat syspeo_vm.yaml 
+  712  kubectl apply -f syspeo_vm.yaml 
+  713  vi syspeo_vm.yaml 
+  714  kubectl delete -f syspeo_vm.yaml 
+  715  kubectl apply -f syspeo_vm.yaml 
+  716  ssh fedora@200.40.31.118 -p 32536
+  717  kubectl delete -f syspeo_vm.yaml 
+  718  kubectl delete -f syspeo_front.yaml 
+  719  kubectl delete -f syspeo_back.yaml 
+  720  tmux 
+  721  tmux a
+  722  ls
+  723  echo $http_proxy
+  724  curl www.google.fr
+  725  curl https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/x86_64/images/Fedora-Cloud-Base-34-1.2.x86_64.raw.xz -o tst.xz
+  726  curl -L https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/x86_64/images/Fedora-Cloud-Base-34-1.2.x86_64.raw.xz -o tst.xz
+  727  ls
+  728  cd testsyspeo/
+  729  ls
+  730  cd demopoc/
+  731  git status
+  732  git log
+  733  git a .
+  734  git add .
+  735  git commit -m "correction VM suite reinstall openshift"
+  736  git push
+  737  export no_proxy=poc.cloud.lfpw.dsna.fr,200.17.27.0/24,192.168.90.0/24,200.40.0.0/16,200.40.31.224,localhost
+  738  git push
+  739  cat syspeo_front2.yaml | grep syspeo
+  740  ls -la
+  741  cat users.htpasswd 
+  742  History | grep htpasswd
+  743  history | grep htpasswd
+  744  htpasswd -c -B -b test.htpasswd user1 MyPassword!
+  745  htpasswd -c -B -b test.htpasswd user2 MyPassword!
+  746  htpasswd -c -B -b test.htpasswd user3 MyPassword!
+  747  cat test.htpasswd 
+  748  htpasswd -B -b test.htpasswd user2 MyPassword!
+  749  htpasswd -B -b test.htpasswd user1 MyPassword!
+  750  ls
+  751  cat cmd-install 
+  752  ls
+  753  cat bmh23-secret.yaml
+  754  cat bmh20.yaml
+  755  ls -la
+  756  cd oc
+  757  ls
+  758  cat ccs-net-vlan500.yaml
+  759  ls
+  760  ls backup
+  761  cd clusterconfigs/
+  762  ls
+  763  cd auth/
+  764  ls
+  765  cd ..
+  766  cd tls
+  767  ls
+  768  cd ..
+  769  ls
+  770  cat install-config.yaml
+  771  ls
+  772  exit
+  773  export KUBECONFIG=clusterconfigs/auth/kubeconfig
+  774  oc get nodes
+  775  ls
+  776  oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd -n openshift-config
+  777  ls
+  778  ls -la 
+  779  rm -f test.htpasswd 
+  780  ls
+  781  cat pull-secret.txt
+  782  vi htpasswordcr
+  783  ls
+  784  cd clusterconfigs/
+  785  ls
+  786  cd auth/
+  787  ls
+  788  cd ..
+  789  ls
+  790  cd ..
+  791  ls
+  792  mkdir secret
+  793  ls
+  794  oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd -n openshift-config
+  795  rm -f secret
+  796  rm -rf secret
+  797  ls
+  798  vi htpasswordcr
+  799  cat users.htpasswd 
+  800  rm -h htpasswordcr 
+  801  rm -f htpasswordcr 
+  802  vi OAuth.yaml
+  803  oc get oauth cluster -o yaml > oauth.yaml
+  804  ls
+  805  vi oauth.yaml 
+  806  cp oauth.yaml oauth.htpassword.yaml 
+  807  history
+  808  cat users.htpasswd 
+  809  htpasswd -B -b users.htpasswd testuser testuser
+  810  cat users.htpasswd 
+  811  export KUBECONFIG=clusterconfigs/auth/kubeconfig
+  812  oc get user
+  813  oc get group
+  814  oc get identity
+  815  ls
+  816  echo $no_proxy
+  817  ssh core@200.40.31.120
+  818  ssh 200.40.31.118
+  819  ssh core@200.40.31.118
+  820  env
+  821  ssh core@200.40.31.118
+  822   echo $https_proxy
+  823  ssh core@200.40.31.120
+  824  export KUBECONFIG=clusterconfigs/auth/kubeconfig
+  825   echo $https_proxy
+  826  oc edit proxy/cluster
+  827  ssh core@200.40.31.120
+  828  export KUBECONFIG=clusterconfigs/auth/kubeconfig
+  829   oc get machineconfigpool  --show-labels
+  830  oc describe machineconfigpool worker
+  831  oc get Tuned/default -o yaml -n openshift-cluster-node-tuning-operator
+  832  oc label machineconfigpool worker custom-kubelet=enabled
+  833  oc get nodes
+  834  oc label machineconfigpool master custom-kubelet=enabled
+  835  oc get machineconfigpool  --show-labels
+  836  vi memory-kube-config.yaml
+  837  oc create -f memory-kube-config.yaml
+  838  export KUBECONFIG=clusterconfigs/auth/kubeconfig
+  839  ssh core@200.40.31.118
+  840  ssh core@200.40.31.119
+  841  ssh core@200.40.31.117
+  842  ssh core@200.40.31.120
+  843  oc get pods -n openshift-kni-infra
+  844  oc logs haproxy-lame18-master.cloud.lfpw.dsna.fr -c haproxy-monitor -n openshift-kni-infra
+  845  oc get pods -n openshift-kni-infra
+  846  oc logs haproxy-lame19-master.cloud.lfpw.dsna.fr -c haproxy-monitor -n openshift-kni-infra
+  847  oc logs haproxy-lame19-master.cloud.lfpw.dsna.fr -c haproxy -n openshift-kni-infra
+  848  la
+  849  cd backups/
+  850  la
+  851  cd backup-Fri-Oct--1-19\:13\:01-CEST-2021/
+  852  la
+  853  ll |grep kube
+  854  ll |grep virt
+  855  grep -i bridge */*
+  856  ll
+  857  cd ccs
+  858  ll
+  859  grep bridges *
+  860  ll
+  861  ll
+  862  grep 501 */*
+  863  grep ': 501' */*
+  864  grep ': 501[^0-9]' */*
+  865  grep ': 502[^0-9]' */*
+  866  grep ': 503[^0-9]' */*
+  867  grep ': 500[^0-9]' */*
+  868  ll
+  869  cd openshift-machine-config-operator/
+  870  ll
+  871  grep 500 *
+  872  ll
+  873  cd ..
+  874  ll
+  875  grep 501 *
+  876  grep 501 */*
+  877  grep '501[^0-9]' */*
+  878  grep -i vlan */*
+  879  m ccs/virtualmachines.kubevirt.io.yaml
+  880  grep -i net-vlan500 */*
+  881  grep -i net-vlan500 */* |m
+  882  m ccs/network-attachment-definitions.k8s.cni.cncf.io.yaml
+  883  pwd
+  884  m ccs/network-attachment-definitions.k8s.cni.cncf.io.yaml
+  885  grep -i net-vlan500 */* |m
+  886  ls
+  887  vi backup-cluster.sh 
+  888  cat bmh2*
+  889  ls
+  890  cat bmh20.yaml 
+  891  ls
+  892  cat bmh23.yaml
+  893  ls
+  894  vi bmh23.yaml 
+  895  cat bmh23.yaml
+  896  ls
+  897  cat bmh23-secret.yaml
+  898  ls
+  899  cat bond-admin.yaml
+  900  ls
+  901  cat ccs-add-nets.yaml
+  902  ls
+  903  cat ccs-bridge-11.yaml
+  904  ls
+  905  cat ccs-bridge.yaml
+  906  ls
+  907  cat ccs-net-main.yaml
+  908  ls
+  909  cat ccs-net-vlan500.yaml
+  910  ls
+  911  cat ccs-net-vlan501.yaml
+  912  ls
+  913  cat cmd-install
+  914  vi cmd-install
+  915  ls
+  916  vi index.html 
+  917  cat install-config.yaml
+  918  ls
+  919  cat monitoring-storage.yaml
+  920  ls
+  921  vi oauth.htpassword.yaml
+  922  cat oauth.yaml 
+  923  :q
+  924  ls
+  925  cat registry.yaml
+  926  ls
+  927  cat oauth.htpassword.yaml oauth.yaml
+  928  vi registry.yaml 
+  929  vi tst.xz 
+  930  sudo -i
+  931  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  932  oc get nodes
+  933  oc get route -A
+  934  ls
+  935  exit
+  936  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  937  history
+  938  ll
+  939  cat users.htpasswd 
+  940  cat bond-admin.yaml
+  941  cat ccs-add-nets.yaml
+  942  cat ccs-bridge-11.yaml
+  943  cat ccs-bridge.yaml
+  944  oc create -f ccs-bridge.yaml
+  945  ssh core@200.40.31.119
+  946  ssh core@200.40.31.120
+  947  oc get crd | grep network
+  948  ll
+  949  oc create -f ccs-bridge-11.yaml
+  950  cat ccs-add-nets.yaml
+  951  cat ccs-net-main.yaml
+  952  oc apply -f ccs-net-main.yaml
+  953  oc apply -f ccs-add-nets.yaml
+  954  oc apply -f ccs-net-main.yaml
+  955  oc create -f ccs-net-vlan500.yaml
+  956  oc create -f ccs-net-vlan501.yaml
+  957  ll
+  958  oc get networkattachmentdefinition.k8s.cni.cncf.io
+  959  oc get vm
+  960  oc project ccs
+  961  oc get vm
+  962  oc get po
+  963  oc get networkattachmentdefinition.k8s.cni.cncf.io
+  964  oc create -f ccs-net-vlan501.yaml
+  965  oc create -f ccs-net-vlan500.yaml
+  966  oc get networkattachmentdefinition.k8s.cni.cncf.io
+  967  ls json/
+  968  oc get po
+  969  cd json
+  970  ls
+  971  cd fait
+  972  ls
+  973  mv * ../
+  974  ll
+  975  cd..
+  976  cd ..
+  977  ll
+  978  oc apply -f json/ofarc01sv.yaml
+  979  oc get vm
+  980  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  981  oc get vm
+  982  cd ..
+  983  ll
+  984  oc get vm
+  985  oc apply -f json/ofarc01sv.yaml
+  986  ll
+  987  cd /
+  988  ll
+  989  cat /etc/fstab 
+  990  cd /mnt/more
+  991  ll
+  992  ll c
+  993  ll q
+  994  cd q
+  995  oc get vm
+  996  virtctl
+  997  cd /home/kni/
+  998  ll
+  999  virtctl image-upload dv p2cor01sv –image-path=/mnt/more/q/p2cor01sv.qcow2 –storage-class=ocs-storagecluster-ceph-rbd –block-volume –size=60Gi –insecure –uploadproxy-url=https://cdi-uploadproxy-openshift-cnv.apps.poc.cloud.lfpw.dsna.fr –access-mode ReadWriteMany
+ 1000  la
+ 1001  la -tr
+ 1002  h
+ 1003   h > _history_nov

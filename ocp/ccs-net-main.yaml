@@ -1,0 +1,43 @@
+apiVersion: operator.openshift.io/v1
+
+kind: Network
+
+metadata:
+
+  name: cluster
+
+spec:
+
+  additionalNetworks: 
+
+  - name: main
+
+    namespace: ccs
+
+    type: Raw
+
+    rawCNIConfig: '{
+
+      "cniVersion": "0.3.1",
+
+      "name": "main",
+
+      "type": "bridge",
+
+      "ipam": {
+
+        "type": "static",
+
+        "addresses": [
+
+          {
+
+            "address": "10.1.1.0/24"
+
+          }
+
+        ]
+
+      }
+
+    }'

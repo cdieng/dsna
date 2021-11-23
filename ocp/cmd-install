@@ -1,0 +1,2572 @@
+    1  ll
+    2  sudo subscription-manager register --username=cdiengatos --auto-attach
+    3  sudo subscription-manager repos --enable=rhel-8-for-x86_64-appstream-rpms --enable=rhel-8-for-x86_64-baseos-rpms
+    4  sudo dnf install -y libvirt qemu-kvm mkisofs python3-devel jq ipmitool
+    5  sudo usermod --append --groups libvirt kni
+    6  systemctl status firewalld.service 
+    7  sudo firewall-cmd --zone=public --add-service=http --permanent
+    8  sudo firewall-cmd --reload
+    9  sudo systemctl enable libvirtd --now
+   10  sudo virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images
+   11  sudo virsh pool-start default
+   12  sudo virsh pool-autostart default
+   13  ip a
+   14  export PUB_CONN=ens3f4
+   15  sudo nohup bash -c "
+   16      nmcli con down \"$PUB_CONN\"
+   17      nmcli con delete \"$PUB_CONN\"
+   18      # RHEL 8.1 appends the word \"System\" in front of the connection, delete in case it exists
+   19      nmcli con down \"System $PUB_CONN\"
+   20      nmcli con delete \"System $PUB_CONN\"
+   21      nmcli connection add ifname baremetal type bridge con-name baremetal
+   22      nmcli con add type bridge-slave ifname \"$PUB_CONN\" master baremetal
+   23      pkill dhclient;dhclient baremetal
+   24  "
+   25  bridge network list
+   26  bridge list
+   27  bridge help
+   28  man bridge
+   29  bridge link show
+   30  ip a
+   31  export PROV_CONN=ens3f0
+   32    
+   33  sudo nohup bash -c "
+   34      nmcli con down \"$PROV_CONN\"
+   35      nmcli con delete \"$PROV_CONN\"
+   36      nmcli connection add ifname provisioning type bridge con-name provisioning
+   37      nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning
+   38      nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+   39      nmcli con down provisioning
+   40  sudo nohup bash -c "
+   41      nmcli con down \"$PROV_CONN\"
+   42      nmcli con delete \"$PROV_CONN\"
+   43      nmcli connection add ifname provisioning type bridge con-name provisioning
+   44      nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning
+   45      nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+   46      nmcli con down provisioning
+   47      nmcli con up provisioning
+   48  "
+   49  ls
+   50  ll .ssh/
+   51  export PUB_CONN=ens3f5
+   52  ping 200.40.2.224
+   53  vi /etc/environment 
+   54  sudo nmtui
+   55  exit
+   56  export PUB_CONN=ens3f5
+   57  sudo nohup bash -c "
+   58      nmcli con down \"$PUB_CONN\"
+   59      nmcli con delete \"$PUB_CONN\"
+   60      # RHEL 8.1 appends the word \"System\" in front of the connection, delete in case it exists
+   61      nmcli con down \"System $PUB_CONN\"
+   62      nmcli con delete \"System $PUB_CONN\"
+   63      nmcli connection add ifname baremetal type bridge con-name baremetal
+   64      nmcli con add type bridge-slave ifname \"$PUB_CONN\" master baremetal
+   65      pkill dhclient;dhclient baremetal
+   66  "
+   67  ip a
+   68  ip route 
+   69  ip a
+   70  nmcli con up baremetal
+   71  sudo nmcli con up baremetal
+   72  ip a
+   73  sudo nmtui
+   74  ip a
+   75  sudo nmtui
+   76  export PROV_CONN=ens3f0
+   77  sudo nohup bash -c "
+   78      nmcli con down \"$PUB_CONN\""
+   79  sudo nohup bash -c "
+   80      nmcli con delete \"$PUB_CONN\""
+   81  sudo nmcli connection add ifname provisioning type bridge bridge.stp no con-name provisioning
+   82  echo $PROC_CONN
+   83  echo $PROV_CONN
+   84  sudo nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning
+   85  sudo nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+   86  sudo nmcli con down provisioning
+   87  sudo nmtui
+   88  sudo nmcli con up provisioning
+   89  ip a
+   90  sudo nmtui
+   91  ip a
+   92  sudo nmtui
+   93  ip a
+   94  sudo nmtui
+   95  ip a
+   96  sudo nmtui
+   97  ip a
+   98  echo $PROV_CONN
+   99  sudo nohup bash -c "
+  100      nmcli con down \"$PROV_CONN\"
+  101      nmcli con delete \"$PROV_CONN\"
+  102      nmcli connection add ifname provisioning type bridge con-name provisioning bridge.stp no
+  103      nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning 
+  104      nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+  105      nmcli con down provisioning
+  106      nmcli con up provisioning
+  107  "
+  108  ip a
+  109  sudo nmcli con show
+  110  exit
+  111  ssh 200.40.31.103
+  112  history
+  113  su -
+  114  ls -la
+  115  history
+  116  ssh 200.40.31.103
+  117  la
+  118  ll
+  119  cat install-config.yaml 
+  120  history
+  121  id
+  122  ssh 200.40.31.103
+  123  history
+  124  la
+  125  ls -la
+  126  df
+  127  cat pull-secret.txt 
+  128  cat nohup.out 
+  129  file *
+  130  ip a
+  131  la
+  132  ls -la
+  133  m install-config.yaml 
+  134  cat install-config.yaml 
+  135  cat .ssh/id_rsa.pub 
+  136  ssh kni@opcdeployernode.localdomain
+  137  ping opcdeployernode.localdomain
+  138  ip a | grep 200.40.31.100
+  139  nslookup
+  140  la
+  141  ls -la
+  142  ping opcdeployernode.localdomain
+  143  ping 200.40.31.103
+  144  ssh kni@200.40.31.103
+  145  id
+  146  virsh list
+  147  virsh list --all
+  148  ls -latr
+  149  id
+  150  cd rhcos_image_cache/
+  151  la
+  152  ls -la
+  153  cd ..
+  154  ls -laR | m
+  155  ls -laR | less
+  156  ls -la
+  157  file toto
+  158  file *
+  159  id
+  160  cd .ssh/
+  161  la
+  162  ls -la
+  163  cat id_rsa
+  164  ssh kni@200.40.31.103
+  165  la
+  166  ls -la
+  167  ps -efwH
+  168  ps -efwHww
+  169  cd
+  170  la
+  171  ll
+  172  cat install-config.yaml 
+  173   ping ilo17.cloud.lfpw.dsna.fr
+  174  nslookup
+  175  ssh esa@192.168.90.48
+  176  ssh esa@192.168.90.49
+  177  h | grep ssh
+  178  history | grep ssh
+  179  ssh core@200.40.31.103
+  180  ssh core@200.40.31.109
+  181  ssh 200.40.31.109
+  182  ssh 200.40.31.108
+  183  ssh 200.40.31.107
+  184  ssh core@200.40.31.108
+  185  ssh core@200.40.31.107
+  186  ssh core@200.40.31.106
+  187  ssh core@200.40.31.105
+  188  ssh core@200.40.31.104
+  189  id
+  190  ssh core@200.40.31.103
+  191  ssh core@200.40.31.104
+  192  ssh core@200.40.31.109
+  193  ssh 200.40.31.109
+  194  id
+  195  ssh 200.40.31.104
+  196  ssh root@200.40.31.104
+  197  scp /usr/sbin/fc* root@200.40.31.104
+  198  scp /usr/sbin/fc* root@200.40.31.104:
+  199  scp /usr/sbin/fc* root@200.40.31.104:/usr/sbin/
+  200  scp /usr/sbin/fipvlan  root@200.40.31.104:/usr/sbin/
+  201  find / -type f -name libpciaccess*
+  202  rpm -qf /usr/lib64/libpciaccess.so.0.11.1
+  203  rpm -ql libpciaccess
+  204  scp /usr/lib64/libpciaccess.so.0*  root@200.40.31.104:/usr/lib64/
+  205  h
+  206  cp /tmp/install-config.yaml .
+  207  ls
+  208  ll
+  209  cat install-config.yaml 
+  210  cat .ssh/id_rsa.pub 
+  211  vi install-config.yaml 
+  212  export VERSION=latest-4.8
+  213  export RELEASE_IMAGE=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/release.txt | grep 'Pull From: quay.io' | awk -F ' ' '{print $3}')
+  214  echo $RELEASE_IMAGE
+  215  export cmd=openshift-baremetal-install
+  216  export pullsecret_file=~/pull-secret.txt
+  217  vi pull-secret.txt
+  218  echo $pullsecret_file
+  219  export extract_dir=$(pwd)
+  220  curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/openshift-client-linux.tar.gz | tar zxvf - oc
+  221  ./oc version
+  222  sudo cp oc /usr/local/bin
+  223  oc adm release extract --registry-config "${pullsecret_file}" --command=$cmd --to "${extract_dir}" ${RELEASE_IMAGE}
+  224  ls
+  225  sudo cp openshift-baremetal-install /usr/local/bin
+  226  sudo dnf install -y podman
+  227  sudo systemctl status firewalld.service 
+  228  sudo systemctl enable firewalld.service 
+  229  sudo systemctl start firewalld.service 
+  230  vi /etc/environment 
+  231  sudo vi /etc/environment 
+  232  vi /etc/profile
+  233  cat /etc/environment 
+  234  sudo vi /etc/profile
+  235  sudo vi /etc/environment 
+  236  source /etc/environment 
+  237  sudo dnf install -y podman
+  238  podman ps
+  239  sudo firewall-cmd --add-port=8080/tcp --zone=public --permanent
+  240  podman images
+  241  sudo firewall-cmd --reload
+  242  mkdir /home/kni/rhcos_image_cache
+  243  sudo semanage fcontext -a -t httpd_sys_content_t "/home/kni/rhcos_image_cache(/.*)?"
+  244  sudo restorecon -Rv rhcos_image_cache/
+  245  export COMMIT_ID=$(/usr/local/bin/openshift-baremetal-install version | grep '^built from commit' | awk '{print $4}')
+  246  export RHCOS_OPENSTACK_URI=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq .images.openstack.path | sed 's/"//g')
+  247  export RHCOS_QEMU_URI=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq .images.qemu.path | sed 's/"//g')
+  248  export RHCOS_PATH=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json | jq .baseURI | sed 's/"//g')
+  249  export RHCOS_QEMU_SHA_UNCOMPRESSED=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq -r '.images.qemu["uncompressed-sha256"]')
+  250  export RHCOS_OPENSTACK_SHA_COMPRESSED=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq -r '.images.openstack.sha256')
+  251  curl -L ${RHCOS_PATH}${RHCOS_QEMU_URI} -o /home/kni/rhcos_image_cache/${RHCOS_QEMU_URI}
+  252  curl -L ${RHCOS_PATH}${RHCOS_OPENSTACK_URI} -o /home/kni/rhcos_image_cache/${RHCOS_OPENSTACK_URI}
+  253  ls -Z /home/kni/rhcos_image_cache
+  254  podman run -d --name rhcos_image_cache -v /home/kni/rhcos_image_cache:/var/www/html -p 8080:8080/tcp registry.centos.org/centos/httpd-24-centos7:latest
+  255  podman images
+  256  podman ps 
+  257  podman logs rhcos_image_cache
+  258  export BAREMETAL_IP=$(ip addr show dev baremetal | awk '/inet /{print $2}' | cut -d"/" -f1)
+  259  export RHCOS_OPENSTACK_SHA256=$(zcat /home/kni/rhcos_image_cache/${RHCOS_OPENSTACK_URI} | sha256sum | awk '{print $1}')
+  260  export RHCOS_QEMU_SHA256=$(zcat /home/kni/rhcos_image_cache/${RHCOS_QEMU_URI} | sha256sum | awk '{print $1}')
+  261  export CLUSTER_OS_IMAGE="http://${BAREMETAL_IP}:8080/${RHCOS_OPENSTACK_URI}?sha256=${RHCOS_OPENSTACK_SHA256}"
+  262  export BOOTSTRAP_OS_IMAGE="http://${BAREMETAL_IP}:8080/${RHCOS_QEMU_URI}?sha256=${RHCOS_QEMU_SHA256}"
+  263  echo "${RHCOS_OPENSTACK_SHA256}  ${RHCOS_OPENSTACK_URI}" > /home/kni/rhcos_image_cache/rhcos-ootpa-latest.qcow2.md5sum
+  264  echo "    bootstrapOSImage=${BOOTSTRAP_OS_IMAGE}"
+  265  echo "    clusterOSImage=${CLUSTER_OS_IMAGE}"
+  266  vi install-config.yaml 
+  267  mkdir ~/clusterconfigs
+  268  cp install-config.yaml clusterconfigs/
+  269  sudo virsh list
+  270  vi install-config.yaml 
+  271  vi clusterconfigs/install-config.yaml 
+  272  cp clusterconfigs/install-config.yaml .
+  273  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  274  podman ps
+  275  podman logs rhcos_image_cache
+  276  curl -o toto "http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz?sha256=fe7f5cb0bf0a46d8a7a1b58f658cb759732ada5ed875d9ef0f51574bf426b061"
+  277  ls -ltr 
+  278  cat toto 
+  279  curl -X GET http://200.40.31.100:8080/v2/_catalog
+  280  podman ps
+  281  podman pull httpd
+  282  podman images
+  283  netstat -an | grep 8080
+  284  more toto
+  285  vi install-config.yaml 
+  286  curl -o toto "http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz"
+  287  env
+  288  sudo vi /etc/environment 
+  289  sudo vi /etc/profile
+  290  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  291  source /etc/environment 
+  292  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  293  podman ps
+  294  vi install-config.yaml 
+  295  ls
+  296  ls rhcos_image_cache/
+  297  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  298  podman ps
+  299  podman exec -it rhcos_image_cache /bin/bash
+  300  podman ps
+  301  sudo vi /var/log/audit/audit.log
+  302  setenforce 0
+  303  sudo setenforce 0
+  304  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  305  grep rhcos /var/log/audit/audit.log
+  306  sudo grep rhcos /var/log/audit/audit.log
+  307  podman ps
+  308  sestatus 
+  309  podman stop rhcos_image_cache
+  310  podman ps
+  311  podman start rhcos_image_cache
+  312  podman logs rhcos_image_cache
+  313  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  314  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  315  env
+  316  vi /etc/environment 
+  317  sudo vi /etc/
+  318  vi /etc/environment 
+  319  sudo vi /etc/environment 
+  320  unset http_proxy
+  321  unset https_proxy
+  322  env
+  323  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  324  source /etc/environment 
+  325  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  326  ls
+  327  rm -f toto 
+  328  ll
+  329  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  330  ll
+  331  sudo vi /etc/profile
+  332  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  333  cp install-config.yaml clusterconfigs/
+  334  vi install-config.yaml 
+  335  cp install-config.yaml clusterconfigs/
+  336  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  337  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  338  vi install-config.yaml 
+  339  cp install-config.yaml clusterconfigs/
+  340  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  341  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  342  vi install-config.yaml 
+  343  cp install-config.yaml clusterconfigs/
+  344  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  345  vi install-config.yaml 
+  346  exit
+  347  podman pull quay.io/openshift-release-dev/ocp-release@sha256:5fb4b4225498912357294785b96cde6b185eaed20bbf7a4d008c462134a4edfd
+  348  env
+  349  ll
+  350  rm -f toto 
+  351  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  352  podman ps
+  353  vi /etc/environment 
+  354  sestatus 
+  355  env
+  356  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz -vv
+  357  vi install-config.yaml 
+  358  vi /etc/environment 
+  359  sudo vi /etc/environment 
+  360  ip a
+  361  source /etc/environment 
+  362  env
+  363  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz -vv
+  364  vi /etc/environment 
+  365  vi install-config.yaml 
+  366  sudo vi /etc/profile
+  367  sudo -i
+  368  ssh core@200.40.31.111
+  369  ssh core@200.40.31.110
+  370  ssh core@200.40.31.11
+  371  ssh core@200.40.31.110
+  372  vi /var/log/messages
+  373  sudo vi /var/log/messages
+  374  ssh core@200.40.31.107
+  375  vi .ssh/known_hosts 
+  376  ssh core@200.40.31.107
+  377  ssh root@200.40.31.107
+  378  ssh root@200.40.31.106
+  379  vi .ssh/known_hosts 
+  380  ssh root@200.40.31.106
+  381  sudo vi /var/log/messages
+  382  ssh root@200.40.31.104
+  383  ssh core@200.40.31.104
+  384  ssh root@200.40.31.104
+  385  ssh core@200.40.31.104
+  386  ssh core@200.40.31.106
+  387  ssh root@200.40.31.106
+  388  ssh root@200.40.31.104
+  389  ssh core@200.40.31.104
+  390  ssh core@200.40.31.106
+  391  ssh root@200.40.31.106
+  392  ssh core@200.40.31.104
+  393  ssh root@200.40.31.106
+  394  ssh core@200.40.31.104
+  395  vi /var/log/messages
+  396  sudo vi /var/log/messages
+  397  journalctl -f
+  398  sudo journalctl -f
+  399  sudo vi /var/log/messages
+  400  ssh root@200.40.31.106
+  401  vi .ssh/known_hosts 
+  402  ssh root@200.40.31.106
+  403  ssh core@200.40.31.108
+  404  ssh core@200.40.31.104
+  405  ssh root@200.40.31.106
+  406  ssh core@200.40.31.104
+  407  vi .ssh/known_hosts 
+  408  ssh core@200.40.31.104
+  409  tail -f /var/log/messages
+  410  sudo tail -f /var/log/messages
+  411  ping 192.168.90.49
+  412  sudo tail -f /var/log/messages
+  413  tail -f /var/log/messages
+  414  arp -n
+  415  ping 192.168.90.49
+  416  ping 192.168.90.50
+  417  ping 192.168.90.20
+  418  ping 192.168.90.51
+  419  tail -f /var/log/messages
+  420  vi /var/log/messages
+  421  sudo vi /var/log/messages
+  422  journalctl -u dhcpd
+  423  sudo journalctl -u dhcpd
+  424  ssh root@200.40.31.106
+  425  ssh root@200.40.31.107
+  426  ssh root@200.40.31.104
+  427  ssh root@200.40.31.105
+  428  ssh root@200.40.31.107
+  429  ssh root@200.40.31.104
+  430  vi .ssh/known_hosts 
+  431  ssh root@200.40.31.104
+  432  ssh root@200.40.31.108
+  433  ssh root@200.40.31.107
+  434  ssh root@200.40.31.108
+  435  ssh root@200.40.31.106
+  436  ssh root@200.40.31.104
+  437  env
+  438  dig a api.ocp-cloud.cloud.lfpw.dsna.fr
+  439  ssh root@200.40.31.106
+  440  ssh core@200.40.31.104
+  441  vi .ssh/known_hosts 
+  442  ssh core@200.40.31.104
+  443  ssh core@200.40.31.106
+  444  sudo journalctl -u dhcpd
+  445  ssh root@200.40.31.106
+  446  ssh root@200.40.31.104
+  447  ssh root@200.40.31.105
+  448  ssh root@200.40.31.104
+  449  sudo journalctl -u dhcpd
+  450  ssh root@200.40.31.104
+  451  ssh root@200.40.31.105
+  452  ssh root@200.40.31.106
+  453  ssh root@200.40.31.107
+  454  ssh root@200.40.31.108
+  455  ssh root@200.40.31.109
+  456  ssh root@200.40.31.106
+  457  ssh root@200.40.31.107
+  458  sudo journalctl -u dhcpd
+  459  ssh root@200.40.31.106
+  460  ssh root@200.40.31.104
+  461  ssh core@200.40.31.10
+  462  ssh root@200.40.31.104
+  463  ssh root@200.40.31.106
+  464  ssh root@200.40.31.104
+  465  vi .ssh/known_hosts 
+  466  ssh root@200.40.31.104
+  467  sudo -i
+  468  ssh root@200.40.31.118
+  469  ssh core@200.40.31.117
+  470  ssh core@200.40.31.119
+  471  ssh root@200.40.31.119
+  472  ssh core@200.40.31.117
+  473  ssh root@200.40.31.117
+  474  ssh root@200.40.31.119
+  475  ip a
+  476  ssh root@200.40.31.119
+  477  vi .ssh/known_hosts 
+  478  ssh root@200.40.31.119
+  479  ssh root@200.40.31.118
+  480  ssh root@200.40.31.117
+  481  ssh root@200.40.31.118
+  482  ssh root@200.40.31.119
+  483  ssh core@200.40.31.119
+  484  vi .ssh/known_hosts 
+  485  ssh root@200.40.31.119
+  486  ssh root@200.40.31.117
+  487  ssh root@200.40.31.119
+  488  ssh root@200.40.31.118
+  489  ssh root@200.40.31.119
+  490  vi clusterconfigs/terraform.tfvars.json 
+  491  ssh root@200.40.31.119
+  492  ssh root@200.40.31.118
+  493  ssh root@200.40.31.119
+  494  ssh root@200.40.31.117
+  495  ssh core@200.40.31.117
+  496  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  497  ssh core@200.40.31.117
+  498  vi .ssh/known_hosts 
+  499  ssh core@200.40.31.117
+  500  ssh core@200.40.31.118
+  501  ssh core@200.40.31.119
+  502  ssh core@200.40.31.117
+  503  ssh core@200.40.31.118
+  504  ssh core@200.40.31.117
+  505  ssh core@200.40.31.118
+  506  ssh core@200.40.31.119
+  507  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  508  oc get nodes
+  509  ssh core@200.40.31.117
+  510  oc get nodes
+  511  ssh core@200.40.31.117
+  512  oc get nodes
+  513  ssh core@200.40.31.117
+  514  exit
+  515  ssh core@200.40.31.118
+  516  ssh core@200.40.31.119
+  517  ssh core@200.40.31.117
+  518  ssh core@200.40.31.118
+  519  ssh core@200.40.31.119
+  520  ssh core@200.40.31.118
+  521  ssh core@200.40.31.119
+  522  ssh core@200.40.31.118
+  523  ssh core@200.40.31.117
+  524  ssh core@200.40.31.119
+  525  ssh core@200.40.31.118
+  526  ssh core@200.40.31.117
+  527  sudo vi /etc/dhcp/dhcpd.conf
+  528  ip a
+  529  sudo vi /etc/dhcp/dhcpd.conf
+  530  sudo systemctl restart dhcpd
+  531  journalctl -f | grep dhcpd
+  532  sudo journalctl -f | grep dhcpd
+  533  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  cluster
+  534  vi install-config.yaml 
+  535  cp install-config.yaml install-config.yaml-back
+  536  vi install-config.yaml 
+  537  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  destroy cluster
+  538  ls clusterconfigs/
+  539  vi install-config.yaml
+  540  vi install-config.yaml 
+  541  ip a
+  542  sudo nmtui
+  543  sudo ls /etc/dhcp/
+  544  sudo vi /etc/dhcp/dhcpd.conf
+  545  sudo nmtui
+  546  cp install-config.yaml clusterconfigs/
+  547  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  548  vi install-config.yaml
+  549  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  550  cp install-config.yaml clusterconfigs/
+  551  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  552  vi install-config.yaml
+  553  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  554  vi install-config.yaml
+  555  cd clusterconfigs/
+  556  ll
+  557  vi metadata.json
+  558  vi terraform.tfstate
+  559  grep "88486f61-aff4-4f1c-adcd-9d1cfa117698" *
+  560  vi terraform.tfstate
+  561  cd ..
+  562  vi install-config.yaml
+  563  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  destroy cluster
+  564  vi install-config.yaml
+  565  cp install-config.yaml clusterconfigs/
+  566  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  567  vi clusterconfigs/terraform.tfstate 
+  568  vi install-config.yaml
+  569  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  570  vi install-config.yaml
+  571  cp install-config.yaml clusterconfigs/
+  572  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  573  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443/
+  574  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  575  oc get co
+  576  oc get nodes
+  577  oc get co
+  578  oc get ns
+  579  oc get nodes
+  580  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443/
+  581  oc get nodes
+  582  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  583  vi install-config.yaml
+  584  cp install-config.yaml clusterconfigs/
+  585  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  586  vi install-config.yaml
+  587  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  588  cp install-config.yaml clusterconfigs/
+  589  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  590  podman ps
+  591  podman stop rhcos_image_cache
+  592  podman start rhcos_image_cache
+  593  ls rhcos_image_cache/
+  594  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  595  cp install-config.yaml clusterconfigs/
+  596  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  597  curl http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  598  ip a
+  599  sudo mntui
+  600  sudo nmtui
+  601  vi install-config.yaml
+  602  curl http://200.40.31.224:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  603  source /etc/environment 
+  604  curl http://200.40.31.224:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  605  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  606  cp install-config.yaml clusterconfigs/
+  607  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  608  vi clusterconfigs/terraform.tfstate 
+  609  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  610  oc get nodes
+  611  oc get co
+  612  vi install-config.yaml
+  613  oc get nodes
+  614  vi install-config.yaml
+  615  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  616  cp install-config.yaml clusterconfigs/
+  617  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  618  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  619  cp install-config.yaml clusterconfigs/
+  620  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  621  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  622  curl -k https://200.40.31.200:6443
+  623  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  624  ip a
+  625  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  626  oc get nodes
+  627  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  628  oc get nodes
+  629  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  630  oc get nodes
+  631  vi install-config.yaml
+  632  sudo vi /etc/dhcp/dhcpd.conf
+  633  oc get nodes
+  634  oc get co
+  635  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  636  oc get nodes
+  637  oc get nodes -o wide
+  638  oc get nodes
+  639  oc get csr
+  640  oc get nodes
+  641  dig a lame18-master.cloud.lfpw.dsna.fr
+  642  oc get co
+  643  oc get pod -A
+  644  oc logs openshift-network-diagnostics
+  645  oc get pods -A | grep db
+  646  oc get pods -n openshift-ovn-kubernetes
+  647  oc logs ovnkube-master-7ktkg -n openshift-ovn-kubernetes
+  648  oc logs ovnkube-master-7ktkg -n openshift-ovn-kubernetes  sbdb
+  649  oc logs ovnkube-master-7ktkg -n openshift-ovn-kubernetes  nbdb
+  650  oc get csr
+  651  oc get nodes
+  652  oc delete node r200-40-31-118-static.vera.com.uy
+  653  oc delete node r200-40-31-118-static
+  654  oc get nodes
+  655  ip a
+  656  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  657  cp install-config.yaml clusterconfigs/
+  658  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  659  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  660  sudo shutdown now
+  661  ssh core@200.40.31.101
+  662  sudo virsh list
+  663  sudo virsh destroy ocp-cloud-mdmb9-bootstrap
+  664  sudo virsh list
+  665  sudo virsh undefine ocp-cloud-mdmb9-bootstrap
+  666  sudo virsh list --all
+  667  sudo virsh console ocp-cloud-b62ss-bootstrap
+  668  ssh core@200.40.31.102
+  669  sudo virsh list --all
+  670  sudo virsh destroy ocp-cloud-b62ss-bootstrap 
+  671  sudo virsh undefine ocp-cloud-b62ss-bootstrap 
+  672  sudo virsh list --all
+  673  sudo virsh console ocp-cloud-psqbp-bootstrap
+  674  ssh core@200.40.31.103
+  675  history
+  676  ssh core@200.40.31.103
+  677  virsh list --all
+  678  sudo virsh destroy ocp-cloud-b62ss-bootstrap 
+  679  sudo virsh undefine ocp-cloud-b62ss-bootstrap 
+  680  virsh list --all
+  681  sudo virsh list --all
+  682  sudo ls -ltr /var/lib/libvirt/qemu/
+  683  sudo virsh destroy ocp-cloud-psqbp-bootstrap
+  684  sudo virsh undefine ocp-cloud-psqbp-bootstrap
+  685  sudo -i
+  686  ssh core@200.40.31.110
+  687  sudo virsh list --all
+  688  sudo virsh destroy ocp-cloud-82dpf-bootstrap
+  689  sudo virsh undefine ocp-cloud-82dpf-bootstrap
+  690  sudo virsh list --all
+  691  sudo virsh console ocp-cloud-w77mg-bootstrap
+  692  ssh core@200.40.31.111
+  693  sudo virsh list --all
+  694  sudo virsh destroy ocp-cloud-w77mg-bootstrap
+  695  sudo virsh undefine ocp-cloud-w77mg-bootstrap
+  696  sudo virsh list --all
+  697  sudo virsh console ocp-cloud-2bjbz-bootstrap
+  698  ssh core@200.40.31.112
+  699  sudo virsh destroy ocp-cloud-2bjbz-bootstrap
+  700  sudo virsh undefine ocp-cloud-2bjbz-bootstrap
+  701  sudo virsh list --all
+  702  sudo virsh console ocp-cloud-pshf2-bootstrap
+  703  ssh core@200.40.31.114
+  704  sudo virsh destroy ocp-cloud-pshf2-bootstrap
+  705  sudo virsh undefine ocp-cloud-pshf2-bootstrap
+  706  sudo virsh list --all
+  707  vi install-config.yaml
+  708  sudo virsh list --all
+  709  sudo virsh console ocp-cloud-wtkxq-bootstrap
+  710  ssh core@200.40.31.101
+  711  vi .ssh/known_hosts 
+  712  ssh core@200.40.31.101
+  713  sudo virsh list --all
+  714  sudo virsh destroy ocp-cloud-wtkxq-bootstrap
+  715  sudo virsh undefine ocp-cloud-wtkxq-bootstrap
+  716  sudo virsh list --all
+  717  sudo virsh console ocp-cloud-zwssh-bootstrap
+  718  ssh core@200.40.31.102
+  719  sudo virsh destroy ocp-cloud-zwssh-bootstrap
+  720  sudo virsh undefine ocp-cloud-zwssh-bootstrap
+  721  sudo virsh list --all
+  722  sudo virsh console ocp-cloud-n9g2z-bootstrap
+  723  ssh core@200.40.31.103
+  724  sudo virsh list --all
+  725  sudo virsh destroy ocp-cloud-n9g2z-bootstrap
+  726  sudo virsh undefine ocp-cloud-n9g2z-bootstrap
+  727  sudo virsh list --all
+  728  sudo virsh console ocp-cloud-trh5g-bootstrap
+  729  ssh core@200.40.31.104
+  730  sudo virsh destroy ocp-cloud-trh5g-bootstrap
+  731  sudo virsh undefine ocp-cloud-trh5g-bootstrap
+  732  sudo virsh list --all
+  733  sudo virsh console ocp-cloud-mrjb9-bootstrap
+  734  vi install-config.yaml
+  735  ip a
+  736  sudo virsh console ocp-cloud-mrjb9-bootstrap
+  737  sudo virsh destroy ocp-cloud-mrjb9-bootstrap
+  738  sudo virsh undefine ocp-cloud-mrjb9-bootstrap
+  739  sudo virsh list --all
+  740  sudo virsh console ocp-cloud-fl9m2-bootstrap
+  741  ssh core@200.40.31.107
+  742  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  743  oc get node
+  744  oc get pods -n openshift-etcd
+  745  oc get pods -n openshift-etcd -o wide
+  746  oc get co
+  747  oc get nodes
+  748  vi clusterconfigs/.openshift_install.log 
+  749  ls
+  750  oc get nodes
+  751  oc get co
+  752  oc get mc
+  753  oc get mc rendered-worker-60646a2e94785330d2a77063e8794c48 -o yaml
+  754  oc get mc
+  755  oc get pods -n openshift-machine-config-operator 
+  756  oc get mc
+  757  oc get pods -n openshift-machine-config-operator 
+  758  oc get pods -n openshift-machine-api
+  759  oc get baremetalhost -A
+  760  oc get machines
+  761  oc get machine
+  762  oc get machine -A
+  763  oc get machine/ocp-cloud-fl9m2-worker-0-6zvkj -n openshift-machine-api -o yaml
+  764  oc get pods -n openshift-machine-api
+  765  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api
+  766  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor
+  767  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo
+  768  curl -k https://ilo20.cloud.lfpw.dsna.fr/redfish/v1/
+  769  dig a ilo20.cloud.lfpw.dsna.fr
+  770  oc get pods -n openshift-machine-api -o wide
+  771  curl -k https://ilo20.cloud.lfpw.dsna.fr/redfish/v1/
+  772  ping ilo20.cloud.lfpw.dsna.fr
+  773  ping ilo21.cloud.lfpw.dsna.fr
+  774  ping ilo18.cloud.lfpw.dsna.fr
+  775  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo
+  776  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  777  oc delete pod metal3-6d49b88dff-dwmb4 -n openshift-machine-api
+  778  oc get pods -n openshift-machine-api
+  779  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  780  oc get pods -n openshift-machine-api
+  781  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  782  oc get pods -A | grep etcd
+  783  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  784  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo19
+  785  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  786  oc get pods -n openshift-machine-api -o wide
+  787  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  788  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo19
+  789  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo21
+  790  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  791  history > cmd-install
+    1  ll
+    2  sudo subscription-manager register --username=cdiengatos --auto-attach
+    3  sudo subscription-manager repos --enable=rhel-8-for-x86_64-appstream-rpms --enable=rhel-8-for-x86_64-baseos-rpms
+    4  sudo dnf install -y libvirt qemu-kvm mkisofs python3-devel jq ipmitool
+    5  sudo usermod --append --groups libvirt kni
+    6  systemctl status firewalld.service 
+    7  sudo firewall-cmd --zone=public --add-service=http --permanent
+    8  sudo firewall-cmd --reload
+    9  sudo systemctl enable libvirtd --now
+   10  sudo virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images
+   11  sudo virsh pool-start default
+   12  sudo virsh pool-autostart default
+   13  ip a
+   14  export PUB_CONN=ens3f4
+   15  sudo nohup bash -c "
+   16      nmcli con down \"$PUB_CONN\"
+   17      nmcli con delete \"$PUB_CONN\"
+   18      # RHEL 8.1 appends the word \"System\" in front of the connection, delete in case it exists
+   19      nmcli con down \"System $PUB_CONN\"
+   20      nmcli con delete \"System $PUB_CONN\"
+   21      nmcli connection add ifname baremetal type bridge con-name baremetal
+   22      nmcli con add type bridge-slave ifname \"$PUB_CONN\" master baremetal
+   23      pkill dhclient;dhclient baremetal
+   24  "
+   25  bridge network list
+   26  bridge list
+   27  bridge help
+   28  man bridge
+   29  bridge link show
+   30  ip a
+   31  export PROV_CONN=ens3f0
+   32    
+   33  sudo nohup bash -c "
+   34      nmcli con down \"$PROV_CONN\"
+   35      nmcli con delete \"$PROV_CONN\"
+   36      nmcli connection add ifname provisioning type bridge con-name provisioning
+   37      nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning
+   38      nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+   39      nmcli con down provisioning
+   40  sudo nohup bash -c "
+   41      nmcli con down \"$PROV_CONN\"
+   42      nmcli con delete \"$PROV_CONN\"
+   43      nmcli connection add ifname provisioning type bridge con-name provisioning
+   44      nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning
+   45      nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+   46      nmcli con down provisioning
+   47      nmcli con up provisioning
+   48  "
+   49  ls
+   50  ll .ssh/
+   51  export PUB_CONN=ens3f5
+   52  ping 200.40.2.224
+   53  vi /etc/environment 
+   54  sudo nmtui
+   55  exit
+   56  export PUB_CONN=ens3f5
+   57  sudo nohup bash -c "
+   58      nmcli con down \"$PUB_CONN\"
+   59      nmcli con delete \"$PUB_CONN\"
+   60      # RHEL 8.1 appends the word \"System\" in front of the connection, delete in case it exists
+   61      nmcli con down \"System $PUB_CONN\"
+   62      nmcli con delete \"System $PUB_CONN\"
+   63      nmcli connection add ifname baremetal type bridge con-name baremetal
+   64      nmcli con add type bridge-slave ifname \"$PUB_CONN\" master baremetal
+   65      pkill dhclient;dhclient baremetal
+   66  "
+   67  ip a
+   68  ip route 
+   69  ip a
+   70  nmcli con up baremetal
+   71  sudo nmcli con up baremetal
+   72  ip a
+   73  sudo nmtui
+   74  ip a
+   75  sudo nmtui
+   76  export PROV_CONN=ens3f0
+   77  sudo nohup bash -c "
+   78      nmcli con down \"$PUB_CONN\""
+   79  sudo nohup bash -c "
+   80      nmcli con delete \"$PUB_CONN\""
+   81  sudo nmcli connection add ifname provisioning type bridge bridge.stp no con-name provisioning
+   82  echo $PROC_CONN
+   83  echo $PROV_CONN
+   84  sudo nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning
+   85  sudo nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+   86  sudo nmcli con down provisioning
+   87  sudo nmtui
+   88  sudo nmcli con up provisioning
+   89  ip a
+   90  sudo nmtui
+   91  ip a
+   92  sudo nmtui
+   93  ip a
+   94  sudo nmtui
+   95  ip a
+   96  sudo nmtui
+   97  ip a
+   98  echo $PROV_CONN
+   99  sudo nohup bash -c "
+  100      nmcli con down \"$PROV_CONN\"
+  101      nmcli con delete \"$PROV_CONN\"
+  102      nmcli connection add ifname provisioning type bridge con-name provisioning bridge.stp no
+  103      nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning 
+  104      nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+  105      nmcli con down provisioning
+  106      nmcli con up provisioning
+  107  "
+  108  ip a
+  109  sudo nmcli con show
+  110  exit
+  111  ssh 200.40.31.103
+  112  history
+  113  su -
+  114  ls -la
+  115  history
+  116  ssh 200.40.31.103
+  117  la
+  118  ll
+  119  cat install-config.yaml 
+  120  history
+  121  id
+  122  ssh 200.40.31.103
+  123  history
+  124  la
+  125  ls -la
+  126  df
+  127  cat pull-secret.txt 
+  128  cat nohup.out 
+  129  file *
+  130  ip a
+  131  la
+  132  ls -la
+  133  m install-config.yaml 
+  134  cat install-config.yaml 
+  135  cat .ssh/id_rsa.pub 
+  136  ssh kni@opcdeployernode.localdomain
+  137  ping opcdeployernode.localdomain
+  138  ip a | grep 200.40.31.100
+  139  nslookup
+  140  la
+  141  ls -la
+  142  ping opcdeployernode.localdomain
+  143  ping 200.40.31.103
+  144  ssh kni@200.40.31.103
+  145  id
+  146  virsh list
+  147  virsh list --all
+  148  ls -latr
+  149  id
+  150  cd rhcos_image_cache/
+  151  la
+  152  ls -la
+  153  cd ..
+  154  ls -laR | m
+  155  ls -laR | less
+  156  ls -la
+  157  file toto
+  158  file *
+  159  id
+  160  cd .ssh/
+  161  la
+  162  ls -la
+  163  cat id_rsa
+  164  ssh kni@200.40.31.103
+  165  la
+  166  ls -la
+  167  ps -efwH
+  168  ps -efwHww
+  169  cd
+  170  la
+  171  ll
+  172  cat install-config.yaml 
+  173   ping ilo17.cloud.lfpw.dsna.fr
+  174  nslookup
+  175  ssh esa@192.168.90.48
+  176  ssh esa@192.168.90.49
+  177  h | grep ssh
+  178  history | grep ssh
+  179  ssh core@200.40.31.103
+  180  ssh core@200.40.31.109
+  181  ssh 200.40.31.109
+  182  ssh 200.40.31.108
+  183  ssh 200.40.31.107
+  184  ssh core@200.40.31.108
+  185  ssh core@200.40.31.107
+  186  ssh core@200.40.31.106
+  187  ssh core@200.40.31.105
+  188  ssh core@200.40.31.104
+  189  id
+  190  ssh core@200.40.31.103
+  191  ssh core@200.40.31.104
+  192  ssh core@200.40.31.109
+  193  ssh 200.40.31.109
+  194  id
+  195  ssh 200.40.31.104
+  196  ssh root@200.40.31.104
+  197  scp /usr/sbin/fc* root@200.40.31.104
+  198  scp /usr/sbin/fc* root@200.40.31.104:
+  199  scp /usr/sbin/fc* root@200.40.31.104:/usr/sbin/
+  200  scp /usr/sbin/fipvlan  root@200.40.31.104:/usr/sbin/
+  201  find / -type f -name libpciaccess*
+  202  rpm -qf /usr/lib64/libpciaccess.so.0.11.1
+  203  rpm -ql libpciaccess
+  204  scp /usr/lib64/libpciaccess.so.0*  root@200.40.31.104:/usr/lib64/
+  205  h
+  206  cp /tmp/install-config.yaml .
+  207  ls
+  208  ll
+  209  cat install-config.yaml 
+  210  cat .ssh/id_rsa.pub 
+  211  vi install-config.yaml 
+  212  export VERSION=latest-4.8
+  213  export RELEASE_IMAGE=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/release.txt | grep 'Pull From: quay.io' | awk -F ' ' '{print $3}')
+  214  echo $RELEASE_IMAGE
+  215  export cmd=openshift-baremetal-install
+  216  export pullsecret_file=~/pull-secret.txt
+  217  vi pull-secret.txt
+  218  echo $pullsecret_file
+  219  export extract_dir=$(pwd)
+  220  curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/openshift-client-linux.tar.gz | tar zxvf - oc
+  221  ./oc version
+  222  sudo cp oc /usr/local/bin
+  223  oc adm release extract --registry-config "${pullsecret_file}" --command=$cmd --to "${extract_dir}" ${RELEASE_IMAGE}
+  224  ls
+  225  sudo cp openshift-baremetal-install /usr/local/bin
+  226  sudo dnf install -y podman
+  227  sudo systemctl status firewalld.service 
+  228  sudo systemctl enable firewalld.service 
+  229  sudo systemctl start firewalld.service 
+  230  vi /etc/environment 
+  231  sudo vi /etc/environment 
+  232  vi /etc/profile
+  233  cat /etc/environment 
+  234  sudo vi /etc/profile
+  235  sudo vi /etc/environment 
+  236  source /etc/environment 
+  237  sudo dnf install -y podman
+  238  podman ps
+  239  sudo firewall-cmd --add-port=8080/tcp --zone=public --permanent
+  240  podman images
+  241  sudo firewall-cmd --reload
+  242  mkdir /home/kni/rhcos_image_cache
+  243  sudo semanage fcontext -a -t httpd_sys_content_t "/home/kni/rhcos_image_cache(/.*)?"
+  244  sudo restorecon -Rv rhcos_image_cache/
+  245  export COMMIT_ID=$(/usr/local/bin/openshift-baremetal-install version | grep '^built from commit' | awk '{print $4}')
+  246  export RHCOS_OPENSTACK_URI=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq .images.openstack.path | sed 's/"//g')
+  247  export RHCOS_QEMU_URI=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq .images.qemu.path | sed 's/"//g')
+  248  export RHCOS_PATH=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json | jq .baseURI | sed 's/"//g')
+  249  export RHCOS_QEMU_SHA_UNCOMPRESSED=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq -r '.images.qemu["uncompressed-sha256"]')
+  250  export RHCOS_OPENSTACK_SHA_COMPRESSED=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq -r '.images.openstack.sha256')
+  251  curl -L ${RHCOS_PATH}${RHCOS_QEMU_URI} -o /home/kni/rhcos_image_cache/${RHCOS_QEMU_URI}
+  252  curl -L ${RHCOS_PATH}${RHCOS_OPENSTACK_URI} -o /home/kni/rhcos_image_cache/${RHCOS_OPENSTACK_URI}
+  253  ls -Z /home/kni/rhcos_image_cache
+  254  podman run -d --name rhcos_image_cache -v /home/kni/rhcos_image_cache:/var/www/html -p 8080:8080/tcp registry.centos.org/centos/httpd-24-centos7:latest
+  255  podman images
+  256  podman ps 
+  257  podman logs rhcos_image_cache
+  258  export BAREMETAL_IP=$(ip addr show dev baremetal | awk '/inet /{print $2}' | cut -d"/" -f1)
+  259  export RHCOS_OPENSTACK_SHA256=$(zcat /home/kni/rhcos_image_cache/${RHCOS_OPENSTACK_URI} | sha256sum | awk '{print $1}')
+  260  export RHCOS_QEMU_SHA256=$(zcat /home/kni/rhcos_image_cache/${RHCOS_QEMU_URI} | sha256sum | awk '{print $1}')
+  261  export CLUSTER_OS_IMAGE="http://${BAREMETAL_IP}:8080/${RHCOS_OPENSTACK_URI}?sha256=${RHCOS_OPENSTACK_SHA256}"
+  262  export BOOTSTRAP_OS_IMAGE="http://${BAREMETAL_IP}:8080/${RHCOS_QEMU_URI}?sha256=${RHCOS_QEMU_SHA256}"
+  263  echo "${RHCOS_OPENSTACK_SHA256}  ${RHCOS_OPENSTACK_URI}" > /home/kni/rhcos_image_cache/rhcos-ootpa-latest.qcow2.md5sum
+  264  echo "    bootstrapOSImage=${BOOTSTRAP_OS_IMAGE}"
+  265  echo "    clusterOSImage=${CLUSTER_OS_IMAGE}"
+  266  vi install-config.yaml 
+  267  mkdir ~/clusterconfigs
+  268  cp install-config.yaml clusterconfigs/
+  269  sudo virsh list
+  270  vi install-config.yaml 
+  271  vi clusterconfigs/install-config.yaml 
+  272  cp clusterconfigs/install-config.yaml .
+  273  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  274  podman ps
+  275  podman logs rhcos_image_cache
+  276  curl -o toto "http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz?sha256=fe7f5cb0bf0a46d8a7a1b58f658cb759732ada5ed875d9ef0f51574bf426b061"
+  277  ls -ltr 
+  278  cat toto 
+  279  curl -X GET http://200.40.31.100:8080/v2/_catalog
+  280  podman ps
+  281  podman pull httpd
+  282  podman images
+  283  netstat -an | grep 8080
+  284  more toto
+  285  vi install-config.yaml 
+  286  curl -o toto "http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz"
+  287  env
+  288  sudo vi /etc/environment 
+  289  sudo vi /etc/profile
+  290  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  291  source /etc/environment 
+  292  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  293  podman ps
+  294  vi install-config.yaml 
+  295  ls
+  296  ls rhcos_image_cache/
+  297  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  298  podman ps
+  299  podman exec -it rhcos_image_cache /bin/bash
+  300  podman ps
+  301  sudo vi /var/log/audit/audit.log
+  302  setenforce 0
+  303  sudo setenforce 0
+  304  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  305  grep rhcos /var/log/audit/audit.log
+  306  sudo grep rhcos /var/log/audit/audit.log
+  307  podman ps
+  308  sestatus 
+  309  podman stop rhcos_image_cache
+  310  podman ps
+  311  podman start rhcos_image_cache
+  312  podman logs rhcos_image_cache
+  313  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  314  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  315  env
+  316  vi /etc/environment 
+  317  sudo vi /etc/
+  318  vi /etc/environment 
+  319  sudo vi /etc/environment 
+  320  unset http_proxy
+  321  unset https_proxy
+  322  env
+  323  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  324  source /etc/environment 
+  325  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  326  ls
+  327  rm -f toto 
+  328  ll
+  329  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  330  ll
+  331  sudo vi /etc/profile
+  332  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  333  cp install-config.yaml clusterconfigs/
+  334  vi install-config.yaml 
+  335  cp install-config.yaml clusterconfigs/
+  336  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  337  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  338  vi install-config.yaml 
+  339  cp install-config.yaml clusterconfigs/
+  340  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  341  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  342  vi install-config.yaml 
+  343  cp install-config.yaml clusterconfigs/
+  344  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  345  vi install-config.yaml 
+  346  exit
+  347  podman pull quay.io/openshift-release-dev/ocp-release@sha256:5fb4b4225498912357294785b96cde6b185eaed20bbf7a4d008c462134a4edfd
+  348  env
+  349  ll
+  350  rm -f toto 
+  351  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  352  podman ps
+  353  vi /etc/environment 
+  354  sestatus 
+  355  env
+  356  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz -vv
+  357  vi install-config.yaml 
+  358  vi /etc/environment 
+  359  sudo vi /etc/environment 
+  360  ip a
+  361  source /etc/environment 
+  362  env
+  363  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz -vv
+  364  vi /etc/environment 
+  365  vi install-config.yaml 
+  366  sudo vi /etc/profile
+  367  sudo -i
+  368  ssh core@200.40.31.111
+  369  ssh core@200.40.31.110
+  370  ssh core@200.40.31.11
+  371  ssh core@200.40.31.110
+  372  vi /var/log/messages
+  373  sudo vi /var/log/messages
+  374  ssh core@200.40.31.107
+  375  vi .ssh/known_hosts 
+  376  ssh core@200.40.31.107
+  377  ssh root@200.40.31.107
+  378  ssh root@200.40.31.106
+  379  vi .ssh/known_hosts 
+  380  ssh root@200.40.31.106
+  381  sudo vi /var/log/messages
+  382  ssh root@200.40.31.104
+  383  ssh core@200.40.31.104
+  384  ssh root@200.40.31.104
+  385  ssh core@200.40.31.104
+  386  ssh core@200.40.31.106
+  387  ssh root@200.40.31.106
+  388  ssh root@200.40.31.104
+  389  ssh core@200.40.31.104
+  390  ssh core@200.40.31.106
+  391  ssh root@200.40.31.106
+  392  ssh core@200.40.31.104
+  393  ssh root@200.40.31.106
+  394  ssh core@200.40.31.104
+  395  vi /var/log/messages
+  396  sudo vi /var/log/messages
+  397  journalctl -f
+  398  sudo journalctl -f
+  399  sudo vi /var/log/messages
+  400  ssh root@200.40.31.106
+  401  vi .ssh/known_hosts 
+  402  ssh root@200.40.31.106
+  403  ssh core@200.40.31.108
+  404  ssh core@200.40.31.104
+  405  ssh root@200.40.31.106
+  406  ssh core@200.40.31.104
+  407  vi .ssh/known_hosts 
+  408  ssh core@200.40.31.104
+  409  tail -f /var/log/messages
+  410  sudo tail -f /var/log/messages
+  411  ping 192.168.90.49
+  412  sudo tail -f /var/log/messages
+  413  tail -f /var/log/messages
+  414  arp -n
+  415  ping 192.168.90.49
+  416  ping 192.168.90.50
+  417  ping 192.168.90.20
+  418  ping 192.168.90.51
+  419  tail -f /var/log/messages
+  420  vi /var/log/messages
+  421  sudo vi /var/log/messages
+  422  journalctl -u dhcpd
+  423  sudo journalctl -u dhcpd
+  424  ssh root@200.40.31.106
+  425  ssh root@200.40.31.107
+  426  ssh root@200.40.31.104
+  427  ssh root@200.40.31.105
+  428  ssh root@200.40.31.107
+  429  ssh root@200.40.31.104
+  430  vi .ssh/known_hosts 
+  431  ssh root@200.40.31.104
+  432  ssh root@200.40.31.108
+  433  ssh root@200.40.31.107
+  434  ssh root@200.40.31.108
+  435  ssh root@200.40.31.106
+  436  ssh root@200.40.31.104
+  437  env
+  438  dig a api.ocp-cloud.cloud.lfpw.dsna.fr
+  439  ssh root@200.40.31.106
+  440  ssh core@200.40.31.104
+  441  vi .ssh/known_hosts 
+  442  ssh core@200.40.31.104
+  443  ssh core@200.40.31.106
+  444  sudo journalctl -u dhcpd
+  445  ssh root@200.40.31.106
+  446  ssh root@200.40.31.104
+  447  ssh root@200.40.31.105
+  448  ssh root@200.40.31.104
+  449  sudo journalctl -u dhcpd
+  450  ssh root@200.40.31.104
+  451  ssh root@200.40.31.105
+  452  ssh root@200.40.31.106
+  453  ssh root@200.40.31.107
+  454  ssh root@200.40.31.108
+  455  ssh root@200.40.31.109
+  456  ssh root@200.40.31.106
+  457  ssh root@200.40.31.107
+  458  sudo journalctl -u dhcpd
+  459  ssh root@200.40.31.106
+  460  ssh root@200.40.31.104
+  461  ssh core@200.40.31.10
+  462  ssh root@200.40.31.104
+  463  ssh root@200.40.31.106
+  464  ssh root@200.40.31.104
+  465  vi .ssh/known_hosts 
+  466  ssh root@200.40.31.104
+  467  sudo -i
+  468  ssh root@200.40.31.118
+  469  ssh core@200.40.31.117
+  470  ssh core@200.40.31.119
+  471  ssh root@200.40.31.119
+  472  ssh core@200.40.31.117
+  473  ssh root@200.40.31.117
+  474  ssh root@200.40.31.119
+  475  ip a
+  476  ssh root@200.40.31.119
+  477  vi .ssh/known_hosts 
+  478  ssh root@200.40.31.119
+  479  ssh root@200.40.31.118
+  480  ssh root@200.40.31.117
+  481  ssh root@200.40.31.118
+  482  ssh root@200.40.31.119
+  483  ssh core@200.40.31.119
+  484  vi .ssh/known_hosts 
+  485  ssh root@200.40.31.119
+  486  ssh root@200.40.31.117
+  487  ssh root@200.40.31.119
+  488  ssh root@200.40.31.118
+  489  ssh root@200.40.31.119
+  490  vi clusterconfigs/terraform.tfvars.json 
+  491  ssh root@200.40.31.119
+  492  ssh root@200.40.31.118
+  493  ssh root@200.40.31.119
+  494  ssh root@200.40.31.117
+  495  ssh core@200.40.31.117
+  496  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  497  ssh core@200.40.31.117
+  498  vi .ssh/known_hosts 
+  499  ssh core@200.40.31.117
+  500  ssh core@200.40.31.118
+  501  ssh core@200.40.31.119
+  502  ssh core@200.40.31.117
+  503  ssh core@200.40.31.118
+  504  ssh core@200.40.31.117
+  505  ssh core@200.40.31.118
+  506  ssh core@200.40.31.119
+  507  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  508  oc get nodes
+  509  ssh core@200.40.31.117
+  510  oc get nodes
+  511  ssh core@200.40.31.117
+  512  oc get nodes
+  513  ssh core@200.40.31.117
+  514  exit
+  515  ssh core@200.40.31.118
+  516  ssh core@200.40.31.119
+  517  ssh core@200.40.31.117
+  518  ssh core@200.40.31.118
+  519  ssh core@200.40.31.119
+  520  ssh core@200.40.31.118
+  521  ssh core@200.40.31.119
+  522  ssh core@200.40.31.118
+  523  ssh core@200.40.31.117
+  524  ssh core@200.40.31.119
+  525  ssh core@200.40.31.118
+  526  ssh core@200.40.31.117
+  527  sudo vi /etc/dhcp/dhcpd.conf
+  528  ip a
+  529  sudo vi /etc/dhcp/dhcpd.conf
+  530  sudo systemctl restart dhcpd
+  531  journalctl -f | grep dhcpd
+  532  sudo journalctl -f | grep dhcpd
+  533  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  cluster
+  534  vi install-config.yaml 
+  535  cp install-config.yaml install-config.yaml-back
+  536  vi install-config.yaml 
+  537  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  destroy cluster
+  538  ls clusterconfigs/
+  539  vi install-config.yaml
+  540  vi install-config.yaml 
+  541  ip a
+  542  sudo nmtui
+  543  sudo ls /etc/dhcp/
+  544  sudo vi /etc/dhcp/dhcpd.conf
+  545  sudo nmtui
+  546  cp install-config.yaml clusterconfigs/
+  547  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  548  vi install-config.yaml
+  549  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  550  cp install-config.yaml clusterconfigs/
+  551  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  552  vi install-config.yaml
+  553  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  554  vi install-config.yaml
+  555  cd clusterconfigs/
+  556  ll
+  557  vi metadata.json
+  558  vi terraform.tfstate
+  559  grep "88486f61-aff4-4f1c-adcd-9d1cfa117698" *
+  560  vi terraform.tfstate
+  561  cd ..
+  562  vi install-config.yaml
+  563  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  destroy cluster
+  564  vi install-config.yaml
+  565  cp install-config.yaml clusterconfigs/
+  566  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  567  vi clusterconfigs/terraform.tfstate 
+  568  vi install-config.yaml
+  569  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  570  vi install-config.yaml
+  571  cp install-config.yaml clusterconfigs/
+  572  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  573  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443/
+  574  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  575  oc get co
+  576  oc get nodes
+  577  oc get co
+  578  oc get ns
+  579  oc get nodes
+  580  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443/
+  581  oc get nodes
+  582  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  583  vi install-config.yaml
+  584  cp install-config.yaml clusterconfigs/
+  585  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  586  vi install-config.yaml
+  587  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  588  cp install-config.yaml clusterconfigs/
+  589  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  590  podman ps
+  591  podman stop rhcos_image_cache
+  592  podman start rhcos_image_cache
+  593  ls rhcos_image_cache/
+  594  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  595  cp install-config.yaml clusterconfigs/
+  596  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  597  curl http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  598  ip a
+  599  sudo mntui
+  600  sudo nmtui
+  601  vi install-config.yaml
+  602  curl http://200.40.31.224:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  603  source /etc/environment 
+  604  curl http://200.40.31.224:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  605  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  606  cp install-config.yaml clusterconfigs/
+  607  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  608  vi clusterconfigs/terraform.tfstate 
+  609  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  610  oc get nodes
+  611  oc get co
+  612  vi install-config.yaml
+  613  oc get nodes
+  614  vi install-config.yaml
+  615  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  616  cp install-config.yaml clusterconfigs/
+  617  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  618  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  619  cp install-config.yaml clusterconfigs/
+  620  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  621  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  622  curl -k https://200.40.31.200:6443
+  623  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  624  ip a
+  625  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  626  oc get nodes
+  627  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  628  oc get nodes
+  629  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  630  oc get nodes
+  631  vi install-config.yaml
+  632  sudo vi /etc/dhcp/dhcpd.conf
+  633  oc get nodes
+  634  oc get co
+  635  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  636  oc get nodes
+  637  oc get nodes -o wide
+  638  oc get nodes
+  639  oc get csr
+  640  oc get nodes
+  641  dig a lame18-master.cloud.lfpw.dsna.fr
+  642  oc get co
+  643  oc get pod -A
+  644  oc logs openshift-network-diagnostics
+  645  oc get pods -A | grep db
+  646  oc get pods -n openshift-ovn-kubernetes
+  647  oc logs ovnkube-master-7ktkg -n openshift-ovn-kubernetes
+  648  oc logs ovnkube-master-7ktkg -n openshift-ovn-kubernetes  sbdb
+  649  oc logs ovnkube-master-7ktkg -n openshift-ovn-kubernetes  nbdb
+  650  oc get csr
+  651  oc get nodes
+  652  oc delete node r200-40-31-118-static.vera.com.uy
+  653  oc delete node r200-40-31-118-static
+  654  oc get nodes
+  655  ip a
+  656  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  657  cp install-config.yaml clusterconfigs/
+  658  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  659  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  660  sudo shutdown now
+  661  ssh core@200.40.31.101
+  662  sudo virsh list
+  663  sudo virsh destroy ocp-cloud-mdmb9-bootstrap
+  664  sudo virsh list
+  665  sudo virsh undefine ocp-cloud-mdmb9-bootstrap
+  666  sudo virsh list --all
+  667  sudo virsh console ocp-cloud-b62ss-bootstrap
+  668  ssh core@200.40.31.102
+  669  sudo virsh list --all
+  670  sudo virsh destroy ocp-cloud-b62ss-bootstrap 
+  671  sudo virsh undefine ocp-cloud-b62ss-bootstrap 
+  672  sudo virsh list --all
+  673  sudo virsh console ocp-cloud-psqbp-bootstrap
+  674  ssh core@200.40.31.103
+  675  history
+  676  ssh core@200.40.31.103
+  677  virsh list --all
+  678  sudo virsh destroy ocp-cloud-b62ss-bootstrap 
+  679  sudo virsh undefine ocp-cloud-b62ss-bootstrap 
+  680  virsh list --all
+  681  sudo virsh list --all
+  682  sudo ls -ltr /var/lib/libvirt/qemu/
+  683  sudo virsh destroy ocp-cloud-psqbp-bootstrap
+  684  sudo virsh undefine ocp-cloud-psqbp-bootstrap
+  685  sudo -i
+  686  ssh core@200.40.31.110
+  687  sudo virsh list --all
+  688  sudo virsh destroy ocp-cloud-82dpf-bootstrap
+  689  sudo virsh undefine ocp-cloud-82dpf-bootstrap
+  690  sudo virsh list --all
+  691  sudo virsh console ocp-cloud-w77mg-bootstrap
+  692  ssh core@200.40.31.111
+  693  sudo virsh list --all
+  694  sudo virsh destroy ocp-cloud-w77mg-bootstrap
+  695  sudo virsh undefine ocp-cloud-w77mg-bootstrap
+  696  sudo virsh list --all
+  697  sudo virsh console ocp-cloud-2bjbz-bootstrap
+  698  ssh core@200.40.31.112
+  699  sudo virsh destroy ocp-cloud-2bjbz-bootstrap
+  700  sudo virsh undefine ocp-cloud-2bjbz-bootstrap
+  701  sudo virsh list --all
+  702  sudo virsh console ocp-cloud-pshf2-bootstrap
+  703  ssh core@200.40.31.114
+  704  sudo virsh destroy ocp-cloud-pshf2-bootstrap
+  705  sudo virsh undefine ocp-cloud-pshf2-bootstrap
+  706  sudo virsh list --all
+  707  vi install-config.yaml
+  708  sudo virsh list --all
+  709  sudo virsh console ocp-cloud-wtkxq-bootstrap
+  710  ssh core@200.40.31.101
+  711  vi .ssh/known_hosts 
+  712  ssh core@200.40.31.101
+  713  sudo virsh list --all
+  714  sudo virsh destroy ocp-cloud-wtkxq-bootstrap
+  715  sudo virsh undefine ocp-cloud-wtkxq-bootstrap
+  716  sudo virsh list --all
+  717  sudo virsh console ocp-cloud-zwssh-bootstrap
+  718  ssh core@200.40.31.102
+  719  sudo virsh destroy ocp-cloud-zwssh-bootstrap
+  720  sudo virsh undefine ocp-cloud-zwssh-bootstrap
+  721  sudo virsh list --all
+  722  sudo virsh console ocp-cloud-n9g2z-bootstrap
+  723  ssh core@200.40.31.103
+  724  sudo virsh list --all
+  725  sudo virsh destroy ocp-cloud-n9g2z-bootstrap
+  726  sudo virsh undefine ocp-cloud-n9g2z-bootstrap
+  727  sudo virsh list --all
+  728  sudo virsh console ocp-cloud-trh5g-bootstrap
+  729  ssh core@200.40.31.104
+  730  sudo virsh destroy ocp-cloud-trh5g-bootstrap
+  731  sudo virsh undefine ocp-cloud-trh5g-bootstrap
+  732  sudo virsh list --all
+  733  sudo virsh console ocp-cloud-mrjb9-bootstrap
+  734  vi install-config.yaml
+  735  ip a
+  736  sudo virsh console ocp-cloud-mrjb9-bootstrap
+  737  sudo virsh destroy ocp-cloud-mrjb9-bootstrap
+  738  sudo virsh undefine ocp-cloud-mrjb9-bootstrap
+  739  sudo virsh list --all
+  740  sudo virsh console ocp-cloud-fl9m2-bootstrap
+  741  ssh core@200.40.31.107
+  742  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  743  oc get node
+  744  oc get pods -n openshift-etcd
+  745  oc get pods -n openshift-etcd -o wide
+  746  oc get co
+  747  oc get nodes
+  748  vi clusterconfigs/.openshift_install.log 
+  749  ls
+  750  oc get nodes
+  751  oc get co
+  752  oc get mc
+  753  oc get mc rendered-worker-60646a2e94785330d2a77063e8794c48 -o yaml
+  754  oc get mc
+  755  oc get pods -n openshift-machine-config-operator 
+  756  oc get mc
+  757  oc get pods -n openshift-machine-config-operator 
+  758  oc get pods -n openshift-machine-api
+  759  oc get baremetalhost -A
+  760  oc get machines
+  761  oc get machine
+  762  oc get machine -A
+  763  oc get machine/ocp-cloud-fl9m2-worker-0-6zvkj -n openshift-machine-api -o yaml
+  764  oc get pods -n openshift-machine-api
+  765  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api
+  766  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor
+  767  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo
+  768  curl -k https://ilo20.cloud.lfpw.dsna.fr/redfish/v1/
+  769  dig a ilo20.cloud.lfpw.dsna.fr
+  770  oc get pods -n openshift-machine-api -o wide
+  771  curl -k https://ilo20.cloud.lfpw.dsna.fr/redfish/v1/
+  772  ping ilo20.cloud.lfpw.dsna.fr
+  773  ping ilo21.cloud.lfpw.dsna.fr
+  774  ping ilo18.cloud.lfpw.dsna.fr
+  775  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo
+  776  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  777  oc delete pod metal3-6d49b88dff-dwmb4 -n openshift-machine-api
+  778  oc get pods -n openshift-machine-api
+  779  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  780  oc get pods -n openshift-machine-api
+  781  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  782  oc get pods -A | grep etcd
+  783  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  784  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo19
+  785  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  786  oc get pods -n openshift-machine-api -o wide
+  787  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  788  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo19
+  789  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo21
+  790  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  791  history > cmd-install
+  792  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  793  ssh root@200.40.31.120
+  794  ssh root@200.40.31.121
+  795  ssh core@200.40.31.121
+  796  ssh root@200.40.31.121
+  797  ssh root@200.40.31.122
+  798  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  799  ssh root@200.40.31.121
+  800  ssh root@200.40.31.120
+  801  ssh root@200.40.31.121
+  802  ssh root@200.40.31.120
+  803  ssh root@200.40.31.121
+  804  oc get pods -n openshift-machine-api -o wide
+  805  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  806  ssh root@200.40.31.120
+  807  ping 200.40.31.120
+  808  ping 200.40.31.122
+  809  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  810  ls
+  811  vi cmd-install 
+  812  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  813  ping 200.40.31.122
+  814  ping 200.40.31.120
+  815  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  816  ping 200.40.31.120
+  817  ping 200.40.31.121
+  818  ping 200.40.31.120
+  819  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  820  ping 200.40.31.120
+  821  ping 200.40.31.121
+  822  ssh root@200.40.31.121
+  823  vi .ssh/known_hosts 
+  824  ssh root@200.40.31.121
+  825  ssh core@200.40.31.121
+  826  ssh core@200.40.31.122
+  827  ssh core@200.40.31.120
+  828  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo
+  829  ssh core@200.40.31.121
+  830  vi .ssh/known_hosts 
+  831  ssh core@200.40.31.121
+  832  oc get csr
+  833  ssh core@200.40.31.122
+  834  ssh core@200.40.31.120
+  835  ssh core@200.40.31.109
+  836  oc get nodes
+  837  oc get machines -A
+  838  oc get machines -A -o wide
+  839  ssh core@200.40.31.120
+  840  sudo vi /etc/dhcp/dhcpd.conf
+  841  dig -x 200.40.31.120
+  842  ssh core@200.40.31.120
+  843  oc get csr
+  844  for i in `oc get csr --no-headers | grep -i pending |  awk '{ print $1 }'`; do oc adm certificate approve $i; done
+  845  ssh core@200.40.31.120
+  846  oc get nodes
+  847  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  848  oc get pods -A -n openshift-machine-api
+  849  oc get nodes
+  850  oc get co
+  851  oc get route -A
+  852  curl -k https://console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  853  dig a console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  854  curl -k https://console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  855  oc get route
+  856  oc get route -A
+  857  curl -k https://console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  858  oc get nodes
+  859  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  860  oc get pods -A -n openshift-machine-api
+  861  oc get pods -n openshift-machine-api
+  862  oc delete pods metal3-6d49b88dff-l544x -n openshift-machine-api
+  863  oc get pods -n openshift-machine-api
+  864  oc logs metal3-6d49b88dff-z62js -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  865  oc get pods -n openshift-console
+  866  oc logs console-8494bfbf5c-ghwd7 -n openshift-console
+  867  curl -k https://oauth-openshift.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  868  oc get pods -A | grep oauth
+  869  oc logs oauth-openshift-6fc67d5d77-ndd74 -n openshift-authentication
+  870  oc get pods -A | grep oauth
+  871  curl -k https://oauth-openshift.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  872  oc get nodes
+  873  oc logs metal3-6d49b88dff-z62js -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  874  oc get pods -n openshift-console
+  875  oc get pods -n openshift-machine-pi
+  876  oc get pods -n openshift-machine-api
+  877  oc delete po/metal3-6d49b88dff-z62js -n openshift-machine-api
+  878  history >> cmd-install
+    1  ll
+    2  sudo subscription-manager register --username=cdiengatos --auto-attach
+    3  sudo subscription-manager repos --enable=rhel-8-for-x86_64-appstream-rpms --enable=rhel-8-for-x86_64-baseos-rpms
+    4  sudo dnf install -y libvirt qemu-kvm mkisofs python3-devel jq ipmitool
+    5  sudo usermod --append --groups libvirt kni
+    6  systemctl status firewalld.service 
+    7  sudo firewall-cmd --zone=public --add-service=http --permanent
+    8  sudo firewall-cmd --reload
+    9  sudo systemctl enable libvirtd --now
+   10  sudo virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images
+   11  sudo virsh pool-start default
+   12  sudo virsh pool-autostart default
+   13  ip a
+   14  export PUB_CONN=ens3f4
+   15  sudo nohup bash -c "
+   16      nmcli con down \"$PUB_CONN\"
+   17      nmcli con delete \"$PUB_CONN\"
+   18      # RHEL 8.1 appends the word \"System\" in front of the connection, delete in case it exists
+   19      nmcli con down \"System $PUB_CONN\"
+   20      nmcli con delete \"System $PUB_CONN\"
+   21      nmcli connection add ifname baremetal type bridge con-name baremetal
+   22      nmcli con add type bridge-slave ifname \"$PUB_CONN\" master baremetal
+   23      pkill dhclient;dhclient baremetal
+   24  "
+   25  bridge network list
+   26  bridge list
+   27  bridge help
+   28  man bridge
+   29  bridge link show
+   30  ip a
+   31  export PROV_CONN=ens3f0
+   32    
+   33  sudo nohup bash -c "
+   34      nmcli con down \"$PROV_CONN\"
+   35      nmcli con delete \"$PROV_CONN\"
+   36      nmcli connection add ifname provisioning type bridge con-name provisioning
+   37      nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning
+   38      nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+   39      nmcli con down provisioning
+   40  sudo nohup bash -c "
+   41      nmcli con down \"$PROV_CONN\"
+   42      nmcli con delete \"$PROV_CONN\"
+   43      nmcli connection add ifname provisioning type bridge con-name provisioning
+   44      nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning
+   45      nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+   46      nmcli con down provisioning
+   47      nmcli con up provisioning
+   48  "
+   49  ls
+   50  ll .ssh/
+   51  export PUB_CONN=ens3f5
+   52  ping 200.40.2.224
+   53  vi /etc/environment 
+   54  sudo nmtui
+   55  exit
+   56  export PUB_CONN=ens3f5
+   57  sudo nohup bash -c "
+   58      nmcli con down \"$PUB_CONN\"
+   59      nmcli con delete \"$PUB_CONN\"
+   60      # RHEL 8.1 appends the word \"System\" in front of the connection, delete in case it exists
+   61      nmcli con down \"System $PUB_CONN\"
+   62      nmcli con delete \"System $PUB_CONN\"
+   63      nmcli connection add ifname baremetal type bridge con-name baremetal
+   64      nmcli con add type bridge-slave ifname \"$PUB_CONN\" master baremetal
+   65      pkill dhclient;dhclient baremetal
+   66  "
+   67  ip a
+   68  ip route 
+   69  ip a
+   70  nmcli con up baremetal
+   71  sudo nmcli con up baremetal
+   72  ip a
+   73  sudo nmtui
+   74  ip a
+   75  sudo nmtui
+   76  export PROV_CONN=ens3f0
+   77  sudo nohup bash -c "
+   78      nmcli con down \"$PUB_CONN\""
+   79  sudo nohup bash -c "
+   80      nmcli con delete \"$PUB_CONN\""
+   81  sudo nmcli connection add ifname provisioning type bridge bridge.stp no con-name provisioning
+   82  echo $PROC_CONN
+   83  echo $PROV_CONN
+   84  sudo nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning
+   85  sudo nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+   86  sudo nmcli con down provisioning
+   87  sudo nmtui
+   88  sudo nmcli con up provisioning
+   89  ip a
+   90  sudo nmtui
+   91  ip a
+   92  sudo nmtui
+   93  ip a
+   94  sudo nmtui
+   95  ip a
+   96  sudo nmtui
+   97  ip a
+   98  echo $PROV_CONN
+   99  sudo nohup bash -c "
+  100      nmcli con down \"$PROV_CONN\"
+  101      nmcli con delete \"$PROV_CONN\"
+  102      nmcli connection add ifname provisioning type bridge con-name provisioning bridge.stp no
+  103      nmcli con add type bridge-slave ifname \"$PROV_CONN\" master provisioning 
+  104      nmcli connection modify provisioning ipv6.addresses fd00:1101::1/64 ipv6.method manual
+  105      nmcli con down provisioning
+  106      nmcli con up provisioning
+  107  "
+  108  ip a
+  109  sudo nmcli con show
+  110  exit
+  111  ssh 200.40.31.103
+  112  history
+  113  su -
+  114  ls -la
+  115  history
+  116  ssh 200.40.31.103
+  117  la
+  118  ll
+  119  cat install-config.yaml 
+  120  history
+  121  id
+  122  ssh 200.40.31.103
+  123  history
+  124  la
+  125  ls -la
+  126  df
+  127  cat pull-secret.txt 
+  128  cat nohup.out 
+  129  file *
+  130  ip a
+  131  la
+  132  ls -la
+  133  m install-config.yaml 
+  134  cat install-config.yaml 
+  135  cat .ssh/id_rsa.pub 
+  136  ssh kni@opcdeployernode.localdomain
+  137  ping opcdeployernode.localdomain
+  138  ip a | grep 200.40.31.100
+  139  nslookup
+  140  la
+  141  ls -la
+  142  ping opcdeployernode.localdomain
+  143  ping 200.40.31.103
+  144  ssh kni@200.40.31.103
+  145  id
+  146  virsh list
+  147  virsh list --all
+  148  ls -latr
+  149  id
+  150  cd rhcos_image_cache/
+  151  la
+  152  ls -la
+  153  cd ..
+  154  ls -laR | m
+  155  ls -laR | less
+  156  ls -la
+  157  file toto
+  158  file *
+  159  id
+  160  cd .ssh/
+  161  la
+  162  ls -la
+  163  cat id_rsa
+  164  ssh kni@200.40.31.103
+  165  la
+  166  ls -la
+  167  ps -efwH
+  168  ps -efwHww
+  169  cd
+  170  la
+  171  ll
+  172  cat install-config.yaml 
+  173   ping ilo17.cloud.lfpw.dsna.fr
+  174  nslookup
+  175  ssh esa@192.168.90.48
+  176  ssh esa@192.168.90.49
+  177  h | grep ssh
+  178  history | grep ssh
+  179  ssh core@200.40.31.103
+  180  ssh core@200.40.31.109
+  181  ssh 200.40.31.109
+  182  ssh 200.40.31.108
+  183  ssh 200.40.31.107
+  184  ssh core@200.40.31.108
+  185  ssh core@200.40.31.107
+  186  ssh core@200.40.31.106
+  187  ssh core@200.40.31.105
+  188  ssh core@200.40.31.104
+  189  id
+  190  ssh core@200.40.31.103
+  191  ssh core@200.40.31.104
+  192  ssh core@200.40.31.109
+  193  ssh 200.40.31.109
+  194  id
+  195  ssh 200.40.31.104
+  196  ssh root@200.40.31.104
+  197  scp /usr/sbin/fc* root@200.40.31.104
+  198  scp /usr/sbin/fc* root@200.40.31.104:
+  199  scp /usr/sbin/fc* root@200.40.31.104:/usr/sbin/
+  200  scp /usr/sbin/fipvlan  root@200.40.31.104:/usr/sbin/
+  201  find / -type f -name libpciaccess*
+  202  rpm -qf /usr/lib64/libpciaccess.so.0.11.1
+  203  rpm -ql libpciaccess
+  204  scp /usr/lib64/libpciaccess.so.0*  root@200.40.31.104:/usr/lib64/
+  205  h
+  206  cp /tmp/install-config.yaml .
+  207  ls
+  208  ll
+  209  cat install-config.yaml 
+  210  cat .ssh/id_rsa.pub 
+  211  vi install-config.yaml 
+  212  export VERSION=latest-4.8
+  213  export RELEASE_IMAGE=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/release.txt | grep 'Pull From: quay.io' | awk -F ' ' '{print $3}')
+  214  echo $RELEASE_IMAGE
+  215  export cmd=openshift-baremetal-install
+  216  export pullsecret_file=~/pull-secret.txt
+  217  vi pull-secret.txt
+  218  echo $pullsecret_file
+  219  export extract_dir=$(pwd)
+  220  curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/openshift-client-linux.tar.gz | tar zxvf - oc
+  221  ./oc version
+  222  sudo cp oc /usr/local/bin
+  223  oc adm release extract --registry-config "${pullsecret_file}" --command=$cmd --to "${extract_dir}" ${RELEASE_IMAGE}
+  224  ls
+  225  sudo cp openshift-baremetal-install /usr/local/bin
+  226  sudo dnf install -y podman
+  227  sudo systemctl status firewalld.service 
+  228  sudo systemctl enable firewalld.service 
+  229  sudo systemctl start firewalld.service 
+  230  vi /etc/environment 
+  231  sudo vi /etc/environment 
+  232  vi /etc/profile
+  233  cat /etc/environment 
+  234  sudo vi /etc/profile
+  235  sudo vi /etc/environment 
+  236  source /etc/environment 
+  237  sudo dnf install -y podman
+  238  podman ps
+  239  sudo firewall-cmd --add-port=8080/tcp --zone=public --permanent
+  240  podman images
+  241  sudo firewall-cmd --reload
+  242  mkdir /home/kni/rhcos_image_cache
+  243  sudo semanage fcontext -a -t httpd_sys_content_t "/home/kni/rhcos_image_cache(/.*)?"
+  244  sudo restorecon -Rv rhcos_image_cache/
+  245  export COMMIT_ID=$(/usr/local/bin/openshift-baremetal-install version | grep '^built from commit' | awk '{print $4}')
+  246  export RHCOS_OPENSTACK_URI=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq .images.openstack.path | sed 's/"//g')
+  247  export RHCOS_QEMU_URI=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq .images.qemu.path | sed 's/"//g')
+  248  export RHCOS_PATH=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json | jq .baseURI | sed 's/"//g')
+  249  export RHCOS_QEMU_SHA_UNCOMPRESSED=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq -r '.images.qemu["uncompressed-sha256"]')
+  250  export RHCOS_OPENSTACK_SHA_COMPRESSED=$(curl -s -S https://raw.githubusercontent.com/openshift/installer/$COMMIT_ID/data/data/rhcos.json  | jq -r '.images.openstack.sha256')
+  251  curl -L ${RHCOS_PATH}${RHCOS_QEMU_URI} -o /home/kni/rhcos_image_cache/${RHCOS_QEMU_URI}
+  252  curl -L ${RHCOS_PATH}${RHCOS_OPENSTACK_URI} -o /home/kni/rhcos_image_cache/${RHCOS_OPENSTACK_URI}
+  253  ls -Z /home/kni/rhcos_image_cache
+  254  podman run -d --name rhcos_image_cache -v /home/kni/rhcos_image_cache:/var/www/html -p 8080:8080/tcp registry.centos.org/centos/httpd-24-centos7:latest
+  255  podman images
+  256  podman ps 
+  257  podman logs rhcos_image_cache
+  258  export BAREMETAL_IP=$(ip addr show dev baremetal | awk '/inet /{print $2}' | cut -d"/" -f1)
+  259  export RHCOS_OPENSTACK_SHA256=$(zcat /home/kni/rhcos_image_cache/${RHCOS_OPENSTACK_URI} | sha256sum | awk '{print $1}')
+  260  export RHCOS_QEMU_SHA256=$(zcat /home/kni/rhcos_image_cache/${RHCOS_QEMU_URI} | sha256sum | awk '{print $1}')
+  261  export CLUSTER_OS_IMAGE="http://${BAREMETAL_IP}:8080/${RHCOS_OPENSTACK_URI}?sha256=${RHCOS_OPENSTACK_SHA256}"
+  262  export BOOTSTRAP_OS_IMAGE="http://${BAREMETAL_IP}:8080/${RHCOS_QEMU_URI}?sha256=${RHCOS_QEMU_SHA256}"
+  263  echo "${RHCOS_OPENSTACK_SHA256}  ${RHCOS_OPENSTACK_URI}" > /home/kni/rhcos_image_cache/rhcos-ootpa-latest.qcow2.md5sum
+  264  echo "    bootstrapOSImage=${BOOTSTRAP_OS_IMAGE}"
+  265  echo "    clusterOSImage=${CLUSTER_OS_IMAGE}"
+  266  vi install-config.yaml 
+  267  mkdir ~/clusterconfigs
+  268  cp install-config.yaml clusterconfigs/
+  269  sudo virsh list
+  270  vi install-config.yaml 
+  271  vi clusterconfigs/install-config.yaml 
+  272  cp clusterconfigs/install-config.yaml .
+  273  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  274  podman ps
+  275  podman logs rhcos_image_cache
+  276  curl -o toto "http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz?sha256=fe7f5cb0bf0a46d8a7a1b58f658cb759732ada5ed875d9ef0f51574bf426b061"
+  277  ls -ltr 
+  278  cat toto 
+  279  curl -X GET http://200.40.31.100:8080/v2/_catalog
+  280  podman ps
+  281  podman pull httpd
+  282  podman images
+  283  netstat -an | grep 8080
+  284  more toto
+  285  vi install-config.yaml 
+  286  curl -o toto "http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz"
+  287  env
+  288  sudo vi /etc/environment 
+  289  sudo vi /etc/profile
+  290  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  291  source /etc/environment 
+  292  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  293  podman ps
+  294  vi install-config.yaml 
+  295  ls
+  296  ls rhcos_image_cache/
+  297  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  298  podman ps
+  299  podman exec -it rhcos_image_cache /bin/bash
+  300  podman ps
+  301  sudo vi /var/log/audit/audit.log
+  302  setenforce 0
+  303  sudo setenforce 0
+  304  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  305  grep rhcos /var/log/audit/audit.log
+  306  sudo grep rhcos /var/log/audit/audit.log
+  307  podman ps
+  308  sestatus 
+  309  podman stop rhcos_image_cache
+  310  podman ps
+  311  podman start rhcos_image_cache
+  312  podman logs rhcos_image_cache
+  313  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz
+  314  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  315  env
+  316  vi /etc/environment 
+  317  sudo vi /etc/
+  318  vi /etc/environment 
+  319  sudo vi /etc/environment 
+  320  unset http_proxy
+  321  unset https_proxy
+  322  env
+  323  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  324  source /etc/environment 
+  325  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  326  ls
+  327  rm -f toto 
+  328  ll
+  329  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz -vvv
+  330  ll
+  331  sudo vi /etc/profile
+  332  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  333  cp install-config.yaml clusterconfigs/
+  334  vi install-config.yaml 
+  335  cp install-config.yaml clusterconfigs/
+  336  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  337  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  338  vi install-config.yaml 
+  339  cp install-config.yaml clusterconfigs/
+  340  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  341  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  342  vi install-config.yaml 
+  343  cp install-config.yaml clusterconfigs/
+  344  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  345  vi install-config.yaml 
+  346  exit
+  347  podman pull quay.io/openshift-release-dev/ocp-release@sha256:5fb4b4225498912357294785b96cde6b185eaed20bbf7a4d008c462134a4edfd
+  348  env
+  349  ll
+  350  rm -f toto 
+  351  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  352  podman ps
+  353  vi /etc/environment 
+  354  sestatus 
+  355  env
+  356  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz -vv
+  357  vi install-config.yaml 
+  358  vi /etc/environment 
+  359  sudo vi /etc/environment 
+  360  ip a
+  361  source /etc/environment 
+  362  env
+  363  curl -o toto http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz -vv
+  364  vi /etc/environment 
+  365  vi install-config.yaml 
+  366  sudo vi /etc/profile
+  367  sudo -i
+  368  ssh core@200.40.31.111
+  369  ssh core@200.40.31.110
+  370  ssh core@200.40.31.11
+  371  ssh core@200.40.31.110
+  372  vi /var/log/messages
+  373  sudo vi /var/log/messages
+  374  ssh core@200.40.31.107
+  375  vi .ssh/known_hosts 
+  376  ssh core@200.40.31.107
+  377  ssh root@200.40.31.107
+  378  ssh root@200.40.31.106
+  379  vi .ssh/known_hosts 
+  380  ssh root@200.40.31.106
+  381  sudo vi /var/log/messages
+  382  ssh root@200.40.31.104
+  383  ssh core@200.40.31.104
+  384  ssh root@200.40.31.104
+  385  ssh core@200.40.31.104
+  386  ssh core@200.40.31.106
+  387  ssh root@200.40.31.106
+  388  ssh root@200.40.31.104
+  389  ssh core@200.40.31.104
+  390  ssh core@200.40.31.106
+  391  ssh root@200.40.31.106
+  392  ssh core@200.40.31.104
+  393  ssh root@200.40.31.106
+  394  ssh core@200.40.31.104
+  395  vi /var/log/messages
+  396  sudo vi /var/log/messages
+  397  journalctl -f
+  398  sudo journalctl -f
+  399  sudo vi /var/log/messages
+  400  ssh root@200.40.31.106
+  401  vi .ssh/known_hosts 
+  402  ssh root@200.40.31.106
+  403  ssh core@200.40.31.108
+  404  ssh core@200.40.31.104
+  405  ssh root@200.40.31.106
+  406  ssh core@200.40.31.104
+  407  vi .ssh/known_hosts 
+  408  ssh core@200.40.31.104
+  409  tail -f /var/log/messages
+  410  sudo tail -f /var/log/messages
+  411  ping 192.168.90.49
+  412  sudo tail -f /var/log/messages
+  413  tail -f /var/log/messages
+  414  arp -n
+  415  ping 192.168.90.49
+  416  ping 192.168.90.50
+  417  ping 192.168.90.20
+  418  ping 192.168.90.51
+  419  tail -f /var/log/messages
+  420  vi /var/log/messages
+  421  sudo vi /var/log/messages
+  422  journalctl -u dhcpd
+  423  sudo journalctl -u dhcpd
+  424  ssh root@200.40.31.106
+  425  ssh root@200.40.31.107
+  426  ssh root@200.40.31.104
+  427  ssh root@200.40.31.105
+  428  ssh root@200.40.31.107
+  429  ssh root@200.40.31.104
+  430  vi .ssh/known_hosts 
+  431  ssh root@200.40.31.104
+  432  ssh root@200.40.31.108
+  433  ssh root@200.40.31.107
+  434  ssh root@200.40.31.108
+  435  ssh root@200.40.31.106
+  436  ssh root@200.40.31.104
+  437  env
+  438  dig a api.ocp-cloud.cloud.lfpw.dsna.fr
+  439  ssh root@200.40.31.106
+  440  ssh core@200.40.31.104
+  441  vi .ssh/known_hosts 
+  442  ssh core@200.40.31.104
+  443  ssh core@200.40.31.106
+  444  sudo journalctl -u dhcpd
+  445  ssh root@200.40.31.106
+  446  ssh root@200.40.31.104
+  447  ssh root@200.40.31.105
+  448  ssh root@200.40.31.104
+  449  sudo journalctl -u dhcpd
+  450  ssh root@200.40.31.104
+  451  ssh root@200.40.31.105
+  452  ssh root@200.40.31.106
+  453  ssh root@200.40.31.107
+  454  ssh root@200.40.31.108
+  455  ssh root@200.40.31.109
+  456  ssh root@200.40.31.106
+  457  ssh root@200.40.31.107
+  458  sudo journalctl -u dhcpd
+  459  ssh root@200.40.31.106
+  460  ssh root@200.40.31.104
+  461  ssh core@200.40.31.10
+  462  ssh root@200.40.31.104
+  463  ssh root@200.40.31.106
+  464  ssh root@200.40.31.104
+  465  vi .ssh/known_hosts 
+  466  ssh root@200.40.31.104
+  467  sudo -i
+  468  ssh root@200.40.31.118
+  469  ssh core@200.40.31.117
+  470  ssh core@200.40.31.119
+  471  ssh root@200.40.31.119
+  472  ssh core@200.40.31.117
+  473  ssh root@200.40.31.117
+  474  ssh root@200.40.31.119
+  475  ip a
+  476  ssh root@200.40.31.119
+  477  vi .ssh/known_hosts 
+  478  ssh root@200.40.31.119
+  479  ssh root@200.40.31.118
+  480  ssh root@200.40.31.117
+  481  ssh root@200.40.31.118
+  482  ssh root@200.40.31.119
+  483  ssh core@200.40.31.119
+  484  vi .ssh/known_hosts 
+  485  ssh root@200.40.31.119
+  486  ssh root@200.40.31.117
+  487  ssh root@200.40.31.119
+  488  ssh root@200.40.31.118
+  489  ssh root@200.40.31.119
+  490  vi clusterconfigs/terraform.tfvars.json 
+  491  ssh root@200.40.31.119
+  492  ssh root@200.40.31.118
+  493  ssh root@200.40.31.119
+  494  ssh root@200.40.31.117
+  495  ssh core@200.40.31.117
+  496  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  497  ssh core@200.40.31.117
+  498  vi .ssh/known_hosts 
+  499  ssh core@200.40.31.117
+  500  ssh core@200.40.31.118
+  501  ssh core@200.40.31.119
+  502  ssh core@200.40.31.117
+  503  ssh core@200.40.31.118
+  504  ssh core@200.40.31.117
+  505  ssh core@200.40.31.118
+  506  ssh core@200.40.31.119
+  507  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  508  oc get nodes
+  509  ssh core@200.40.31.117
+  510  oc get nodes
+  511  ssh core@200.40.31.117
+  512  oc get nodes
+  513  ssh core@200.40.31.117
+  514  exit
+  515  ssh core@200.40.31.118
+  516  ssh core@200.40.31.119
+  517  ssh core@200.40.31.117
+  518  ssh core@200.40.31.118
+  519  ssh core@200.40.31.119
+  520  ssh core@200.40.31.118
+  521  ssh core@200.40.31.119
+  522  ssh core@200.40.31.118
+  523  ssh core@200.40.31.117
+  524  ssh core@200.40.31.119
+  525  ssh core@200.40.31.118
+  526  ssh core@200.40.31.117
+  527  sudo vi /etc/dhcp/dhcpd.conf
+  528  ip a
+  529  sudo vi /etc/dhcp/dhcpd.conf
+  530  sudo systemctl restart dhcpd
+  531  journalctl -f | grep dhcpd
+  532  sudo journalctl -f | grep dhcpd
+  533  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  cluster
+  534  vi install-config.yaml 
+  535  cp install-config.yaml install-config.yaml-back
+  536  vi install-config.yaml 
+  537  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  destroy cluster
+  538  ls clusterconfigs/
+  539  vi install-config.yaml
+  540  vi install-config.yaml 
+  541  ip a
+  542  sudo nmtui
+  543  sudo ls /etc/dhcp/
+  544  sudo vi /etc/dhcp/dhcpd.conf
+  545  sudo nmtui
+  546  cp install-config.yaml clusterconfigs/
+  547  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  548  vi install-config.yaml
+  549  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  550  cp install-config.yaml clusterconfigs/
+  551  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  552  vi install-config.yaml
+  553  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  554  vi install-config.yaml
+  555  cd clusterconfigs/
+  556  ll
+  557  vi metadata.json
+  558  vi terraform.tfstate
+  559  grep "88486f61-aff4-4f1c-adcd-9d1cfa117698" *
+  560  vi terraform.tfstate
+  561  cd ..
+  562  vi install-config.yaml
+  563  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  destroy cluster
+  564  vi install-config.yaml
+  565  cp install-config.yaml clusterconfigs/
+  566  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug  create cluster
+  567  vi clusterconfigs/terraform.tfstate 
+  568  vi install-config.yaml
+  569  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  570  vi install-config.yaml
+  571  cp install-config.yaml clusterconfigs/
+  572  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  573  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443/
+  574  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  575  oc get co
+  576  oc get nodes
+  577  oc get co
+  578  oc get ns
+  579  oc get nodes
+  580  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443/
+  581  oc get nodes
+  582  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  583  vi install-config.yaml
+  584  cp install-config.yaml clusterconfigs/
+  585  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  586  vi install-config.yaml
+  587  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  588  cp install-config.yaml clusterconfigs/
+  589  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  590  podman ps
+  591  podman stop rhcos_image_cache
+  592  podman start rhcos_image_cache
+  593  ls rhcos_image_cache/
+  594  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  595  cp install-config.yaml clusterconfigs/
+  596  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  597  curl http://200.40.31.100:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  598  ip a
+  599  sudo mntui
+  600  sudo nmtui
+  601  vi install-config.yaml
+  602  curl http://200.40.31.224:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  603  source /etc/environment 
+  604  curl http://200.40.31.224:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz
+  605  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  606  cp install-config.yaml clusterconfigs/
+  607  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  608  vi clusterconfigs/terraform.tfstate 
+  609  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  610  oc get nodes
+  611  oc get co
+  612  vi install-config.yaml
+  613  oc get nodes
+  614  vi install-config.yaml
+  615  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  616  cp install-config.yaml clusterconfigs/
+  617  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  618  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  619  cp install-config.yaml clusterconfigs/
+  620  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  621  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  622  curl -k https://200.40.31.200:6443
+  623  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  624  ip a
+  625  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  626  oc get nodes
+  627  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  628  oc get nodes
+  629  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  630  oc get nodes
+  631  vi install-config.yaml
+  632  sudo vi /etc/dhcp/dhcpd.conf
+  633  oc get nodes
+  634  oc get co
+  635  curl -k https://api.ocp-cloud.cloud.lfpw.dsna.fr:6443
+  636  oc get nodes
+  637  oc get nodes -o wide
+  638  oc get nodes
+  639  oc get csr
+  640  oc get nodes
+  641  dig a lame18-master.cloud.lfpw.dsna.fr
+  642  oc get co
+  643  oc get pod -A
+  644  oc logs openshift-network-diagnostics
+  645  oc get pods -A | grep db
+  646  oc get pods -n openshift-ovn-kubernetes
+  647  oc logs ovnkube-master-7ktkg -n openshift-ovn-kubernetes
+  648  oc logs ovnkube-master-7ktkg -n openshift-ovn-kubernetes  sbdb
+  649  oc logs ovnkube-master-7ktkg -n openshift-ovn-kubernetes  nbdb
+  650  oc get csr
+  651  oc get nodes
+  652  oc delete node r200-40-31-118-static.vera.com.uy
+  653  oc delete node r200-40-31-118-static
+  654  oc get nodes
+  655  ip a
+  656  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  657  cp install-config.yaml clusterconfigs/
+  658  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug create cluster
+  659  ./openshift-baremetal-install --dir ~/clusterconfigs --log-level debug destroy cluster
+  660  sudo shutdown now
+  661  ssh core@200.40.31.101
+  662  sudo virsh list
+  663  sudo virsh destroy ocp-cloud-mdmb9-bootstrap
+  664  sudo virsh list
+  665  sudo virsh undefine ocp-cloud-mdmb9-bootstrap
+  666  sudo virsh list --all
+  667  sudo virsh console ocp-cloud-b62ss-bootstrap
+  668  ssh core@200.40.31.102
+  669  sudo virsh list --all
+  670  sudo virsh destroy ocp-cloud-b62ss-bootstrap 
+  671  sudo virsh undefine ocp-cloud-b62ss-bootstrap 
+  672  sudo virsh list --all
+  673  sudo virsh console ocp-cloud-psqbp-bootstrap
+  674  ssh core@200.40.31.103
+  675  history
+  676  ssh core@200.40.31.103
+  677  virsh list --all
+  678  sudo virsh destroy ocp-cloud-b62ss-bootstrap 
+  679  sudo virsh undefine ocp-cloud-b62ss-bootstrap 
+  680  virsh list --all
+  681  sudo virsh list --all
+  682  sudo ls -ltr /var/lib/libvirt/qemu/
+  683  sudo virsh destroy ocp-cloud-psqbp-bootstrap
+  684  sudo virsh undefine ocp-cloud-psqbp-bootstrap
+  685  sudo -i
+  686  ssh core@200.40.31.110
+  687  sudo virsh list --all
+  688  sudo virsh destroy ocp-cloud-82dpf-bootstrap
+  689  sudo virsh undefine ocp-cloud-82dpf-bootstrap
+  690  sudo virsh list --all
+  691  sudo virsh console ocp-cloud-w77mg-bootstrap
+  692  ssh core@200.40.31.111
+  693  sudo virsh list --all
+  694  sudo virsh destroy ocp-cloud-w77mg-bootstrap
+  695  sudo virsh undefine ocp-cloud-w77mg-bootstrap
+  696  sudo virsh list --all
+  697  sudo virsh console ocp-cloud-2bjbz-bootstrap
+  698  ssh core@200.40.31.112
+  699  sudo virsh destroy ocp-cloud-2bjbz-bootstrap
+  700  sudo virsh undefine ocp-cloud-2bjbz-bootstrap
+  701  sudo virsh list --all
+  702  sudo virsh console ocp-cloud-pshf2-bootstrap
+  703  ssh core@200.40.31.114
+  704  sudo virsh destroy ocp-cloud-pshf2-bootstrap
+  705  sudo virsh undefine ocp-cloud-pshf2-bootstrap
+  706  sudo virsh list --all
+  707  vi install-config.yaml
+  708  sudo virsh list --all
+  709  sudo virsh console ocp-cloud-wtkxq-bootstrap
+  710  ssh core@200.40.31.101
+  711  vi .ssh/known_hosts 
+  712  ssh core@200.40.31.101
+  713  sudo virsh list --all
+  714  sudo virsh destroy ocp-cloud-wtkxq-bootstrap
+  715  sudo virsh undefine ocp-cloud-wtkxq-bootstrap
+  716  sudo virsh list --all
+  717  sudo virsh console ocp-cloud-zwssh-bootstrap
+  718  ssh core@200.40.31.102
+  719  sudo virsh destroy ocp-cloud-zwssh-bootstrap
+  720  sudo virsh undefine ocp-cloud-zwssh-bootstrap
+  721  sudo virsh list --all
+  722  sudo virsh console ocp-cloud-n9g2z-bootstrap
+  723  ssh core@200.40.31.103
+  724  sudo virsh list --all
+  725  sudo virsh destroy ocp-cloud-n9g2z-bootstrap
+  726  sudo virsh undefine ocp-cloud-n9g2z-bootstrap
+  727  sudo virsh list --all
+  728  sudo virsh console ocp-cloud-trh5g-bootstrap
+  729  ssh core@200.40.31.104
+  730  sudo virsh destroy ocp-cloud-trh5g-bootstrap
+  731  sudo virsh undefine ocp-cloud-trh5g-bootstrap
+  732  sudo virsh list --all
+  733  sudo virsh console ocp-cloud-mrjb9-bootstrap
+  734  vi install-config.yaml
+  735  ip a
+  736  sudo virsh console ocp-cloud-mrjb9-bootstrap
+  737  sudo virsh destroy ocp-cloud-mrjb9-bootstrap
+  738  sudo virsh undefine ocp-cloud-mrjb9-bootstrap
+  739  sudo virsh list --all
+  740  sudo virsh console ocp-cloud-fl9m2-bootstrap
+  741  ssh core@200.40.31.107
+  742  export KUBECONFIG=clusterconfigs/auth/kubeconfig 
+  743  oc get node
+  744  oc get pods -n openshift-etcd
+  745  oc get pods -n openshift-etcd -o wide
+  746  oc get co
+  747  oc get nodes
+  748  vi clusterconfigs/.openshift_install.log 
+  749  ls
+  750  oc get nodes
+  751  oc get co
+  752  oc get mc
+  753  oc get mc rendered-worker-60646a2e94785330d2a77063e8794c48 -o yaml
+  754  oc get mc
+  755  oc get pods -n openshift-machine-config-operator 
+  756  oc get mc
+  757  oc get pods -n openshift-machine-config-operator 
+  758  oc get pods -n openshift-machine-api
+  759  oc get baremetalhost -A
+  760  oc get machines
+  761  oc get machine
+  762  oc get machine -A
+  763  oc get machine/ocp-cloud-fl9m2-worker-0-6zvkj -n openshift-machine-api -o yaml
+  764  oc get pods -n openshift-machine-api
+  765  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api
+  766  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor
+  767  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo
+  768  curl -k https://ilo20.cloud.lfpw.dsna.fr/redfish/v1/
+  769  dig a ilo20.cloud.lfpw.dsna.fr
+  770  oc get pods -n openshift-machine-api -o wide
+  771  curl -k https://ilo20.cloud.lfpw.dsna.fr/redfish/v1/
+  772  ping ilo20.cloud.lfpw.dsna.fr
+  773  ping ilo21.cloud.lfpw.dsna.fr
+  774  ping ilo18.cloud.lfpw.dsna.fr
+  775  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo
+  776  oc logs metal3-6d49b88dff-dwmb4 -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  777  oc delete pod metal3-6d49b88dff-dwmb4 -n openshift-machine-api
+  778  oc get pods -n openshift-machine-api
+  779  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  780  oc get pods -n openshift-machine-api
+  781  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  782  oc get pods -A | grep etcd
+  783  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  784  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo19
+  785  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  786  oc get pods -n openshift-machine-api -o wide
+  787  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  788  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo19
+  789  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo21
+  790  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  791  history > cmd-install
+  792  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  793  ssh root@200.40.31.120
+  794  ssh root@200.40.31.121
+  795  ssh core@200.40.31.121
+  796  ssh root@200.40.31.121
+  797  ssh root@200.40.31.122
+  798  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  799  ssh root@200.40.31.121
+  800  ssh root@200.40.31.120
+  801  ssh root@200.40.31.121
+  802  ssh root@200.40.31.120
+  803  ssh root@200.40.31.121
+  804  oc get pods -n openshift-machine-api -o wide
+  805  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  806  ssh root@200.40.31.120
+  807  ping 200.40.31.120
+  808  ping 200.40.31.122
+  809  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  810  ls
+  811  vi cmd-install 
+  812  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  813  ping 200.40.31.122
+  814  ping 200.40.31.120
+  815  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  816  ping 200.40.31.120
+  817  ping 200.40.31.121
+  818  ping 200.40.31.120
+  819  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo20
+  820  ping 200.40.31.120
+  821  ping 200.40.31.121
+  822  ssh root@200.40.31.121
+  823  vi .ssh/known_hosts 
+  824  ssh root@200.40.31.121
+  825  ssh core@200.40.31.121
+  826  ssh core@200.40.31.122
+  827  ssh core@200.40.31.120
+  828  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo
+  829  ssh core@200.40.31.121
+  830  vi .ssh/known_hosts 
+  831  ssh core@200.40.31.121
+  832  oc get csr
+  833  ssh core@200.40.31.122
+  834  ssh core@200.40.31.120
+  835  ssh core@200.40.31.109
+  836  oc get nodes
+  837  oc get machines -A
+  838  oc get machines -A -o wide
+  839  ssh core@200.40.31.120
+  840  sudo vi /etc/dhcp/dhcpd.conf
+  841  dig -x 200.40.31.120
+  842  ssh core@200.40.31.120
+  843  oc get csr
+  844  for i in `oc get csr --no-headers | grep -i pending |  awk '{ print $1 }'`; do oc adm certificate approve $i; done
+  845  ssh core@200.40.31.120
+  846  oc get nodes
+  847  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  848  oc get pods -A -n openshift-machine-api
+  849  oc get nodes
+  850  oc get co
+  851  oc get route -A
+  852  curl -k https://console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  853  dig a console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  854  curl -k https://console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  855  oc get route
+  856  oc get route -A
+  857  curl -k https://console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  858  oc get nodes
+  859  oc logs metal3-6d49b88dff-l544x -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  860  oc get pods -A -n openshift-machine-api
+  861  oc get pods -n openshift-machine-api
+  862  oc delete pods metal3-6d49b88dff-l544x -n openshift-machine-api
+  863  oc get pods -n openshift-machine-api
+  864  oc logs metal3-6d49b88dff-z62js -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  865  oc get pods -n openshift-console
+  866  oc logs console-8494bfbf5c-ghwd7 -n openshift-console
+  867  curl -k https://oauth-openshift.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  868  oc get pods -A | grep oauth
+  869  oc logs oauth-openshift-6fc67d5d77-ndd74 -n openshift-authentication
+  870  oc get pods -A | grep oauth
+  871  curl -k https://oauth-openshift.apps.ocp-cloud.cloud.lfpw.dsna.fr
+  872  oc get nodes
+  873  oc logs metal3-6d49b88dff-z62js -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  874  oc get pods -n openshift-console
+  875  oc get pods -n openshift-machine-pi
+  876  oc get pods -n openshift-machine-api
+  877  oc delete po/metal3-6d49b88dff-z62js -n openshift-machine-api
+  878  history >> cmd-install
+  879  cat cmd-install 
+  880  ls
+  881  oc logs metal3-6d49b88dff-z62js -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  882  oc get pods -n openshift-machine-api
+  883  oc logs metal3-6d49b88dff-vq47c -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  884  oc get pods -n openshift-machine-api -o wide
+  885  oc logs metal3-6d49b88dff-vq47c -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  886  oc get pods -n openshift-machine-api
+  887  oc get pods -n openshift-machine-api -o wide
+  888  oc logs metal3-6d49b88dff-vq47c -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  889  oc get pods -A -o wide | grep dns
+  890  oc logs metal3-6d49b88dff-vq47c -n openshift-machine-api metal3-ironic-conductor 2>&1 | grep ilo22
+  891  oc get baremetalhost -A
+  892  oc get baremetalhost/lame20-worker -n openshift-machine-api -o yaml
+  893  oc get baremetalhost/lame20-worker -n openshift-machine-api -o yaml > bmh20.yaml
+  894  cp bmh20.yaml bmh22.yaml 
+  895  vi bmh22.yaml
+  896  mv bmh22.yaml bmh23.yaml 
+  897  vi bmh23.yaml 
+  898  ls
+  899  vi install-config.yaml-back
+  900  vi bmh23.yaml 
+  901  ls
+  902  vi bmh23.yaml 
+  903  history >> cmd-install

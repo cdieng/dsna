@@ -1,0 +1,299 @@
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  creationTimestamp: "2021-09-07T17:57:13Z"
+  finalizers:
+  - baremetalhost.metal3.io
+  generation: 2
+  name: lame20-worker
+  namespace: openshift-machine-api
+  resourceVersion: "496897"
+  uid: 7dac9774-7953-4e06-96b4-36e96868a712
+spec:
+  automatedCleaningMode: metadata
+  bmc:
+    address: redfish-virtualMedia://ilo20.cloud.lfpw.dsna.fr/redfish/v1/Systems/1
+    credentialsName: lame20-worker-bmc-secret
+    disableCertificateVerification: true
+  bootMACAddress: 6E:A0:FB:80:00:60
+  bootMode: UEFI
+  consumerRef:
+    apiVersion: machine.openshift.io/v1beta1
+    kind: Machine
+    name: ocp-cloud-fl9m2-worker-0-txtzx
+    namespace: openshift-machine-api
+  hardwareProfile: unknown
+  image:
+    checksum: http://200.17.27.3:6180/images/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2/cached-rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.md5sum
+    url: http://200.17.27.3:6180/images/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2/cached-rhcos-48.84.202106301921-0-openstack.x86_64.qcow2
+  online: true
+  rootDeviceHints:
+    minSizeGigabytes: 20
+  userData:
+    name: worker-user-data
+    namespace: openshift-machine-api
+status:
+  errorCount: 1
+  errorMessage: ""
+  goodCredentials:
+    credentials:
+      name: lame20-worker-bmc-secret
+      namespace: openshift-machine-api
+    credentialsVersion: "34906"
+  hardware:
+    cpu:
+      arch: x86_64
+      clockMegahertz: 2858
+      count: 80
+      flags:
+      - 3dnowprefetch
+      - abm
+      - acpi
+      - adx
+      - aes
+      - aperfmperf
+      - apic
+      - arat
+      - arch_capabilities
+      - arch_perfmon
+      - art
+      - avx
+      - avx2
+      - avx512_vnni
+      - avx512bw
+      - avx512cd
+      - avx512dq
+      - avx512f
+      - avx512vl
+      - bmi1
+      - bmi2
+      - bts
+      - cat_l3
+      - cdp_l3
+      - clflush
+      - clflushopt
+      - clwb
+      - cmov
+      - constant_tsc
+      - cpuid
+      - cpuid_fault
+      - cqm
+      - cqm_llc
+      - cqm_mbm_local
+      - cqm_mbm_total
+      - cqm_occup_llc
+      - cx16
+      - cx8
+      - dca
+      - de
+      - ds_cpl
+      - dtes64
+      - dtherm
+      - dts
+      - epb
+      - ept
+      - ept_ad
+      - erms
+      - est
+      - f16c
+      - flexpriority
+      - flush_l1d
+      - fma
+      - fpu
+      - fsgsbase
+      - fxsr
+      - hle
+      - ht
+      - ibpb
+      - ibrs
+      - ibrs_enhanced
+      - ida
+      - intel_ppin
+      - intel_pt
+      - invpcid
+      - invpcid_single
+      - lahf_lm
+      - lm
+      - mba
+      - mca
+      - mce
+      - md_clear
+      - mmx
+      - monitor
+      - movbe
+      - mpx
+      - msr
+      - mtrr
+      - nonstop_tsc
+      - nopl
+      - nx
+      - ospke
+      - pae
+      - pat
+      - pbe
+      - pcid
+      - pclmulqdq
+      - pdcm
+      - pdpe1gb
+      - pebs
+      - pge
+      - pku
+      - pln
+      - pni
+      - popcnt
+      - pse
+      - pse36
+      - pts
+      - rdrand
+      - rdseed
+      - rdt_a
+      - rdtscp
+      - rep_good
+      - rtm
+      - sdbg
+      - sep
+      - smap
+      - smep
+      - smx
+      - ss
+      - ssbd
+      - sse
+      - sse2
+      - sse4_1
+      - sse4_2
+      - ssse3
+      - stibp
+      - syscall
+      - tm
+      - tm2
+      - tpr_shadow
+      - tsc
+      - tsc_adjust
+      - tsc_deadline_timer
+      - vme
+      - vmx
+      - vnmi
+      - vpid
+      - x2apic
+      - xgetbv1
+      - xsave
+      - xsavec
+      - xsaveopt
+      - xsaves
+      - xtopology
+      - xtpr
+      model: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+    firmware:
+      bios:
+        date: 09/05/2019
+        vendor: HPE
+        version: I42
+    hostname: localhost.localdomain
+    nics:
+    - ip: 200.17.27.134
+      mac: 6e:a0:fb:80:00:61
+      model: 0x14e4 0x16a4
+      name: ens3f1
+    - ip: fe80::44fb:5e67:dd40:c271%ens3f1
+      mac: 6e:a0:fb:80:00:61
+      model: 0x14e4 0x16a4
+      name: ens3f1
+    - ip: 200.17.171.210
+      mac: 6e:a0:fb:80:00:64
+      model: 0x14e4 0x16a4
+      name: ens3f6
+    - ip: fe80::acc1:c659:e252:6d8%ens3f6
+      mac: 6e:a0:fb:80:00:64
+      model: 0x14e4 0x16a4
+      name: ens3f6
+    - ip: 200.40.31.108
+      mac: 6e:a0:fb:80:00:62
+      model: 0x14e4 0x16a4
+      name: ens3f4
+    - ip: fe80::f993:521d:b22f:59d1%ens3f4
+      mac: 6e:a0:fb:80:00:62
+      model: 0x14e4 0x16a4
+      name: ens3f4
+    - ip: fe80::85dc:bb1b:2a5d:4760%ens3f2
+      mac: 6e:a0:fb:80:00:5e
+      model: 0x14e4 0x16a4
+      name: ens3f2
+    - ip: 200.17.27.133
+      mac: 6e:a0:fb:80:00:60
+      model: 0x14e4 0x16a4
+      name: ens3f0
+    - ip: fe80::9ff3:60da:9ee4:2e80%ens3f0
+      mac: 6e:a0:fb:80:00:60
+      model: 0x14e4 0x16a4
+      name: ens3f0
+    - ip: 200.17.171.211
+      mac: 6e:a0:fb:80:00:65
+      model: 0x14e4 0x16a4
+      name: ens3f7
+    - ip: fe80::3687:ca39:323d:a4f8%ens3f7
+      mac: 6e:a0:fb:80:00:65
+      model: 0x14e4 0x16a4
+      name: ens3f7
+    - ip: 200.40.31.109
+      mac: 6e:a0:fb:80:00:63
+      model: 0x14e4 0x16a4
+      name: ens3f5
+    - ip: fe80::a33b:81ca:7bd0:3cb4%ens3f5
+      mac: 6e:a0:fb:80:00:63
+      model: 0x14e4 0x16a4
+      name: ens3f5
+    - ip: fe80::2589:636d:e274:d54f%ens3f3
+      mac: 6e:a0:fb:80:00:5f
+      model: 0x14e4 0x16a4
+      name: ens3f3
+    ramMebibytes: 196352
+    storage:
+    - hctl: "1:0:0:0"
+      model: SD/MMC CRW
+      name: /dev/sda
+      rotational: true
+      serialNumber: "29203008282014000"
+      sizeBytes: 32107397120
+      vendor: Generic-
+    - hctl: "2:0:0:0"
+      model: LUN 00 Media 0
+      name: /dev/sdb
+      rotational: true
+      serialNumber: 000002660A01
+      sizeBytes: 536870912
+      vendor: iLO
+    systemVendor:
+      manufacturer: HPE
+      productName: Synergy 480 Gen10 (P06011-B21)
+      serialNumber: CZJ94802MW
+  hardwareProfile: unknown
+  lastUpdated: "2021-09-08T10:38:35Z"
+  operationHistory:
+    deprovision:
+      end: null
+      start: null
+    inspect:
+      end: "2021-09-08T08:52:01Z"
+      start: "2021-09-08T08:44:17Z"
+    provision:
+      end: "2021-09-08T09:07:43Z"
+      start: "2021-09-08T08:52:15Z"
+    register:
+      end: "2021-09-08T10:38:35Z"
+      start: "2021-09-08T10:28:13Z"
+  operationalStatus: OK
+  poweredOn: true
+  provisioning:
+    ID: c03b0f22-429b-4060-805c-c91ef3dfa075
+    bootMode: UEFI
+    image:
+      checksum: http://200.17.27.3:6180/images/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2/cached-rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.md5sum
+      url: http://200.17.27.3:6180/images/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2/cached-rhcos-48.84.202106301921-0-openstack.x86_64.qcow2
+    rootDeviceHints:
+      minSizeGigabytes: 20
+    state: provisioned
+  triedCredentials:
+    credentials:
+      name: lame20-worker-bmc-secret
+      namespace: openshift-machine-api
+    credentialsVersion: "34906"

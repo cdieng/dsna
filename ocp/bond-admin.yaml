@@ -1,0 +1,64 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+
+metadata:
+
+  labels:
+
+    machineconfiguration.openshift.io/role: worker
+
+  name: 99-worker-bond
+
+spec:
+
+  config:
+
+    ignition:
+
+      version: 3.2.0
+
+    storage:
+
+      files:
+
+        - contents:
+
+            source: data:text/plain;charset=utf-8;base64,W2Nvbm5lY3Rpb25dCmlkPWJvbmQtYWRtaW4KdHlwZT1ib25kCmludGVyZmFjZS1uYW1lPWFkbWluCnBlcm1pc3Npb25zPQoKW2JvbmRdCm1vZGU9YWN0aXZlLWJhY2t1cAoKW2lwdjRdCmRucy1zZWFyY2g9Cm1ldGhvZD1hdXRvCgpbaXB2Nl0KYWRkci1nZW4tbW9kZT1zdGFibGUtcHJpdmFjeQpkbnMtc2VhcmNoPQptZXRob2Q9YXV0bwoKW3Byb3h5XQ==
+
+          mode: 384
+
+          path: /etc/NetworkManager/systemConnectionsMerged/bond-admin.nmconnection
+
+          filesystem: root
+
+          user:
+
+            name: root
+
+        - contents:
+
+            source: data:text/plain;charset=utf-8;base64,W2Nvbm5lY3Rpb25dCmlkPWJvbmQtc2xhdmUtZW5zM2Y2CnR5cGU9ZXRoZXJuZXQKaW50ZXJmYWNlLW5hbWU9ZW5zM2Y2Cm1hc3Rlcj1hZG1pbgpwZXJtaXNzaW9ucz0Kc2xhdmUtdHlwZT1ib25k
+
+          mode: 384
+
+          path: /etc/NetworkManager/systemConnectionsMerged/bond-slave-ens3f6.nmconnection
+
+          filesystem: root
+
+          user:
+
+            name: root
+
+        - contents:
+
+            source: data:text/plain;charset=utf-8;base64,W2Nvbm5lY3Rpb25dCmlkPWJvbmQtc2xhdmUtZW5zM2Y3CnR5cGU9ZXRoZXJuZXQKaW50ZXJmYWNlLW5hbWU9ZW5zM2Y3Cm1hc3Rlcj1hZG1pbgpwZXJtaXNzaW9ucz0Kc2xhdmUtdHlwZT1ib25k
+
+          mode: 384
+
+          path: /etc/NetworkManager/systemConnectionsMerged/bond-slave-ens3f7.nmconnection
+
+          filesystem: root
+
+          user:
+
+            name: root

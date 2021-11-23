@@ -1,0 +1,112 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubemacpool.io/transaction-timestamp: "2021-09-22T17:19:31.644124796Z"
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1alpha3
+    name.os.template.kubevirt.io/rhel6.10: Red Hat Enterprise Linux 6.0 or higher
+    vm.kubevirt.io/validations: |
+      [
+        {
+          "name": "minimal-required-memory",
+          "path": "jsonpath::.spec.domain.resources.requests.memory",
+          "rule": "integer",
+          "message": "This VM requires more memory.",
+          "min": 536870912
+        }
+      ]
+  creationTimestamp: "2021-09-22T17:19:31Z"
+  finalizers:
+  - k8s.v1.cni.cncf.io/kubeMacPool
+  generation: 1
+  labels:
+    app: testvm
+    os.template.kubevirt.io/rhel6.10: "true"
+    vm.kubevirt.io/template: rhel6-server-large
+    vm.kubevirt.io/template.namespace: openshift
+    vm.kubevirt.io/template.revision: "1"
+    vm.kubevirt.io/template.version: v0.15.1
+    workload.template.kubevirt.io/server: "true"
+  name: testvm
+  namespace: ccs
+  resourceVersion: "6099240"
+  uid: 600af5d3-6338-4cbc-b78d-4a544b7c6f78
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      creationTimestamp: null
+      name: testvm-rootdisk-hp5ut
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 60Gi
+        storageClassName: ocs-storagecluster-ceph-rbd
+        volumeMode: Block
+      source:
+        pvc:
+          name: p2env01sv
+          namespace: ccs
+  running: true
+  template:
+    metadata:
+      annotations:
+        vm.kubevirt.io/flavor: large
+        vm.kubevirt.io/os: rhel6
+        vm.kubevirt.io/workload: server
+      creationTimestamp: null
+      labels:
+        kubevirt.io/domain: testvm
+        kubevirt.io/size: large
+        os.template.kubevirt.io/rhel6.10: "true"
+        vm.kubevirt.io/name: testvm
+        workload.template.kubevirt.io/server: "true"
+    spec:
+      domain:
+        cpu:
+          cores: 5
+          sockets: 1
+          threads: 1
+        devices:
+          disks:
+          - bootOrder: 1
+            disk:
+              bus: virtio
+            name: rootdisk
+          interfaces:
+          - macAddress: 02:40:f0:00:00:04
+            masquerade: {}
+            model: virtio
+            name: default
+          networkInterfaceMultiqueue: true
+          rng: {}
+          useVirtioTransitional: true
+        machine:
+          type: pc-q35-rhel8.4.0
+        resources:
+          requests:
+            memory: 4Gi
+      evictionStrategy: LiveMigrate
+      hostname: testvm
+      networks:
+      - name: default
+        pod: {}
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - dataVolume:
+          name: testvm-rootdisk-hp5ut
+        name: rootdisk
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2021-09-22T17:19:40Z"
+    status: "True"
+    type: Ready
+  created: true
+  ready: true
+  volumeSnapshotStatuses:
+  - enabled: true
+    name: rootdisk

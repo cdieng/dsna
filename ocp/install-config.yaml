@@ -1,0 +1,190 @@
+apiVersion: v1
+
+baseDomain: cloud.lfpw.dsna.fr
+
+proxy:
+
+  httpProxy: http://proxy_user:redhat@200.17.164.2:3128
+
+  httpsProxy: http://proxy_user:redhat@200.17.164.2:3128
+
+  noProxy: .dsna.fr,200.17.27.0/24,192.168.90.0/24,200.40.0.0/16,200.40.31.224,localhost
+
+metadata:
+
+  name: poc
+
+networking:
+
+  machineCIDR: 200.40.0.0/16
+
+  networkType: OVNKubernetes
+
+compute:
+
+- name: worker
+
+  replicas: 3
+
+controlPlane:
+
+  name: master
+
+  replicas: 3
+
+  platform:
+
+    baremetal: {}
+
+platform:
+
+  baremetal:
+
+    bootstrapOSImage: http://200.40.31.224:8080/rhcos-48.84.202106301921-0-qemu.x86_64.qcow2.gz?sha256=fe7f5cb0bf0a46d8a7a1b58f658cb759732ada5ed875d9ef0f51574bf426b061
+    clusterOSImage: http://200.40.31.224:8080/rhcos-48.84.202106301921-0-openstack.x86_64.qcow2.gz?sha256=5a75df7b4d4dc1861093e520187a133eda3439019f280dc6e2f57edf70eb089d
+    apiVIP: 200.40.31.200
+
+    ingressVIP: 200.40.31.250
+
+    provisioningNetworkInterface: ens3f0
+
+    provisioningNetworkCIDR: 200.17.27.0/24
+
+    hosts:
+
+      - name: lame17-master
+
+        role: master
+
+        bmc:
+
+          address: redfish-virtualMedia://ilo17.cloud.lfpw.dsna.fr/redfish/v1/Systems/1 
+
+          username: esa
+
+          password: 123esa!!
+
+          disableCertificateVerification: True
+
+        bootMACAddress: 6E:A0:FB:80:00:58
+
+        bootMode: UEFI
+
+        rootDeviceHints:
+
+         minSizeGigabytes: 20
+
+      - name: lame18-master
+
+        role: master
+
+        bmc:
+
+          address: redfish-virtualMedia://ilo18.cloud.lfpw.dsna.fr/redfish/v1/Systems/1 
+
+          username: esa
+
+          password: 123esa!!
+
+          disableCertificateVerification: True
+
+        bootMACAddress: 6E:A0:FB:80:00:28
+
+        bootMode: UEFI
+
+        rootDeviceHints:
+
+         minSizeGigabytes: 20
+
+      - name: lame19-master
+
+        role: master
+
+        bmc:
+
+          address: redfish-virtualMedia://ilo19.cloud.lfpw.dsna.fr/redfish/v1/Systems/1
+
+          username: esa
+
+          password: 123esa!!
+
+          disableCertificateVerification: True
+
+        bootMACAddress: 6E:A0:FB:80:00:30
+
+        bootMode: UEFI
+
+        rootDeviceHints:
+
+         minSizeGigabytes: 20
+
+      - name: lame20-worker
+
+        role: worker
+
+        bmc:
+
+          address: redfish-virtualMedia://ilo20.cloud.lfpw.dsna.fr/redfish/v1/Systems/1 
+
+          username: esa
+
+          password: 123esa!!
+
+          disableCertificateVerification: True
+
+        bootMACAddress: 6E:A0:FB:80:00:60
+
+        bootMode: UEFI
+
+        rootDeviceHints:
+
+         minSizeGigabytes: 20
+
+      - name: lame21-worker
+
+        role: worker
+
+        bmc:
+
+          address: redfish-virtualMedia://ilo21.cloud.lfpw.dsna.fr/redfish/v1/Systems/1 
+
+          username: esa
+
+          password: 123esa!!
+
+          disableCertificateVerification: True
+
+        bootMACAddress: 6E:A0:FB:80:00:40
+
+        bootMode: UEFI
+
+        rootDeviceHints:
+
+         minSizeGigabytes: 100
+
+      - name: lame22-worker
+
+        role: worker
+
+        bmc:
+
+          address: redfish-virtualMedia://ilo22.cloud.lfpw.dsna.fr/redfish/v1/Systems/1 
+
+          username: esa
+
+          password: 123esa!!
+
+          disableCertificateVerification: True
+
+        bootMACAddress: 6E:A0:FB:80:00:48
+
+        bootMode: UEFI
+
+        rootDeviceHints:
+
+         minSizeGigabytes: 20
+
+
+pullSecret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfZjllYTIxY2EwZDJiNDJlMTk1NzUyYzI3MGVhZTk1Zjk6VVhPTEFZWURRV0FNMFZLUElYTlhSN1MxVUE5Mk1UM0c1S1JPRTlGU0g1WDA0WDhRUlo1UUFURldHU1hCVUsyTQ==","email":"cheikh.dieng.external@atos.net"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfZjllYTIxY2EwZDJiNDJlMTk1NzUyYzI3MGVhZTk1Zjk6VVhPTEFZWURRV0FNMFZLUElYTlhSN1MxVUE5Mk1UM0c1S1JPRTlGU0g1WDA0WDhRUlo1UUFURldHU1hCVUsyTQ==","email":"cheikh.dieng.external@atos.net"},"registry.connect.redhat.com":{"auth":"fHVoYy1wb29sLTQzOTY5OGEzLTEzNzEtNDBkYy04OTYyLTdjZjUzNmQzZmVjNDpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmtZVFUwT1dGbFpEUmxORFEwTnpJd09UaGpZekZtWXpGbVl6UTBNREF3TXlKOS5xT2JHS0dqY3oyRzJNS0Z3VGZvQ1EzakZUUlFFWlI4Y3dkM0E3UE9ra3RHNXZvck5ZUUJ2WU5TT1VxRTFHTFBTMEpncGhTXzN1bXFpTXEydTdjTW5kY1VVcERHODNuTUIxczVfQjN3c0dKZEEtelhhZ2QxR1MtNERmWDFvbTIxVnptdTNFSHo3cXNVdTJwcVp1TlZmSU4tMHE4UjM3TDd4TGhlLXV3czBNbGdUWUswbm90U3lSMWFhZThQNmdOTTZGLW1Dd1dTbmQtcTdhZWJ0M0x0RGI1bk92NDZNSVROLU9TZnduOC1SWFljTDAzUU1vdTItc3FhVnIwQmJuZEdCRlNRTzZsRWIwTjdqcXNoZHMwbGw4OVRnVTM1eXg0dDhuTUtCUU9WM2o1LTMxVDIxQTBfWmVWRWFyYktYTzdZVHpoR1hLRWlIZmhKNndjbUtRNG1ldnRxTE1iSjFTQUhJcDU0WWdXT1FBLUkyVUVjXzJ6V1ZvQVlWQlNLSEJtUVhHa0tjN20tTFduVkdvZjU0bTJ0d3JxSmhIeUI1YWxvQ21hTnNIRENqR0UtaW9BMDkydVVPUm13MDN4MWFtLXZyeElOVkFtWW9RaVM1YWV1ekZuR3JoQTE5Ul9FRllCWGZ0TGtTWXRCbXhEMkV6TVZ1ano4LVF5TEFZUjZuQ3ZIYlRzdXF5TWdtRm5xWjZ0NnJxaVphTEZoT3A4cVVfZHhmdDYzaHdIbTNDMlo1X29sWlVFUGdELUwwb2VEZXA3cDBiQUE1Rnl1OG9xcmNLUllLQ3d5TWstcUJhMmJwdXpEcTVLSjBPd3pKQy0zZzFYdTNKTDRsQzBGTkZwRjN6M2V3QWxkVVlFUVNVclF2dHRSYTdWbFEyRksxNktEajVLLXV0S05MLTVjZTJzaw==","email":"cheikh.dieng.external@atos.net"},"registry.redhat.io":{"auth":"fHVoYy1wb29sLTQzOTY5OGEzLTEzNzEtNDBkYy04OTYyLTdjZjUzNmQzZmVjNDpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmtZVFUwT1dGbFpEUmxORFEwTnpJd09UaGpZekZtWXpGbVl6UTBNREF3TXlKOS5xT2JHS0dqY3oyRzJNS0Z3VGZvQ1EzakZUUlFFWlI4Y3dkM0E3UE9ra3RHNXZvck5ZUUJ2WU5TT1VxRTFHTFBTMEpncGhTXzN1bXFpTXEydTdjTW5kY1VVcERHODNuTUIxczVfQjN3c0dKZEEtelhhZ2QxR1MtNERmWDFvbTIxVnptdTNFSHo3cXNVdTJwcVp1TlZmSU4tMHE4UjM3TDd4TGhlLXV3czBNbGdUWUswbm90U3lSMWFhZThQNmdOTTZGLW1Dd1dTbmQtcTdhZWJ0M0x0RGI1bk92NDZNSVROLU9TZnduOC1SWFljTDAzUU1vdTItc3FhVnIwQmJuZEdCRlNRTzZsRWIwTjdqcXNoZHMwbGw4OVRnVTM1eXg0dDhuTUtCUU9WM2o1LTMxVDIxQTBfWmVWRWFyYktYTzdZVHpoR1hLRWlIZmhKNndjbUtRNG1ldnRxTE1iSjFTQUhJcDU0WWdXT1FBLUkyVUVjXzJ6V1ZvQVlWQlNLSEJtUVhHa0tjN20tTFduVkdvZjU0bTJ0d3JxSmhIeUI1YWxvQ21hTnNIRENqR0UtaW9BMDkydVVPUm13MDN4MWFtLXZyeElOVkFtWW9RaVM1YWV1ekZuR3JoQTE5Ul9FRllCWGZ0TGtTWXRCbXhEMkV6TVZ1ano4LVF5TEFZUjZuQ3ZIYlRzdXF5TWdtRm5xWjZ0NnJxaVphTEZoT3A4cVVfZHhmdDYzaHdIbTNDMlo1X29sWlVFUGdELUwwb2VEZXA3cDBiQUE1Rnl1OG9xcmNLUllLQ3d5TWstcUJhMmJwdXpEcTVLSjBPd3pKQy0zZzFYdTNKTDRsQzBGTkZwRjN6M2V3QWxkVVlFUVNVclF2dHRSYTdWbFEyRksxNktEajVLLXV0S05MLTVjZTJzaw==","email":"cheikh.dieng.external@atos.net"}}}'
+
+sshKey: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ8GhPQ225vXNmHcr5prkyqz1AlB2A+GCHEf3r2E3weD kni@opcdeployernode.localdomain'
