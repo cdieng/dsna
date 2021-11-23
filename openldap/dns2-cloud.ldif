@@ -1,0 +1,49 @@
+# zone related things including SOA, NS and MX records
+
+# There may more than one entry per record
+# This is also applicable to all other records including "associateddomain"
+# but not for a CNAME record
+
+dn: dc=hyp03,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp03
+arecord: 200.17.164.3
+arecord: 200.17.164.133
+associateddomain: hyp03.cloud.lfpw.dsna.fr
+
+dn: dc=hyp04,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp04
+arecord: 200.17.164.4
+arecord: 200.17.164.134
+associateddomain: hyp04.cloud.lfpw.dsna.fr
+
+
+dn: dc=vip-in,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-in
+arecord: 200.17.164.2
+associateddomain: vip-in.cloud.lfpw.dsna.fr
+
+dn: dc=vip-ex,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-ex
+arecord: 200.17.164.132
+associateddomain: vip-ex.cloud.lfpw.dsna.fr
+
+dn: dc=vip-in,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-in
+cnamerecord: vip-in.cloud.lfpw.dsna.fr
+associateddomain: www.cloud.lfpw.dsna.fr
+

@@ -1,0 +1,7 @@
+dn: dc=api,dc=poc,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: api
+cnamerecord: poc.ocp.dsna.fr
+associateddomain: api.poc.ocp.dsna.fr

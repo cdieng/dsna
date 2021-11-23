@@ -1,0 +1,11 @@
+dn: dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: top
+objectClass: domainRelatedObject
+objectClass: dNSDomain2
+objectClass: PdnsDomain
+dc: 31.40.200.in-addr.arpa
+sOARecord: ns.cloud.lfpw.dsna.fr hostmaster@cloud.lfpw.dsna.fr 2002010401 1800 3600 604800 84600
+nSRecord: ns.cloud.lfpw.dsna.fr
+associateddomain: 31.40.200.in-addr.arpa
+PdnsDomainId: 1
+PdnsDomainType: master

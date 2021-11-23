@@ -1,0 +1,37 @@
+
+dn: dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: poc
+arecord: 200.40.31.200
+associateddomain: api.cloud.lfpw.dsna.fr
+
+dn: dc=apps,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: apps
+arecord: 200.40.31.250
+associateddomain: apps.cloud.lfpw.dsna.fr
+
+
+dn: dc=*,dc=api,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+cnamerecord: api.cloud.lfpw.dsna.fr
+associateddomain: *.api.cloud.lfpw.dsna.fr
+
+
+dn: dc=*,dc=apps,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+cnamerecord: apps.cloud.lfpw.dsna.fr
+associateddomain: *.apps.cloud.lfpw.dsna.fr
+
+
+

@@ -1,0 +1,16 @@
+# zone related things including SOA, NS and MX records
+
+dn: dc=lfpw,dc=dsna,dc=fr
+objectClass: top
+objectClass: domainRelatedObject
+objectClass: dNSDomain2
+objectClass: PdnsDomain
+dc: lfpw
+sOARecord: ns.lfpw.dsna.fr hostmaster@lfpw.dsna.fr 2002010401 1800 3600 604800 84600
+nSRecord: ns.lfpw.dsna.fr
+mXRecord: 10 mail.lfpw.dsna.fr
+mXRecord: 20 mail2.lfpw.dsna.fr
+associateddomain: lfpw.dsna.fr
+PdnsDomainId: 1
+PdnsDomainType: master
+PdnsDomainMaster: 200.17.164.2

@@ -1,0 +1,97 @@
+# zone related things including SOA, NS and MX records
+
+dn: dc=120,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 120
+ptrrecord: lame20-worker.ocp.dsna.fr
+associateddomain: 120.31.40.200.in-addr.arpa
+
+dn: dc=220,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 220
+ptrrecord: lame20b-worker.ocp.dsna.fr
+associateddomain: 220.31.40.200.in-addr.arpa
+
+
+dn: dc=121,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 121
+ptrrecord: lame21-worker.ocp.dsna.fr
+associateddomain: 121.31.40.200.in-addr.arpa
+
+dn: dc=221,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 221
+ptrrecord: lame21b-worker.ocp.dsna.fr
+associateddomain: 221.31.40.200.in-addr.arpa
+
+
+dn: dc=122,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 122
+ptrrecord: lame22-worker.ocp.dsna.fr
+associateddomain: 122.31.40.200.in-addr.arpa
+
+dn: dc=222,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 222
+ptrrecord: lame22b-worker.ocp.dsna.fr
+associateddomain: 222.31.40.200.in-addr.arpa
+
+
+dn: dc=123,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 123
+ptrrecord: lame23-worker.ocp.dsna.fr
+associateddomain: 123.31.40.200.in-addr.arpa
+
+dn: dc=223,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 223
+ptrrecord: lame23b-worker.ocp.dsna.fr
+associateddomain: 223.31.40.200.in-addr.arpa
+
+dn: dc=124,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 124
+ptrrecord: lame24-worker.ocp.dsna.fr
+associateddomain: 124.31.40.200.in-addr.arpa
+
+dn: dc=224,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 224
+ptrrecord: lame24b-worker.ocp.dsna.fr
+associateddomain: 224.31.40.200.in-addr.arpa
+
+
+
+
+
+
+
+
+
+
+
+
+

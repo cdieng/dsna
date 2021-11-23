@@ -1,0 +1,73 @@
+# zone related things including SOA, NS and MX records
+
+dn: dc=ilo24,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo24
+arecord: 192.168.90.55
+associateddomain: ilo24.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo23,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo23
+arecord: 192.168.90.54
+associateddomain: ilo23.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo22,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo22
+arecord: 192.168.90.53
+associateddomain: ilo22.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo21,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo21
+arecord: 192.168.90.52
+associateddomain: ilo21.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo20,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo20
+arecord: 192.168.90.51
+associateddomain: ilo20.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo19,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo19
+arecord: 192.168.90.50
+associateddomain: ilo19.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo18,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo18
+arecord: 192.168.90.49
+associateddomain: ilo18.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo17,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo17
+arecord: 192.168.90.48
+associateddomain: ilo17.cloud.lfpw.dsna.fr
+

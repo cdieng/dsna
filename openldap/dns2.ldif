@@ -1,0 +1,22 @@
+# zone related things including SOA, NS and MX records
+
+# There may more than one entry per record
+# This is also applicable to all other records including "associateddomain"
+# but not for a CNAME record
+
+dn: dc=hyp03,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp03
+arecord: 200.17.164.3
+associateddomain: hyp03.lfpw.dsna.fr
+
+dn: dc=hyp04,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp04
+arecord: 200.17.164.4
+associateddomain: hyp04.lfpw.dsna.fr
+

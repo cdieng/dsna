@@ -1,0 +1,7 @@
+dn: dc=downloads-openshift-console,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: downloads-openshift-console
+arecord: 195.83.98.243
+associateddomain: downloads-openshift-console.apps.poc.cloud.lfpw.dsna.fr

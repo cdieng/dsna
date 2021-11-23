@@ -1,0 +1,50 @@
+# zone related things including SOA, NS and MX records
+
+
+
+
+dn: dc=lame20-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame20-worker
+arecord: 200.40.31.120
+associateddomain: lame20-worker.cloud.lfpw.dsna.fr
+
+
+dn: dc=lame21-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame21-worker
+arecord: 200.40.31.121
+associateddomain: lame21-worker.cloud.lfpw.dsna.fr
+
+
+dn: dc=lame22-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame22-worker
+arecord: 200.40.31.122
+associateddomain: lame22-worker.cloud.lfpw.dsna.fr
+
+
+dn: dc=lame23-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame23-worker
+arecord: 200.40.31.123
+associateddomain: lame23-worker.cloud.lfpw.dsna.fr
+
+
+dn: dc=lame24-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame24-worker
+arecord: 200.40.31.124
+associateddomain: lame24-worker.cloud.lfpw.dsna.fr
+
+

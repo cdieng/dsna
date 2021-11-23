@@ -1,0 +1,32 @@
+dn: ou=groups,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalUnit
+objectClass: top
+ou: groups
+
+dn: ou=users,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalUnit
+objectClass: top
+ou: users
+
+dn: uid=proxy_user,ou=users,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: proxy_user
+cn: Proxy
+sn: User
+loginShell: /bin/bash
+uidNumber: 10001
+gidNumber: 10001
+homeDirectory: /home/proxy_user
+shadowMax: 60
+shadowMin: 1
+shadowWarning: 7
+shadowInactive: 7
+shadowLastChange: 0
+
+dn: cn=proxy_user,ou=groups,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: posixGroup
+cn: proxy_user
+gidNumber: 10001
+memberUid: proxy_user

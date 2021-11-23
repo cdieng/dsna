@@ -1,0 +1,11 @@
+dn: dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectClass: top
+objectClass: domainRelatedObject
+objectClass: dNSDomain2
+objectClass: PdnsDomain
+dc: 31.40.200.in-addr.arpa
+sOARecord: ns.ocp.dsna.fr hostmaster@ocp.dsna.fr 2002010401 1800 3600 604800 84600
+nSRecord: ns.ocp.dsna.fr
+associateddomain: 31.40.200.in-addr.arpa
+PdnsDomainId: 1
+PdnsDomainType: master

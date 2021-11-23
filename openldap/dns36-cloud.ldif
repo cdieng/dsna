@@ -1,0 +1,19 @@
+# zone related things including SOA, NS and MX records
+
+dn: dc=apps,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: apps
+arecord: 200.40.31.250
+associateddomain: apps.ocp-cloud.cloud.lfpw.dsna.fr
+
+dn: dc=console-openshift-console,dc=apps,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: console-openshift-console
+arecord: 195.83.98.243
+associateddomain: console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+
+

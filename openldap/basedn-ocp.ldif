@@ -1,0 +1,16 @@
+dn: dc=ocp,dc=dsna,dc=fr
+objectClass: top
+objectClass: domainRelatedObject
+objectClass: dNSDomain2
+objectClass: PdnsDomain
+dc: ocp
+sOARecord: ns.ocp.dsna.fr hostmaster@ocp.dsna.fr 2002010401 1800 3600 604800 84600
+nSRecord: ns.ocp.dsna.fr
+mXRecord: 10 mail.ocp.dsna.fr
+mXRecord: 20 mail2.ocp.dsna.fr
+arecord: 200.17.164.3
+associateddomain: ocp.dsna.fr
+PdnsDomainId: 1
+PdnsDomainType: master
+PdnsDomainMaster: 200.17.164.3
+

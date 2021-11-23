@@ -1,0 +1,62 @@
+FROM docker.io/library/centos:8.3.2011
+
+COPY ltb-project.repo /etc/yum.repos.d/ltb-project.repo
+RUN yum update -y
+RUN yum install wget -y
+RUN wget https://ltb-project.org/lib/RPM-GPG-KEY-LTB-project -O /etc/pki/rpm-gpg/RPM-GPG-KEY-LTB-project
+RUN yum install openldap-ltb -y
+
+COPY dnsdomain2.schema /usr/local/openldap/etc/openldap/schema/dnsdomain2.schema
+COPY pdns-domaininfo.schema /usr/local/openldap/etc/openldap/schema/pdns-domaininfo.schema
+
+#RUN su root -c 'useradd -r -M -d /var/lib/openldap -u 55 -s /usr/sbin/nologin ldap'
+RUN ls /usr/libexec/openldap
+#RUN su root -c 'mkdir /var/lib/openldap /etc/openldap/slapd.d'
+#RUN su root -c 'chown -R ldap:ldap /var/lib/openldap'
+#RUN su root -c 'chown root:ldap /etc/openldap/slapd.conf'
+#RUN su root -c 'chmod 640 /etc/openldap/slapd.conf'
+#RUN su root -c 'dnf install -y sudo'
+#RUN su root -c 'sudo -V |  grep -i "ldap"'
+#RUN su root -c 'cp /usr/share/doc/sudo/schema.OpenLDAP  /etc/openldap/schema/sudo.schema'
+#RUN su root -c 'mv /etc/openldap/slapd.ldif /etc/openldap/slapd.ldif.bak'
+
+#COPY sudo.ldif /etc/openldap/schema/sudo.ldif
+#RUN su root -c 'mkdir /etc/systemd/system/slapd.service.d/'
+#COPY slapd.service /etc/systemd/system/slapd.service
+
+#COPY slapd.ldif  /etc/openldap/slapd.ldif
+
+#RUN su root -c 'slapadd -n 0 -F /etc/openldap/slapd.d -l /etc/openldap/slapd.ldif -u'
+#RUN su root -c 'slapadd -n 0 -F /etc/openldap/slapd.d -l /etc/openldap/slapd.ldif'
+#RUN su root -c 'ls /etc/openldap/slapd.d'
+#RUN su root -c 'chown -R ldap:ldap /etc/openldap/slapd.d'
+#RUN su root -c 'ls /etc/openldap/slapd.d'
+
+#RUN su root -c 'ln -s /etc/systemd/system/slapd.service  /etc/systemd/system/multi-user.target.wants/slapd.service'
+
+##RUN su root -c 'systemctl daemon-reload'
+##RUN su root -c 'systemctl enable --now slapd'
+##RUN su root -c 'systemctl status slapd'
+
+#COPY enable-ldap-log.ldif /etc/openldap/
+##RUN su root -c 'ldapmodify -Y external -H ldapi:/// -f /etc/openldap/enable-ldap-log.ldif'
+##RUN su root -c 'ldapsearch -Y EXTERNAL -H ldapi:/// -b cn=config "(objectClass=olcGlobal)" olcLogLevel -LLL -Q'
+
+#RUN su root -c 'echo "local4.* /var/log/slapd.log" >> /etc/rsyslog.conf'
+##RUN su root -c 'systemctl restart rsyslog'
+
+#COPY rootdn.ldif /etc/openldap/
+##RUN su root -c 'ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/rootdn.ldif'
+
+#COPY add-tls.ldif /etc/openldap
+##RUN su root -c 'ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/add-tls.ldif'
+
+##RUN su root -c 'slapcat -b "cn=config" | grep olcTLS'
+
+##RUN su root -c 'echo "TLS_CACERT     /etc/pki/tls/ldapserver.crt" >> /etc/openldap/ldap.conf'
+
+
+EXPOSE 389 636
+
+
+CMD [ "/sbin/init" ]

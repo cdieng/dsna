@@ -1,0 +1,10 @@
+
+dn: dc=*,dc=api,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+cnamerecord: poc.cloud.lfpw.dsna.fr
+associateddomain: *.api.poc.cloud.lfpw.dsna.fr
+
+

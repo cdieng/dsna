@@ -1,0 +1,60 @@
+# zone related things including SOA, NS and MX records
+
+
+dn: dc=120,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 120
+ptrrecord: lame20-worker.cloud.lfpw.dsna.fr
+associateddomain: 120.31.40.200.in-addr.arpa
+
+
+dn: dc=121,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 121
+ptrrecord: lame21-worker.cloud.lfpw.dsna.fr
+associateddomain: 121.31.40.200.in-addr.arpa
+
+
+dn: dc=122,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 122
+ptrrecord: lame22-worker.cloud.lfpw.dsna.fr
+associateddomain: 122.31.40.200.in-addr.arpa
+
+
+
+dn: dc=123,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 123
+ptrrecord: lame23-worker.cloud.lfpw.dsna.fr
+associateddomain: 123.31.40.200.in-addr.arpa
+
+
+dn: dc=124,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 124
+ptrrecord: lame24-worker.cloud.lfpw.dsna.fr
+associateddomain: 124.31.40.200.in-addr.arpa
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+# zone related things including SOA, NS and MX records
+
+dn: dc=_acme-challenge,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: dNSDomain2
+objectclass: domainrelatedobject
+dc: _acme-challenge
+TXTRecord: "G4d-NJvGcOyN4L6FPZunTfRYeuVOvOG3afGjCby6Ncs"
+associateddomain: _acme-challenge.cloud.lfpw.dsna.fr
+

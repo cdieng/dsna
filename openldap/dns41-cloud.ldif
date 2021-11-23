@@ -1,0 +1,7 @@
+dn: dc=api,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: api
+arecord: 195.83.98.243
+associateddomain: api.apps.poc.cloud.lfpw.dsna.fr

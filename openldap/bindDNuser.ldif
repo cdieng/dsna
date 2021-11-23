@@ -1,0 +1,11 @@
+dn: ou=system,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalUnit
+objectClass: top
+ou: system
+
+dn: cn=dieng,ou=system,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalRole
+objectClass: simpleSecurityObject
+cn: dieng
+userPassword: {SSHA}GIjXFqSaf0UoMPO/FcflUTrXwUenX8fi
+description: Bind DN user for LDAP Operations

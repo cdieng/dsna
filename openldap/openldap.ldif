@@ -1,0 +1,1508 @@
+dn: cn=config
+changetype: modify
+add: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/pki/tls/ldapserver.crt
+-
+add: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/pki/tls/ldapserver.key
+-
+add: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/pki/tls/ldapserver.crt
+dn: dc=cloud,dc=lfpw,dc=dsna,dc=fr
+changetype: modify
+add: arecord
+arecord: 195.83.98.243
+
+dn: dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: top
+objectClass: domainRelatedObject
+objectClass: dNSDomain2
+objectClass: PdnsDomain
+dc: cloud
+sOARecord: ns.cloud.lfpw.dsna.fr hostmaster@cloud.lfpw.dsna.fr 2002010401 1800 3600 604800 84600
+nSRecord: ns.cloud.lfpw.dsna.fr
+mXRecord: 10 mail.cloud.lfpw.dsna.fr
+mXRecord: 20 mail2.cloud.lfpw.dsna.fr
+arecord: 195.83.98.243
+associateddomain: cloud.lfpw.dsna.fr
+PdnsDomainId: 1
+PdnsDomainType: master
+PdnsDomainMaster: 200.17.164.2
+
+dn: dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: top
+objectClass: domainRelatedObject
+objectClass: dNSDomain2
+objectClass: PdnsDomain
+dc: 31.40.200.in-addr.arpa
+sOARecord: ns.cloud.lfpw.dsna.fr hostmaster@cloud.lfpw.dsna.fr 2002010401 1800 3600 604800 84600
+nSRecord: ns.cloud.lfpw.dsna.fr
+associateddomain: 31.40.200.in-addr.arpa
+PdnsDomainId: 1
+PdnsDomainType: master
+dn: ou=groups,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalUnit
+objectClass: top
+ou: groups
+
+dn: ou=users,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalUnit
+objectClass: top
+ou: users
+
+dn: uid=proxy_user,ou=users,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: proxy_user
+cn: Proxy
+sn: User
+loginShell: /bin/bash
+uidNumber: 10001
+gidNumber: 10001
+homeDirectory: /home/proxy_user
+shadowMax: 60
+shadowMin: 1
+shadowWarning: 7
+shadowInactive: 7
+shadowLastChange: 0
+
+dn: cn=proxy_user,ou=groups,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectClass: posixGroup
+cn: proxy_user
+gidNumber: 10001
+memberUid: proxy_user
+dn: dc=ocp,dc=dsna,dc=fr
+objectClass: top
+objectClass: domainRelatedObject
+objectClass: dNSDomain2
+objectClass: PdnsDomain
+dc: ocp
+sOARecord: ns.ocp.dsna.fr hostmaster@ocp.dsna.fr 2002010401 1800 3600 604800 84600
+nSRecord: ns.ocp.dsna.fr
+mXRecord: 10 mail.ocp.dsna.fr
+mXRecord: 20 mail2.ocp.dsna.fr
+arecord: 200.17.164.3
+associateddomain: ocp.dsna.fr
+PdnsDomainId: 1
+PdnsDomainType: master
+PdnsDomainMaster: 200.17.164.3
+
+dn: dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectClass: top
+objectClass: domainRelatedObject
+objectClass: dNSDomain2
+objectClass: PdnsDomain
+dc: 31.40.200.in-addr.arpa
+sOARecord: ns.ocp.dsna.fr hostmaster@ocp.dsna.fr 2002010401 1800 3600 604800 84600
+nSRecord: ns.ocp.dsna.fr
+associateddomain: 31.40.200.in-addr.arpa
+PdnsDomainId: 1
+PdnsDomainType: master
+dn: ou=system,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalUnit
+objectClass: top
+ou: system
+
+dn: cn=dieng,ou=system,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalRole
+objectClass: simpleSecurityObject
+cn: dieng
+userPassword: {SSHA}GIjXFqSaf0UoMPO/FcflUTrXwUenX8fi
+description: Bind DN user for LDAP Operations
+dn: dc=apps,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+changetype: modify
+add: arecord
+arecord: 195.83.98.243
+
+# zone related things including SOA, NS and MX records
+
+# There may more than one entry per record
+# This is also applicable to all other records including "associateddomain"
+# but not for a CNAME record
+
+dn: dc=hyp03,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp03
+arecord: 200.17.164.3
+arecord: 200.17.164.133
+associateddomain: hyp03.cloud.lfpw.dsna.fr
+
+dn: dc=hyp04,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp04
+arecord: 200.17.164.4
+arecord: 200.17.164.134
+associateddomain: hyp04.cloud.lfpw.dsna.fr
+
+
+dn: dc=vip-in,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-in
+arecord: 200.17.164.2
+associateddomain: vip-in.cloud.lfpw.dsna.fr
+
+dn: dc=vip-ex,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-ex
+arecord: 200.17.164.132
+associateddomain: vip-ex.cloud.lfpw.dsna.fr
+
+dn: dc=vip-in,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-in
+cnamerecord: vip-in.cloud.lfpw.dsna.fr
+associateddomain: www.cloud.lfpw.dsna.fr
+
+# zone related things including SOA, NS and MX records
+
+# There may more than one entry per record
+# This is also applicable to all other records including "associateddomain"
+# but not for a CNAME record
+
+dn: dc=hyp03,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp03
+arecord: 200.17.164.3
+associateddomain: hyp03.lfpw.dsna.fr
+
+dn: dc=hyp04,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp04
+arecord: 200.17.164.4
+associateddomain: hyp04.lfpw.dsna.fr
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=*,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+arecord: 195.83.98.243
+associateddomain: *.cloud.lfpw.dsna.fr
+
+
+dn: dc=vip-alias,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-alias
+cnamerecord: vip-in.cloud.lfpw.dsna.fr
+associateddomain: www.cloud.lfpw.dsna.fr
+associateddomain: ns.cloud.lfpw.dsna.fr
+associateddomain: mail2.cloud.lfpw.dsna.fr
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=vip-alias,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-alias
+cnamerecord: vip-in.cloud.lfpw.dsna.fr
+associateddomain: www.cloud.lfpw.dsna.fr
+associateddomain: mail2.cloud.lfpw.dsna.fr
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ocp-cloud
+arecord: 200.40.31.200
+associateddomain: ocp-cloud.cloud.lfpw.dsna.fr
+
+dn: dc=api,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: api
+cnamerecord: ocp-cloud.cloud.lfpw.dsna.fr
+associateddomain: api.ocp-cloud.cloud.lfpw.dsna.fr
+
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=ilo24,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo24
+arecord: 192.168.90.55
+associateddomain: ilo24.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo23,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo23
+arecord: 192.168.90.54
+associateddomain: ilo23.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo22,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo22
+arecord: 192.168.90.53
+associateddomain: ilo22.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo21,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo21
+arecord: 192.168.90.52
+associateddomain: ilo21.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo20,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo20
+arecord: 192.168.90.51
+associateddomain: ilo20.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo19,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo19
+arecord: 192.168.90.50
+associateddomain: ilo19.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo18,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo18
+arecord: 192.168.90.49
+associateddomain: ilo18.cloud.lfpw.dsna.fr
+
+
+dn: dc=ilo17,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo17
+arecord: 192.168.90.48
+associateddomain: ilo17.cloud.lfpw.dsna.fr
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=ilo24,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo24
+arecord: 192.168.90.55
+associateddomain: ilo24.ocp.dsna.fr
+
+
+dn: dc=ilo23,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo23
+arecord: 192.168.90.54
+associateddomain: ilo23.ocp.dsna.fr
+
+
+dn: dc=ilo22,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo22
+arecord: 192.168.90.53
+associateddomain: ilo22.ocp.dsna.fr
+
+
+dn: dc=ilo21,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo21
+arecord: 192.168.90.52
+associateddomain: ilo21.ocp.dsna.fr
+
+
+dn: dc=ilo20,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo20
+arecord: 192.168.90.51
+associateddomain: ilo20.ocp.dsna.fr
+
+
+dn: dc=ilo19,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo19
+arecord: 192.168.90.50
+associateddomain: ilo19.ocp.dsna.fr
+
+
+dn: dc=ilo18,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo18
+arecord: 192.168.90.49
+associateddomain: ilo18.ocp.dsna.fr
+
+
+dn: dc=ilo17,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ilo17
+arecord: 192.168.90.48
+associateddomain: ilo17.ocp.dsna.fr
+
+# zone related things including SOA, NS and MX records
+
+
+
+
+dn: dc=lame20-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame20-worker
+arecord: 200.40.31.120
+associateddomain: lame20-worker.cloud.lfpw.dsna.fr
+
+
+dn: dc=lame21-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame21-worker
+arecord: 200.40.31.121
+associateddomain: lame21-worker.cloud.lfpw.dsna.fr
+
+
+dn: dc=lame22-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame22-worker
+arecord: 200.40.31.122
+associateddomain: lame22-worker.cloud.lfpw.dsna.fr
+
+
+dn: dc=lame23-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame23-worker
+arecord: 200.40.31.123
+associateddomain: lame23-worker.cloud.lfpw.dsna.fr
+
+
+dn: dc=lame24-worker,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame24-worker
+arecord: 200.40.31.124
+associateddomain: lame24-worker.cloud.lfpw.dsna.fr
+
+
+# zone related things including SOA, NS and MX records
+
+
+dn: dc=lame18-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame18-master
+arecord: 200.40.31.118
+associateddomain: lame18-master.ocp.dsna.fr
+
+
+dn: dc=lame18b-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame18b-master
+arecord: 200.40.31.218
+associateddomain: lame18b-master.ocp.dsna.fr
+
+
+
+dn: dc=lame19-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame19-master
+arecord: 200.40.31.119
+associateddomain: lame19-master.ocp.dsna.fr
+
+dn: dc=lame19b-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame19b-master
+arecord: 200.40.31.219
+associateddomain: lame19b-master.ocp.dsna.fr
+
+
+dn: dc=lame20-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame20-worker
+arecord: 200.40.31.120
+associateddomain: lame20-worker.ocp.dsna.fr
+
+dn: dc=lame20b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame20b-worker
+arecord: 200.40.31.220
+associateddomain: lame20b-worker.ocp.dsna.fr
+
+dn: dc=lame21-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame21-worker
+arecord: 200.40.31.121
+associateddomain: lame21-worker.ocp.dsna.fr
+
+dn: dc=lame21b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame21b-worker
+arecord: 200.40.31.221
+associateddomain: lame21b-worker.ocp.dsna.fr
+
+
+dn: dc=lame22-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame22-worker
+arecord: 200.40.31.122
+associateddomain: lame22-worker.ocp.dsna.fr
+
+
+dn: dc=lame22b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame22b-worker
+arecord: 200.40.31.222
+associateddomain: lame22b-worker.ocp.dsna.fr
+
+
+dn: dc=lame23-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame23-worker
+arecord: 200.40.31.123
+associateddomain: lame23-worker.ocp.dsna.fr
+
+
+dn: dc=lame23b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame23b-worker
+arecord: 200.40.31.223
+associateddomain: lame23b-worker.ocp.dsna.fr
+
+
+dn: dc=lame24-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame24-worker
+arecord: 200.40.31.124
+associateddomain: lame24-worker.ocp.dsna.fr
+
+
+dn: dc=lame24b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame24b-worker
+arecord: 200.40.31.224
+associateddomain: lame24b-worker.ocp.dsna.fr
+
+
+# zone related things including SOA, NS and MX records
+
+
+dn: dc=120,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 120
+ptrrecord: lame20-worker.cloud.lfpw.dsna.fr
+associateddomain: 120.31.40.200.in-addr.arpa
+
+
+dn: dc=121,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 121
+ptrrecord: lame21-worker.cloud.lfpw.dsna.fr
+associateddomain: 121.31.40.200.in-addr.arpa
+
+
+dn: dc=122,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 122
+ptrrecord: lame22-worker.cloud.lfpw.dsna.fr
+associateddomain: 122.31.40.200.in-addr.arpa
+
+
+
+dn: dc=123,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 123
+ptrrecord: lame23-worker.cloud.lfpw.dsna.fr
+associateddomain: 123.31.40.200.in-addr.arpa
+
+
+dn: dc=124,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 124
+ptrrecord: lame24-worker.cloud.lfpw.dsna.fr
+associateddomain: 124.31.40.200.in-addr.arpa
+
+
+
+
+
+
+
+
+
+
+
+
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=217,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 217
+ptrrecord: lame17b-master.cloud.lfpw.dsna.fr
+associateddomain: 217.31.40.200.in-addr.arpa
+
+
+
+dn: dc=118,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 118
+ptrrecord: lame18-master.cloud.lfpw.dsna.fr
+associateddomain: 118.31.40.200.in-addr.arpa
+
+dn: dc=218,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 218
+ptrrecord: lame18b-master.cloud.lfpw.dsna.fr
+associateddomain: 218.31.40.200.in-addr.arpa
+
+
+dn: dc=119,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 119
+ptrrecord: lame19-master.cloud.lfpw.dsna.fr
+associateddomain: 119.31.40.200.in-addr.arpa
+
+dn: dc=219,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 219
+ptrrecord: lame19b-master.cloud.lfpw.dsna.fr
+associateddomain: 219.31.40.200.in-addr.arpa
+
+
+
+dn: dc=120,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 120
+ptrrecord: lame20-master.cloud.lfpw.dsna.fr
+associateddomain: 120.31.40.200.in-addr.arpa
+
+dn: dc=220,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 220
+ptrrecord: lame20b-master.cloud.lfpw.dsna.fr
+associateddomain: 220.31.40.200.in-addr.arpa
+
+
+dn: dc=121,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 121
+ptrrecord: lame21-master.cloud.lfpw.dsna.fr
+associateddomain: 121.31.40.200.in-addr.arpa
+
+dn: dc=221,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 221
+ptrrecord: lame21b-master.cloud.lfpw.dsna.fr
+associateddomain: 221.31.40.200.in-addr.arpa
+
+
+dn: dc=122,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 122
+ptrrecord: lame22-master.cloud.lfpw.dsna.fr
+associateddomain: 122.31.40.200.in-addr.arpa
+
+dn: dc=222,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 222
+ptrrecord: lame22b-master.cloud.lfpw.dsna.fr
+associateddomain: 222.31.40.200.in-addr.arpa
+
+
+dn: dc=123,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 123
+ptrrecord: lame23-master.cloud.lfpw.dsna.fr
+associateddomain: 123.31.40.200.in-addr.arpa
+
+dn: dc=223,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 223
+ptrrecord: lame23b-master.cloud.lfpw.dsna.fr
+associateddomain: 223.31.40.200.in-addr.arpa
+
+dn: dc=124,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 124
+ptrrecord: lame24-master.cloud.lfpw.dsna.fr
+associateddomain: 124.31.40.200.in-addr.arpa
+
+dn: dc=224,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 224
+ptrrecord: lame24b-master.cloud.lfpw.dsna.fr
+associateddomain: 224.31.40.200.in-addr.arpa
+
+
+
+
+
+
+
+
+
+
+
+
+
+dn: dc=api,dc=poc,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: api
+cnamerecord: poc.ocp.dsna.fr
+associateddomain: api.poc.ocp.dsna.fr
+# zone related things including SOA, NS and MX records
+
+
+dn: dc=lame18-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame18-master
+arecord: 200.40.31.118
+associateddomain: lame18-master.ocp.dsna.fr
+
+
+dn: dc=lame18b-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame18b-master
+arecord: 200.40.31.218
+associateddomain: lame18b-master.ocp.dsna.fr
+
+
+
+dn: dc=lame19-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame19-master
+arecord: 200.40.31.119
+associateddomain: lame19-master.ocp.dsna.fr
+
+dn: dc=lame19b-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame19b-master
+arecord: 200.40.31.219
+associateddomain: lame19b-master.ocp.dsna.fr
+
+
+dn: dc=lame20-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame20-worker
+arecord: 200.40.31.120
+associateddomain: lame20-worker.ocp.dsna.fr
+
+dn: dc=lame20b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame20b-worker
+arecord: 200.40.31.220
+associateddomain: lame20b-worker.ocp.dsna.fr
+
+dn: dc=lame21-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame21-worker
+arecord: 200.40.31.121
+associateddomain: lame21-worker.ocp.dsna.fr
+
+dn: dc=lame21b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame21b-worker
+arecord: 200.40.31.221
+associateddomain: lame21b-worker.ocp.dsna.fr
+
+
+dn: dc=lame22-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame22-worker
+arecord: 200.40.31.122
+associateddomain: lame22-worker.ocp.dsna.fr
+
+
+dn: dc=lame22b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame22b-worker
+arecord: 200.40.31.222
+associateddomain: lame22b-worker.ocp.dsna.fr
+
+
+dn: dc=lame23-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame23-worker
+arecord: 200.40.31.123
+associateddomain: lame23-worker.ocp.dsna.fr
+
+
+dn: dc=lame23b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame23b-worker
+arecord: 200.40.31.223
+associateddomain: lame23b-worker.ocp.dsna.fr
+
+
+dn: dc=lame24-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame24-worker
+arecord: 200.40.31.124
+associateddomain: lame24-worker.ocp.dsna.fr
+
+
+dn: dc=lame24b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame24b-worker
+arecord: 200.40.31.224
+associateddomain: lame24b-worker.ocp.dsna.fr
+
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=120,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 120
+ptrrecord: lame20-worker.ocp.dsna.fr
+associateddomain: 120.31.40.200.in-addr.arpa
+
+dn: dc=220,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 220
+ptrrecord: lame20b-worker.ocp.dsna.fr
+associateddomain: 220.31.40.200.in-addr.arpa
+
+
+dn: dc=121,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 121
+ptrrecord: lame21-worker.ocp.dsna.fr
+associateddomain: 121.31.40.200.in-addr.arpa
+
+dn: dc=221,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 221
+ptrrecord: lame21b-worker.ocp.dsna.fr
+associateddomain: 221.31.40.200.in-addr.arpa
+
+
+dn: dc=122,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 122
+ptrrecord: lame22-worker.ocp.dsna.fr
+associateddomain: 122.31.40.200.in-addr.arpa
+
+dn: dc=222,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 222
+ptrrecord: lame22b-worker.ocp.dsna.fr
+associateddomain: 222.31.40.200.in-addr.arpa
+
+
+dn: dc=123,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 123
+ptrrecord: lame23-worker.ocp.dsna.fr
+associateddomain: 123.31.40.200.in-addr.arpa
+
+dn: dc=223,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 223
+ptrrecord: lame23b-worker.ocp.dsna.fr
+associateddomain: 223.31.40.200.in-addr.arpa
+
+dn: dc=124,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 124
+ptrrecord: lame24-worker.ocp.dsna.fr
+associateddomain: 124.31.40.200.in-addr.arpa
+
+dn: dc=224,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 224
+ptrrecord: lame24b-worker.ocp.dsna.fr
+associateddomain: 224.31.40.200.in-addr.arpa
+
+
+
+
+
+
+
+
+
+
+
+
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=217,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 217
+ptrrecord: lame17b-master.ocp.dsna.fr
+associateddomain: 217.31.40.200.in-addr.arpa
+
+
+
+dn: dc=118,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 118
+ptrrecord: lame18-master.ocp.dsna.fr
+associateddomain: 118.31.40.200.in-addr.arpa
+
+dn: dc=218,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 218
+ptrrecord: lame18b-master.ocp.dsna.fr
+associateddomain: 218.31.40.200.in-addr.arpa
+
+
+dn: dc=119,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 119
+ptrrecord: lame19-master.ocp.dsna.fr
+associateddomain: 119.31.40.200.in-addr.arpa
+
+dn: dc=219,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 219
+ptrrecord: lame19b-master.ocp.dsna.fr
+associateddomain: 219.31.40.200.in-addr.arpa
+
+
+
+dn: dc=120,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 120
+ptrrecord: lame20-worker.ocp.dsna.fr
+associateddomain: 120.31.40.200.in-addr.arpa
+
+dn: dc=220,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 220
+ptrrecord: lame20b-worker.ocp.dsna.fr
+associateddomain: 220.31.40.200.in-addr.arpa
+
+
+dn: dc=121,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 121
+ptrrecord: lame21-worker.ocp.dsna.fr
+associateddomain: 121.31.40.200.in-addr.arpa
+
+dn: dc=221,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 221
+ptrrecord: lame21b-worker.ocp.dsna.fr
+associateddomain: 221.31.40.200.in-addr.arpa
+
+
+dn: dc=122,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 122
+ptrrecord: lame22-worker.ocp.dsna.fr
+associateddomain: 122.31.40.200.in-addr.arpa
+
+dn: dc=222,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 222
+ptrrecord: lame22b-worker.ocp.dsna.fr
+associateddomain: 222.31.40.200.in-addr.arpa
+
+
+dn: dc=123,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 123
+ptrrecord: lame23-worker.ocp.dsna.fr
+associateddomain: 123.31.40.200.in-addr.arpa
+
+dn: dc=223,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 223
+ptrrecord: lame23b-worker.ocp.dsna.fr
+associateddomain: 223.31.40.200.in-addr.arpa
+
+dn: dc=124,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 124
+ptrrecord: lame24-worker.ocp.dsna.fr
+associateddomain: 124.31.40.200.in-addr.arpa
+
+dn: dc=224,dc=31.40.200.in-addr.arpa,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 224
+ptrrecord: lame24b-worker.ocp.dsna.fr
+associateddomain: 224.31.40.200.in-addr.arpa
+
+
+
+
+
+
+
+
+
+
+
+
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=apps,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: apps
+arecord: 200.40.31.250
+associateddomain: apps.ocp-cloud.cloud.lfpw.dsna.fr
+
+dn: dc=console-openshift-console,dc=apps,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: console-openshift-console
+arecord: 195.83.98.243
+associateddomain: console-openshift-console.apps.ocp-cloud.cloud.lfpw.dsna.fr
+
+
+
+dn: dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: poc
+arecord: 200.40.31.200
+associateddomain: poc.cloud.lfpw.dsna.fr
+
+dn: dc=api,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: api
+cnamerecord: poc.cloud.lfpw.dsna.fr
+associateddomain: api.poc.cloud.lfpw.dsna.fr
+
+
+
+dn: dc=*,dc=api,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+cnamerecord: poc.cloud.lfpw.dsna.fr
+associateddomain: *.api.poc.cloud.lfpw.dsna.fr
+
+
+
+dn: dc=*,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+cnamerecord: apps.cloud.lfpw.dsna.fr
+associateddomain: *.apps.poc.cloud.lfpw.dsna.fr
+
+
+
+dn: dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: poc
+arecord: 200.40.31.200
+associateddomain: api.cloud.lfpw.dsna.fr
+
+dn: dc=apps,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: apps
+arecord: 200.40.31.250
+associateddomain: apps.cloud.lfpw.dsna.fr
+
+
+dn: dc=*,dc=api,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+cnamerecord: api.cloud.lfpw.dsna.fr
+associateddomain: *.api.cloud.lfpw.dsna.fr
+
+
+dn: dc=*,dc=apps,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+cnamerecord: apps.cloud.lfpw.dsna.fr
+associateddomain: *.apps.cloud.lfpw.dsna.fr
+
+
+
+dn: dc=oauth-openshift,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: oauth-openshift
+arecord: 195.83.98.243
+associateddomain: oauth-openshift.apps.poc.cloud.lfpw.dsna.fr
+
+
+dn: dc=console-openshift-console,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: console-openshift-console
+arecord: 195.83.98.243
+associateddomain: console-openshift-console.apps.poc.cloud.lfpw.dsna.fr
+
+
+
+dn: dc=*,dc=apps,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+arecord: 200.40.31.250
+associateddomain: *.apps.ocp-cloud.cloud.lfpw.dsna.fr
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=vip-in,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-in
+arecord: 195.83.98.243
+associateddomain: vip-in.cloud.lfpw.dsna.fr
+
+
+dn: dc=vip-alias,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-alias
+cnamerecord: vip-in.cloud.lfpw.dsna.fr
+associateddomain: www.cloud.lfpw.dsna.fr
+
+dn: dc=*,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+arecord: 195.83.98.243
+associateddomain: *.cloud.lfpw.dsna.fr
+# zone related things including SOA, NS and MX records
+
+# There may more than one entry per record
+# This is also applicable to all other records including "associateddomain"
+# but not for a CNAME record
+
+
+# Simple record (mail.lfpw.dsna.fr has address 200.17.164.2)
+
+dn: dc=mail2,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: mail2
+arecord: 200.17.164.132
+associateddomain: mail2.lfpw.dsna.fr
+
+
+# There may more than one entry per record
+# This is also applicable to all other records including "associateddomain"
+# but not for a CNAME record
+
+dn: dc=hyp04,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp04
+arecord: 200.17.66.40
+arecord: 200.17.164.132
+associateddomain: hyp04.lfpw.dsna.fr
+
+
+# domain alias ({mail2,ns}.lfpw.dsna.fr is CNAME for server.lfpw.dsna.fr)
+# cnamerecord must only contain one entry
+
+dn: dc=backup,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: backup
+cnamerecord: hyp03.lfpw.dsna.fr
+associateddomain:proxy.lfpw.dsna.fr
+associateddomain:ftp.lfpw.dsna.fr
+associateddomain:www.lfpw.dsna.fr
+associateddomain:ns.lfpw.dsna.fr
+dn: dc=downloads-openshift-console,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: downloads-openshift-console
+arecord: 195.83.98.243
+associateddomain: downloads-openshift-console.apps.poc.cloud.lfpw.dsna.fr
+dn: dc=api,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: api
+arecord: 195.83.98.243
+associateddomain: api.apps.poc.cloud.lfpw.dsna.fr
+dn: dc=demo-syspeo,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: demo-syspeo
+arecord: 195.83.98.243
+associateddomain: demo-syspeo.apps.poc.cloud.lfpw.dsna.fr
+dn: dc=kibana-openshift-logging,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: kibana-openshift-logging
+arecord: 195.83.98.243
+associateddomain: kibana-openshift-logging.apps.poc.cloud.lfpw.dsna.fr
+dn: dc=grafana-openshift-monitoring,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: grafana-openshift-monitoring
+arecord: 195.83.98.243
+associateddomain: grafana-openshift-monitoring.apps.poc.cloud.lfpw.dsna.fr
+# zone related things including SOA, NS and MX records
+
+dn: dc=_acme-challenge,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: dNSDomain2
+objectclass: domainrelatedobject
+dc: _acme-challenge
+TXTRecord: "G4d-NJvGcOyN4L6FPZunTfRYeuVOvOG3afGjCby6Ncs"
+associateddomain: _acme-challenge.cloud.lfpw.dsna.fr
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=lfpw,dc=dsna,dc=fr
+objectClass: top
+objectClass: domainRelatedObject
+objectClass: dNSDomain2
+objectClass: PdnsDomain
+dc: lfpw
+sOARecord: ns.lfpw.dsna.fr hostmaster@lfpw.dsna.fr 2002010401 1800 3600 604800 84600
+nSRecord: ns.lfpw.dsna.fr
+mXRecord: 10 mail.lfpw.dsna.fr
+mXRecord: 20 mail2.lfpw.dsna.fr
+associateddomain: lfpw.dsna.fr
+PdnsDomainId: 1
+PdnsDomainType: master
+PdnsDomainMaster: 200.17.164.2
+dn: cn=config
+changeType: modify
+replace: olcLogLevel
+olcLogLevel: stats
+# zone related things including SOA, NS and MX records
+
+dn: dc=_acme-challenge,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+changetype: modify
+replace: TXTRecord
+TXTRecord: "dnuqN0SUx88RaiHOFrSxEilrhQ-ukZmVVEpuWonL0og"
+
+dn: olcDatabase=mdb,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcMdbConfig
+olcDatabase: mdb
+olcDbMaxSize: 42949672960
+olcDbDirectory: /var/lib/openldap
+olcSuffix: dc=cloud,dc=lfpw,dc=dsna,dc=fr
+olcRootDN: cn=admin,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+olcRootPW: {SSHA}eVz5pQZBeSV68atyNv4809dHzxDJt+Zj
+olcDbIndex: uid pres,eq
+olcDbIndex: cn,sn pres,eq,approx,sub
+olcDbIndex: mail pres,eq,sub
+olcDbIndex: objectClass pres,eq
+olcDbIndex: loginShell pres,eq
+olcDbIndex: sudoUser,sudoHost pres,eq
+olcAccess: to attrs=userPassword,shadowLastChange,shadowExpire
+  by self write
+  by anonymous auth
+  by dn.subtree="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage 
+  by dn.subtree="ou=system,dc=cloud,dc=lfpw,dc=dsna,dc=fr" read
+  by * none
+olcAccess: to dn.subtree="ou=system,dc=cloud,dc=lfpw,dc=dsna,dc=fr" by dn.subtree="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+  by * none
+olcAccess: to dn.subtree="dc=cloud,dc=lfpw,dc=dsna,dc=fr" by dn.subtree="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+  by users read 
+  by * none
+dn: cn=config
+objectClass: olcGlobal
+cn: config
+olcArgsFile: /var/lib/openldap/slapd.args
+olcPidFile: /var/lib/openldap/slapd.pid
+
+dn: cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: schema
+
+dn: cn=module,cn=config
+objectClass: olcModuleList
+cn: module
+olcModulepath: /usr/libexec/openldap
+olcModuleload: back_mdb.la
+
+include: file:///etc/openldap/schema/core.ldif
+include: file:///etc/openldap/schema/cosine.ldif
+include: file:///etc/openldap/schema/nis.ldif
+include: file:///etc/openldap/schema/inetorgperson.ldif
+include: file:///etc/openldap/schema/sudo.ldif
+
+dn: olcDatabase=frontend,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcFrontendConfig
+olcDatabase: frontend
+olcAccess: to dn.base="cn=Subschema" by * read
+olcAccess: to * 
+  by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage 
+  by * none
+
+dn: olcDatabase=config,cn=config
+objectClass: olcDatabaseConfig
+olcDatabase: config
+olcRootDN: cn=config
+olcAccess: to * 
+  by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage 
+  by * none
+dn: cn=sudo,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: sudo
+olcAttributeTypes: ( 1.3.6.1.4.1.15953.9.1.1 NAME 'sudoUser' DESC 'User(s) who may  run sudo' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: ( 1.3.6.1.4.1.15953.9.1.2 NAME 'sudoHost' DESC 'Host(s) who may run sudo' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: ( 1.3.6.1.4.1.15953.9.1.3 NAME 'sudoCommand' DESC 'Command(s) to be executed by sudo' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: ( 1.3.6.1.4.1.15953.9.1.4 NAME 'sudoRunAs' DESC 'User(s) impersonated by sudo (deprecated)' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: ( 1.3.6.1.4.1.15953.9.1.5 NAME 'sudoOption' DESC 'Options(s) followed by sudo' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: ( 1.3.6.1.4.1.15953.9.1.6 NAME 'sudoRunAsUser' DESC 'User(s) impersonated by sudo' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: ( 1.3.6.1.4.1.15953.9.1.7 NAME 'sudoRunAsGroup' DESC 'Group(s) impersonated by sudo' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcObjectClasses: ( 1.3.6.1.4.1.15953.9.2.1 NAME 'sudoRole' SUP top STRUCTURAL DESC 'Sudoer Entries' MUST ( cn ) MAY ( sudoUser $ sudoHost $ sudoCommand $ sudoRunAs $ sudoRunAsUser $ sudoRunAsGroup $ sudoOption $ description ) )
+
+# zone related things including SOA, NS and MX records
+
+dn: dc=117,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 117
+ptrrecord: lame17-master.cloud.lfpw.dsna.fr
+associateddomain: 117.31.40.200.in-addr.arpa
+
+dn: uid=proxy_user,ou=people,dc=lfpw,dc=dsna,dc=fr
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: proxy_user
+cn: Proxy
+sn: User
+loginShell: /bin/bash
+uidNumber: 10001
+gidNumber: 10001
+homeDirectory: /home/proxy_user
+shadowMax: 60
+shadowMin: 1
+shadowWarning: 7
+shadowInactive: 7
+shadowLastChange: 0
+
+dn: cn=proxy_user,ou=groups,dc=lfpw,dc=dsna,dc=fr
+objectClass: posixGroup
+cn: proxy_user
+gidNumber: 10001
+memberUid: proxy_user

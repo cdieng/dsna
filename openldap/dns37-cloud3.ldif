@@ -1,0 +1,10 @@
+
+dn: dc=*,dc=apps,dc=poc,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+cnamerecord: apps.cloud.lfpw.dsna.fr
+associateddomain: *.apps.poc.cloud.lfpw.dsna.fr
+
+

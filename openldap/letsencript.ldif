@@ -1,0 +1,7 @@
+# zone related things including SOA, NS and MX records
+
+dn: dc=_acme-challenge,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+changetype: modify
+replace: TXTRecord
+TXTRecord: "dnuqN0SUx88RaiHOFrSxEilrhQ-ukZmVVEpuWonL0og"
+

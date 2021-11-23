@@ -1,0 +1,9 @@
+dn: ou=groups,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalUnit
+objectClass: top
+ou: groups
+
+dn: ou=people,dc=lfpw,dc=dsna,dc=fr
+objectClass: organizationalUnit
+objectClass: top
+ou: people

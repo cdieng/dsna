@@ -1,0 +1,126 @@
+# zone related things including SOA, NS and MX records
+
+
+dn: dc=lame18-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame18-master
+arecord: 200.40.31.118
+associateddomain: lame18-master.ocp.dsna.fr
+
+
+dn: dc=lame18b-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame18b-master
+arecord: 200.40.31.218
+associateddomain: lame18b-master.ocp.dsna.fr
+
+
+
+dn: dc=lame19-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame19-master
+arecord: 200.40.31.119
+associateddomain: lame19-master.ocp.dsna.fr
+
+dn: dc=lame19b-master,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame19b-master
+arecord: 200.40.31.219
+associateddomain: lame19b-master.ocp.dsna.fr
+
+
+dn: dc=lame20-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame20-worker
+arecord: 200.40.31.120
+associateddomain: lame20-worker.ocp.dsna.fr
+
+dn: dc=lame20b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame20b-worker
+arecord: 200.40.31.220
+associateddomain: lame20b-worker.ocp.dsna.fr
+
+dn: dc=lame21-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame21-worker
+arecord: 200.40.31.121
+associateddomain: lame21-worker.ocp.dsna.fr
+
+dn: dc=lame21b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame21b-worker
+arecord: 200.40.31.221
+associateddomain: lame21b-worker.ocp.dsna.fr
+
+
+dn: dc=lame22-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame22-worker
+arecord: 200.40.31.122
+associateddomain: lame22-worker.ocp.dsna.fr
+
+
+dn: dc=lame22b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame22b-worker
+arecord: 200.40.31.222
+associateddomain: lame22b-worker.ocp.dsna.fr
+
+
+dn: dc=lame23-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame23-worker
+arecord: 200.40.31.123
+associateddomain: lame23-worker.ocp.dsna.fr
+
+
+dn: dc=lame23b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame23b-worker
+arecord: 200.40.31.223
+associateddomain: lame23b-worker.ocp.dsna.fr
+
+
+dn: dc=lame24-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame24-worker
+arecord: 200.40.31.124
+associateddomain: lame24-worker.ocp.dsna.fr
+
+
+dn: dc=lame24b-worker,dc=ocp,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lame24b-worker
+arecord: 200.40.31.224
+associateddomain: lame24b-worker.ocp.dsna.fr
+
+

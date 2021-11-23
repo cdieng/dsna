@@ -1,0 +1,10 @@
+# zone related things including SOA, NS and MX records
+
+dn: dc=117,dc=31.40.200.in-addr.arpa,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain2
+objectclass: domainrelatedobject
+dc: 117
+ptrrecord: lame17-master.cloud.lfpw.dsna.fr
+associateddomain: 117.31.40.200.in-addr.arpa
+

@@ -1,0 +1,8 @@
+dn: dc=*,dc=apps,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+arecord: 200.40.31.250
+associateddomain: *.apps.ocp-cloud.cloud.lfpw.dsna.fr
+

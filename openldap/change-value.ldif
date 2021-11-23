@@ -1,0 +1,5 @@
+dn: dc=apps,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+changetype: modify
+add: arecord
+arecord: 195.83.98.243
+

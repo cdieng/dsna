@@ -1,0 +1,22 @@
+dn: uid=dieng,ou=people,dc=lfpw,dc=dsna,dc=fr
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: dieng
+cn: cheikh
+sn: Dieng
+loginShell: /bin/bash
+uidNumber: 10000
+gidNumber: 10000
+homeDirectory: /home/dieng
+shadowMax: 60
+shadowMin: 1
+shadowWarning: 7
+shadowInactive: 7
+shadowLastChange: 0
+
+dn: cn=dieng,ou=groups,dc=lfpw,dc=dsna,dc=fr
+objectClass: posixGroup
+cn: dieng
+gidNumber: 10000
+memberUid: dieng

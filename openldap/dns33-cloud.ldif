@@ -1,0 +1,19 @@
+# zone related things including SOA, NS and MX records
+
+dn: dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: ocp-cloud
+arecord: 200.40.31.200
+associateddomain: ocp-cloud.cloud.lfpw.dsna.fr
+
+dn: dc=api,dc=ocp-cloud,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: api
+cnamerecord: ocp-cloud.cloud.lfpw.dsna.fr
+associateddomain: api.ocp-cloud.cloud.lfpw.dsna.fr
+
+

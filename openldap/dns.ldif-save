@@ -1,0 +1,74 @@
+# zone related things including SOA, NS and MX records
+
+dn: ou=dns dc=lfpw dc=dsna dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: lfpw
+soarecord: ns.lfpw.dsna.fr hostmaster@lfpw.dsna.fr 2002010401 1800 3600 604800 84600
+nsrecord: ns.lfpw.dsna.fr
+mxrecord: 10 mail.lfpw.dsna.fr
+mxrecord: 20 mail2.lfpw.dsna.fr
+associateddomain: lfpw.dsna.fr
+
+
+# There may more than one entry per record
+# This is also applicable to all other records including "associateddomain"
+# but not for a CNAME record
+
+dn: dc=hyp03,ou=dns dc=lfpw dc=dsna dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp03
+arecord: 200.17.66.30
+arecord: 200.17.164.2
+associateddomain: hyp03.lfpw.dsna.fr
+
+
+# Simple record (mail.lfpw.dsna.fr has address 200.17.164.2)
+
+dn: dc=mail,ou=dns dc=lfpw dc=dsna dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: mail
+arecord: 200.17.164.2
+associateddomain: mail.lfpw.dsna.fr
+
+dn: dc=mail2,ou=dns dc=lfpw dc=dsna dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: mail
+arecord: 200.17.164.132
+associateddomain: mail2.lfpw.dsna.fr
+
+
+# There may more than one entry per record
+# This is also applicable to all other records including "associateddomain"
+# but not for a CNAME record
+
+dn: dc=hyp04,ou=dns dc=lfpw dc=dsna dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: hyp04
+arecord: 200.17.66.40
+arecord: 200.17.164.132
+associateddomain: hyp04.lfpw.dsna.fr
+
+
+# domain alias ({mail2,ns}.lfpw.dsna.fr is CNAME for server.lfpw.dsna.fr)
+# cnamerecord must only contain one entry
+
+dn: dc=backup,ou=dns dc=lfpw dc=dsna dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: backup
+cnamerecord: hyp03.lfpw.dsna.fr
+associateddomain:proxy.lfpw.dsna.fr
+associateddomain:ftp.lfpw.dsna.fr
+associateddomain:www.lfpw.dsna.fr
+associateddomain:ns.lfpw.dsna.fr

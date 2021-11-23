@@ -1,0 +1,26 @@
+# zone related things including SOA, NS and MX records
+
+dn: dc=vip-in,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-in
+arecord: 195.83.98.243
+associateddomain: vip-in.cloud.lfpw.dsna.fr
+
+
+dn: dc=vip-alias,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: vip-alias
+cnamerecord: vip-in.cloud.lfpw.dsna.fr
+associateddomain: www.cloud.lfpw.dsna.fr
+
+dn: dc=*,dc=cloud,dc=lfpw,dc=dsna,dc=fr
+objectclass: top
+objectclass: dnsdomain
+objectclass: domainrelatedobject
+dc: *
+arecord: 195.83.98.243
+associateddomain: *.cloud.lfpw.dsna.fr
